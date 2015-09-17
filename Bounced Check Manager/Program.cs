@@ -16,7 +16,12 @@ namespace Bounced_Check_Manager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var loginMenu = new login();
+            Application.Run(loginMenu);
+            if (loginMenu.loggedIn)
+            {
+                Application.Run(new mainMenu());
+            }
         }
     }
 }

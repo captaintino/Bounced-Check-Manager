@@ -1,6 +1,6 @@
 ﻿namespace Bounced_Check_Manager
 {
-    partial class Form1
+    partial class mainMenu
     {
         /// <summary>
         /// Required designer variable.

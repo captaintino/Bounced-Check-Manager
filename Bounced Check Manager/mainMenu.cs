@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Bounced_Check_Manager
 {
-    public partial class Form1 : Form
+    public partial class mainMenu : Form
     {
-        public Form1()
+        public mainMenu()
         {
             InitializeComponent();
         }
+
+        
     }
 }
