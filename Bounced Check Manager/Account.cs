@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bounced_Check_Manager
 {
-    class Account
+    public class Account
     {
         public String name, address;
         public int routingNumber, accountNumber, id;

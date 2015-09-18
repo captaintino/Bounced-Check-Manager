@@ -27,7 +27,7 @@ namespace Bounced_Check_Manager
             }
             else
             {
-
+                MessageBox.Show("Invalid login");
             }
         }
 
