@@ -16,6 +16,9 @@ namespace Bounced_Check_Manager
         public mainMenu()
         {
             InitializeComponent();
+            // Might be a better way to do this. Basically the table should start out refreshed, without
+            // the user clicking on anything.
+            refreshBtn_Click(null, null);
         }
 
         private void refreshBtn_Click(object sender, EventArgs e)
@@ -30,7 +33,9 @@ namespace Bounced_Check_Manager
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            new addAccount().Show();
+            // The count comes from the current list, NOT the one in the DB! This will NOT work for
+            // a network DB serving multiple programs!
+            new addAccount(accounts.Count).Show();
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -52,11 +57,15 @@ namespace Bounced_Check_Manager
         {
             if (dataGridView1.SelectedRows.Count != 1)
             {
-                MessageBox.Show("Please Select an account");
+                MessageBox.Show("Please Select one and only one account");
                 return;
             }
-            Account acc = findAccount(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0]));
-            new updateAccount(acc).Show();
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                int id = Convert.ToInt32(row.Cells[0].Value);
+                Account acc = findAccount(id);
+                new updateAccount(acc).Show();
+            }
         }
 
         public Account findAccount(int id)

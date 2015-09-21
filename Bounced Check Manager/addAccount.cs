@@ -12,8 +12,12 @@ namespace Bounced_Check_Manager
 {
     public partial class addAccount : Form
     {
-        public addAccount()
+        private int accountID;
+
+        public addAccount(int id)
         {
+            accountID = id;
+
             InitializeComponent();
         }
 
@@ -36,7 +40,8 @@ namespace Bounced_Check_Manager
                     MessageBox.Show("Invalid account or routing number");
                     return;
                 }
-                Account acc = new Account(nameTextBox.Text, addressTextBox.Text, routing, account);
+                
+                Account acc = new Account(accountID, nameTextBox.Text, addressTextBox.Text, routing, account);
                 AccountDAO.create(acc);
                 this.Close();
             }

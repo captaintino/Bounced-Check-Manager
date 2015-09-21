@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BouncedCheckManager" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=IASTRE-LENOVO\SQLEXPRESS;Initial Catalog=BouncedCheckManager;Integrated Security=True;Pooling=False" SettingsObjectName="Bounced_Check_Manager.Properties.Settings" SettingsPropertyName="BouncedCheckManagerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account2" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="AccID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AccNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AccAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AccRoutNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
