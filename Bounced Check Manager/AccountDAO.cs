@@ -26,7 +26,7 @@ namespace Bounced_Check_Manager
             List<Account> list = new List<Account>();
             // TODO: Connect to a network DB - should be able to modify the .dbml file to point to a
             // network DB.
-            // TODO: Either move the DB connection to the connectToDB method or eliminate it.
+            // TODO: Either move the DB connection to the connectToDB method or eliminate it the method.
             using (DataClasses1DataContext database = new DataClasses1DataContext())
             {
                 var query = from a in database.Accounts
@@ -34,7 +34,7 @@ namespace Bounced_Check_Manager
 
                 foreach (var a in query)
                 {
-                    list.Add(new Account(a.AccID, a.AccName, a.AccAddress, a.AccRoutNo, a.AccNo));
+                    list.Add(a);
                 }
             }
             return list;
@@ -47,17 +47,17 @@ namespace Bounced_Check_Manager
                 var query = from a in database.Accounts
                             // Assuming the accountNumber is enough of an identifier.
                             // Additional 'where' clauses can be added if necessary.
-                            where (a.AccNo == acc.accountNumber)
+                            where (a.AccNo == acc.AccNo)
                             select a;
                 // It seems to me that a single account renders the foreach unnecessary. However, I can't
                 // find another way to get the variable 'a' from 'query'.
                 foreach (var a in query)
                 {
                     // DANGEROUS DIRECT DATA INSERTIONS. NEED CLEANING
-                    a.AccNo = acc.accountNumber;
-                    a.AccName = acc.name;
-                    a.AccAddress = acc.address;
-                    a.AccRoutNo = acc.routingNumber;
+                    a.AccNo = acc.AccNo;
+                    a.AccName = acc.AccName;
+                    a.AccAddress = acc.AccAddress;
+                    a.AccRoutNo = acc.AccRoutNo;
                 }
                 try
                 {
@@ -68,12 +68,6 @@ namespace Bounced_Check_Manager
                     MessageBox.Show("There was an error writing to the database: \n\n" + e);
                 }
             }
-            // DANGEROUS DIRECT DATA INSERTIONS. NEED CLEANING
-            /*String query = "UPDATE Account set name=" + acc.name + 
-                                              ", address=" + acc.address + 
-                                              ", routingNumber=" + acc.routingNumber + 
-                                              ", accountNumber=" + acc.accountNumber + 
-                                              " WHERE id=" + acc.id + ";" ;*/
         }
 
         public static void delete(Account acc)
@@ -81,7 +75,7 @@ namespace Bounced_Check_Manager
             using (DataClasses1DataContext database = new DataClasses1DataContext())
             {
                 var query = from a in database.Accounts
-                            where (a.AccID == acc.id)
+                            where (a.AccID == acc.AccID)
                             select a;
                 // It seems to me that a single account renders the foreach unnecessary. However, I can't
                 // find another way to get the variable 'a' from 'query'.
@@ -99,23 +93,12 @@ namespace Bounced_Check_Manager
                     }
                 }
             }
-            // DANGEROUS DIRECT DATA INSERTIONS. NEED CLEANING
-            /*String query = "DELETE FROM Account WHERE name like " + acc.name + 
-                                              " AND address like " + acc.address + 
-                                              " AND routingNumber=" + acc.routingNumber + 
-                                              " AND accountNumber=" + acc.accountNumber + 
-                                              " AND id=" + acc.id + ";"; */
         }
 
-        public static Account create(Account acc)
+        public static void create(Account acc)
         {
             using (DataClasses1DataContext database = new DataClasses1DataContext())
             {
-                acc.AccID = acc.id;
-                acc.AccName = acc.name;
-                acc.AccNo = acc.accountNumber;
-                acc.AccAddress = acc.address;
-                acc.AccRoutNo = acc.routingNumber;
                 database.Accounts.InsertOnSubmit(acc);
                 try
                 {
@@ -126,11 +109,6 @@ namespace Bounced_Check_Manager
                     MessageBox.Show("There was an error writing to the database: \n\n" + e);
                 }
             }
-            // DANGEROUS DIRECT DATA INSERTIONS. NEED CLEANING
-            /*String query = "INSERT INTO Account (name, address, routingNumber, accountNumber) VALUES ("+ 
-                                              acc.name + "," + acc.address + "," + acc.routingNumber + "," + acc.accountNumber + ");"; */
-
-            return acc; // ??????
         }
     }
 }

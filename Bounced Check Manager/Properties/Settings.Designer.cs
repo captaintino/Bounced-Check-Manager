@@ -33,5 +33,16 @@ namespace Bounced_Check_Manager.Properties {
                 return ((string)(this["BouncedCheckManagerConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=CPSLABSERVER\\TEAMPENGUIN;Initial Catalog=TeamPenguin;Persist Security" +
+            " Info=True;User ID=sa;Password=Password1")]
+        public string TeamPenguinConnectionString {
+            get {
+                return ((string)(this["TeamPenguinConnectionString"]));
+            }
+        }
     }
 }

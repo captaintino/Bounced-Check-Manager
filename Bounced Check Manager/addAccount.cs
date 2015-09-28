@@ -40,8 +40,13 @@ namespace Bounced_Check_Manager
                     MessageBox.Show("Invalid account or routing number");
                     return;
                 }
-                
-                Account acc = new Account(accountID, nameTextBox.Text, addressTextBox.Text, routing, account);
+
+                Account acc = new Account();
+                acc.AccName = nameTextBox.Text;
+                acc.AccAddress = addressTextBox.Text;
+                acc.AccRoutNo = routing;
+                acc.AccNo = account;
+                //Account acc = new Account(accountID, nameTextBox.Text, addressTextBox.Text, routing, account);
                 AccountDAO.create(acc);
                 this.Close();
             }

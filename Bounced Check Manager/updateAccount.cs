@@ -17,10 +17,10 @@ namespace Bounced_Check_Manager
         {
             InitializeComponent();
             this.account = acc;
-            nameTextBox.Text = account.name;
-            addressTextBox.Text = account.address;
-            accountNumberTextBox.Text = account.accountNumber.ToString();
-            routingNumberTextBox.Text = account.routingNumber.ToString();
+            nameTextBox.Text = account.AccName;
+            addressTextBox.Text = account.AccAddress;
+            accountNumberTextBox.Text = account.AccNo.ToString();
+            routingNumberTextBox.Text = account.AccRoutNo.ToString();
         }
 
         private void submit_Click(object sender, EventArgs e)
@@ -39,10 +39,10 @@ namespace Bounced_Check_Manager
                     MessageBox.Show("Invalid account or routing number");
                     return;
                 }
-                this.account.name = nameTextBox.Text;
-                this.account.address = addressTextBox.Text;
-                this.account.accountNumber = accountNum;
-                this.account.routingNumber = routing;
+                this.account.AccName = nameTextBox.Text;
+                this.account.AccAddress = addressTextBox.Text;
+                this.account.AccNo = accountNum;
+                this.account.AccRoutNo = routing;
                 AccountDAO.update(this.account);
                 this.Close();
             }

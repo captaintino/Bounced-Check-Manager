@@ -22,7 +22,7 @@ namespace Bounced_Check_Manager
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BouncedCheckManager")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="TeamPenguin")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
@@ -36,7 +36,7 @@ namespace Bounced_Check_Manager
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::Bounced_Check_Manager.Properties.Settings.Default.BouncedCheckManagerConnectionString, mappingSource)
+				base(global::Bounced_Check_Manager.Properties.Settings.Default.TeamPenguinConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -74,7 +74,7 @@ namespace Bounced_Check_Manager
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Account2")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Account")]
 	public partial class Account : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
@@ -111,7 +111,7 @@ namespace Bounced_Check_Manager
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int AccID
 		{
 			get
@@ -151,7 +151,7 @@ namespace Bounced_Check_Manager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string AccName
 		{
 			get
@@ -171,7 +171,7 @@ namespace Bounced_Check_Manager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccAddress", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccAddress", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string AccAddress
 		{
 			get

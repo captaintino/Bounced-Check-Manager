@@ -26,7 +26,7 @@ namespace Bounced_Check_Manager
             accounts = AccountDAO.LoadAll();
             dataGridView1.Rows.Clear();
             foreach (Account acc in accounts){
-                string[] row = { acc.id.ToString(), acc.name.ToString(), acc.address.ToString(), acc.routingNumber.ToString(), acc.accountNumber.ToString() };
+                string[] row = { acc.AccID.ToString(), acc.AccName.ToString(), acc.AccAddress.ToString(), acc.AccRoutNo.ToString(), acc.AccNo.ToString() };
                 dataGridView1.Rows.Add(row);
             }
         }
@@ -72,12 +72,17 @@ namespace Bounced_Check_Manager
         {
             foreach (Account acc in accounts)
             {
-                if (acc.id == id)
+                if (acc.AccID == id)
                 {
                     return acc;
                 }
             }
             return null;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         

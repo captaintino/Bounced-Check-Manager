@@ -30,11 +30,11 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.refreshBtn = new System.Windows.Forms.Button();
-            this.createBtn = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
-            this.updateBtn = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.updateBtn = new System.Windows.Forms.Button();
+            this.deleteBtn = new System.Windows.Forms.Button();
+            this.createBtn = new System.Windows.Forms.Button();
+            this.refreshBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AccName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,38 +83,16 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(244, 509);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // refreshBtn
+            // button5
             // 
-            this.refreshBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.refreshBtn.Location = new System.Drawing.Point(22, 39);
-            this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(200, 23);
-            this.refreshBtn.TabIndex = 0;
-            this.refreshBtn.Text = "Refresh";
-            this.refreshBtn.UseVisualStyleBackColor = true;
-            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
-            // 
-            // createBtn
-            // 
-            this.createBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.createBtn.Location = new System.Drawing.Point(22, 140);
-            this.createBtn.Name = "createBtn";
-            this.createBtn.Size = new System.Drawing.Size(200, 23);
-            this.createBtn.TabIndex = 1;
-            this.createBtn.Text = "Create";
-            this.createBtn.UseVisualStyleBackColor = true;
-            this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.deleteBtn.Location = new System.Drawing.Point(22, 241);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(200, 23);
-            this.deleteBtn.TabIndex = 2;
-            this.deleteBtn.Text = "Delete";
-            this.deleteBtn.UseVisualStyleBackColor = true;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button5.Location = new System.Drawing.Point(22, 445);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(200, 23);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Exit";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // updateBtn
             // 
@@ -127,15 +105,38 @@
             this.updateBtn.UseVisualStyleBackColor = true;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
-            // button5
+            // deleteBtn
             // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.Location = new System.Drawing.Point(22, 445);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(200, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.deleteBtn.Location = new System.Drawing.Point(22, 241);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(200, 23);
+            this.deleteBtn.TabIndex = 2;
+            this.deleteBtn.Text = "Delete";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // createBtn
+            // 
+            this.createBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.createBtn.Location = new System.Drawing.Point(22, 140);
+            this.createBtn.Name = "createBtn";
+            this.createBtn.Size = new System.Drawing.Size(200, 23);
+            this.createBtn.TabIndex = 1;
+            this.createBtn.Text = "Create";
+            this.createBtn.UseVisualStyleBackColor = true;
+            this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
+            // 
+            // refreshBtn
+            // 
+            this.refreshBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.refreshBtn.Location = new System.Drawing.Point(22, 39);
+            this.refreshBtn.Name = "refreshBtn";
+            this.refreshBtn.Size = new System.Drawing.Size(200, 23);
+            this.refreshBtn.TabIndex = 0;
+            this.refreshBtn.Text = "Refresh";
+            this.refreshBtn.UseVisualStyleBackColor = true;
+            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
             // 
             // dataGridView1
             // 
