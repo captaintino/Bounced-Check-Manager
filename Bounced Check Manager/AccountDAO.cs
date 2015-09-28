@@ -10,9 +10,6 @@ namespace Bounced_Check_Manager
 {
     static class AccountDAO
     {
-        // USING DOTCONNECT EXPRESS FOR MYSQL
-        //private bla;
-
 
         public static bool connectToDB(String user, String pass)
         {
