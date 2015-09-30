@@ -20,6 +20,12 @@ namespace Bounced_Check_Manager
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
+            DataClasses1DataContext database = new DataClasses1DataContext();
+            if (!database.DatabaseExists())
+            {
+                MessageBox.Show("Unable to reach database.", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (username.Text == "admin" && password.Text == "admin")
             {
                 this.loggedIn = true;

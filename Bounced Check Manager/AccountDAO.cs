@@ -21,9 +21,6 @@ namespace Bounced_Check_Manager
         public static List<Account> LoadAll()
         {
             List<Account> list = new List<Account>();
-            // TODO: Connect to a network DB - should be able to modify the .dbml file to point to a
-            // network DB.
-            // TODO: Either move the DB connection to the connectToDB method or eliminate it the method.
             using (DataClasses1DataContext database = new DataClasses1DataContext())
             {
                 var query = from a in database.Accounts
@@ -44,7 +41,7 @@ namespace Bounced_Check_Manager
                 var query = from a in database.Accounts
                             // Assuming the accountNumber is enough of an identifier.
                             // Additional 'where' clauses can be added if necessary.
-                            where (a.AccNo == acc.AccNo)
+                            where (a.AccID == acc.AccID)
                             select a;
                 // It seems to me that a single account renders the foreach unnecessary. However, I can't
                 // find another way to get the variable 'a' from 'query'.
@@ -78,7 +75,6 @@ namespace Bounced_Check_Manager
                 // find another way to get the variable 'a' from 'query'.
                 foreach (var a in query)
                 {
-                    // DANGEROUS DIRECT DATA INSERTIONS. NEED CLEANING
                     database.Accounts.DeleteOnSubmit(a);
                     try
                     {
