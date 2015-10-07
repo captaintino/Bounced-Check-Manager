@@ -1,5 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TeamPenguin" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=CPSLABSERVER\TEAMPENGUIN;Initial Catalog=TeamPenguin;Persist Security Info=True;User ID=sa" SettingsObjectName="Bounced_Check_Manager.Properties.Settings" SettingsPropertyName="TeamPenguinConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[Check]" Member="Checks">
+    <Type Name="Check">
+      <Column Name="[Check Number]" Member="Check_Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Bank Name]" Member="Bank_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Bank Address]" Member="Bank_Address" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="[Date Written]" Member="Date_Written" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="[Total Amount]" Member="Total_Amount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Cashier ID]" Member="Cashier_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[Amount Due]" Member="Amount_Due" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Store" Member="Stores">
+    <Type Name="Store">
+      <Column Name="StoreID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StoreName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="StoreNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StoreServCharge" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="AccID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

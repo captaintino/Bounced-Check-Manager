@@ -20,21 +20,16 @@ namespace Bounced_Check_Manager
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            DataClasses1DataContext database = new DataClasses1DataContext();
+            String connectionString = "Data Source=CPSLABSERVER\\TEAMPENGUIN;Initial Catalog=TeamPenguin;Persist Security Info=True;User ID=" + username.Text + ";Password=" + password.Text;
+            DataClasses1DataContext database = new DataClasses1DataContext(connectionString);
             if (!database.DatabaseExists())
             {
-                MessageBox.Show("Unable to reach database.", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Unable to reach database. Invalid Login/Password", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (username.Text == "admin" && password.Text == "admin")
-            {
-                this.loggedIn = true;
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Invalid login");
-            }
+            Globals.connectionString = connectionString;
+            this.loggedIn = true;
+            this.Close();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
