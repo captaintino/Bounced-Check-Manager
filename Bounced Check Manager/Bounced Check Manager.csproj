@@ -56,6 +56,12 @@
     <Compile Include="addAccount.Designer.cs">
       <DependentUpon>addAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCheck.Designer.cs">
+      <DependentUpon>CreateCheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,6 +94,9 @@
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="CreateCheck.resx">
+      <DependentUpon>CreateCheck.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mainMenu.resx">
       <DependentUpon>mainMenu.cs</DependentUpon>
     </EmbeddedResource>

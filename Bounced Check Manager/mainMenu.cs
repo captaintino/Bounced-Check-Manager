@@ -85,6 +85,11 @@ namespace Bounced_Check_Manager
             this.Close();
         }
 
+        private void CreateCheckBtn_Click(object sender, EventArgs e)
+        {
+            new CreateCheck().Show();
+        }
+
         
     }
 }
