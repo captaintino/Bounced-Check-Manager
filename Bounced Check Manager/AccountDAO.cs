@@ -21,7 +21,7 @@ namespace Bounced_Check_Manager
         public static List<Account> LoadAll()
         {
             List<Account> list = new List<Account>();
-            using (DataClasses1DataContext database = new DataClasses1DataContext())
+            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
             {
                 var query = from a in database.Accounts
                             select a;
@@ -36,7 +36,7 @@ namespace Bounced_Check_Manager
 
         public static void update(Account acc)
         {
-            using (DataClasses1DataContext database = new DataClasses1DataContext())
+            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
             {
                 var query = from a in database.Accounts
                             // Assuming the accountNumber is enough of an identifier.
@@ -66,7 +66,7 @@ namespace Bounced_Check_Manager
 
         public static void delete(Account acc)
         {
-            using (DataClasses1DataContext database = new DataClasses1DataContext())
+            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
             {
                 var query = from a in database.Accounts
                             where (a.AccID == acc.AccID)
@@ -90,7 +90,7 @@ namespace Bounced_Check_Manager
 
         public static void create(Account acc)
         {
-            using (DataClasses1DataContext database = new DataClasses1DataContext())
+            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
             {
                 database.Accounts.InsertOnSubmit(acc);
                 try
