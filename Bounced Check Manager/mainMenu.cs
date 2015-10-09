@@ -90,6 +90,16 @@ namespace Bounced_Check_Manager
             new CreateCheck().Show();
         }
 
+        private void PayCheckBtn_Click(object sender, EventArgs e)
+        {
+            new PayCheck().Show();
+        }
+
+        private void GenerateLettersBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Your letters are printing...");
+        }
+
         
     }
 }
