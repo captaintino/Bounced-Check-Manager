@@ -42,10 +42,10 @@ namespace Bounced_Check_Manager
                 }
 
                 Account acc = new Account();
-                acc.AccName = nameTextBox.Text;
-                acc.AccAddress = addressTextBox.Text;
-                acc.AccRoutNo = routing;
-                acc.AccNo = account;
+                acc.AccountFirstName1 = nameTextBox.Text;
+                acc.AccountAddress = addressTextBox.Text;
+                acc.AccountRoutingNum = routing;
+                //acc.AccNo = account;
                 //Account acc = new Account(accountID, nameTextBox.Text, addressTextBox.Text, routing, account);
                 AccountDAO.create(acc);
                 this.Close();

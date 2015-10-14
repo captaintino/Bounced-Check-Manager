@@ -1,31 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TeamPenguin" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=CPSLABSERVER\TEAMPENGUIN;Initial Catalog=TeamPenguin;Persist Security Info=True;User ID=sa" SettingsObjectName="Bounced_Check_Manager.Properties.Settings" SettingsPropertyName="TeamPenguinConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AccountFirstName1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountFirstName2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AccountLastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountPhoneNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountAddress" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BankID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountRoutingNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Account_Check" Member="Checks" ThisKey="AccountID" OtherKey="AccountID" Type="Check" />
+      <Association Name="Bank_Account" Member="Bank" ThisKey="BankID" OtherKey="BankID" Type="Bank" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bank" Member="Banks">
+    <Type Name="Bank">
+      <Column Name="BankID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BankName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BankRoutingNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BankAddress" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Bank_Account" Member="Accounts" ThisKey="BankID" OtherKey="BankID" Type="Account" />
+      <Association Name="Bank_Check" Member="Checks" ThisKey="BankID" OtherKey="BankID" Type="Check" />
+    </Type>
+  </Table>
   <Table Name="dbo.[Check]" Member="Checks">
     <Type Name="Check">
-      <Column Name="[Check Number]" Member="Check_Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Bank Name]" Member="Bank_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="[Bank Address]" Member="Bank_Address" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="[Date Written]" Member="Date_Written" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="[Total Amount]" Member="Total_Amount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="[Cashier ID]" Member="Cashier_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="[Amount Due]" Member="Amount_Due" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CheckID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CheckDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BankID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CheckNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CheckTotalAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CheckAmountPaid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CheckPaidDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="CheckDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="StoreID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Check_Letter" Member="Letters" ThisKey="CheckID" OtherKey="CheckID" Type="Letter" />
+      <Association Name="Account_Check" Member="Account" ThisKey="AccountID" OtherKey="AccountID" Type="Account" IsForeignKey="true" />
+      <Association Name="Bank_Check" Member="Bank" ThisKey="BankID" OtherKey="BankID" Type="Bank" IsForeignKey="true" />
+      <Association Name="Store_Check" Member="Store" ThisKey="StoreID" OtherKey="StoreID" Type="Store" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Letter" Member="Letters">
+    <Type Name="Letter">
+      <Column Name="LetterID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CheckID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LetterNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LetterDateSent" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="LetterDateReceived" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Check_Letter" Member="Check" ThisKey="CheckID" OtherKey="CheckID" Type="Check" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Staff" Member="Staffs">
+    <Type Name="Staff">
+      <Column Name="StaffID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StaffName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StaffUsername" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StaffPassword" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StaffAccessLevel" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.Store" Member="Stores">
     <Type Name="Store">
-      <Column Name="StoreID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StoreName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="StoreID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="StoreNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StoreServCharge" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Account" Member="Accounts">
-    <Type Name="Account">
-      <Column Name="AccID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="AccNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AccName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="AccAddress" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="AccRoutNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StoreName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StoreAddress" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="StoreServiceCharge" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Store_Check" Member="Checks" ThisKey="StoreID" OtherKey="StoreID" Type="Check" />
     </Type>
   </Table>
 </Database>

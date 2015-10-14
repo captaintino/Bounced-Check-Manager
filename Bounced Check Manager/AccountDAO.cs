@@ -41,17 +41,17 @@ namespace Bounced_Check_Manager
                 var query = from a in database.Accounts
                             // Assuming the accountNumber is enough of an identifier.
                             // Additional 'where' clauses can be added if necessary.
-                            where (a.AccID == acc.AccID)
+                            where (a.AccountID == acc.AccountID)
                             select a;
                 // It seems to me that a single account renders the foreach unnecessary. However, I can't
                 // find another way to get the variable 'a' from 'query'.
                 foreach (var a in query)
                 {
                     // DANGEROUS DIRECT DATA INSERTIONS. NEED CLEANING
-                    a.AccNo = acc.AccNo;
-                    a.AccName = acc.AccName;
-                    a.AccAddress = acc.AccAddress;
-                    a.AccRoutNo = acc.AccRoutNo;
+                    a.AccountID = acc.AccountID;
+                    a.AccountFirstName1 = acc.AccountFirstName1;
+                    a.AccountAddress = acc.AccountAddress;
+                    a.AccountRoutingNum = acc.AccountRoutingNum;
                 }
                 try
                 {
@@ -69,7 +69,7 @@ namespace Bounced_Check_Manager
             using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
             {
                 var query = from a in database.Accounts
-                            where (a.AccID == acc.AccID)
+                            where (a.AccountID == acc.AccountID)
                             select a;
                 // It seems to me that a single account renders the foreach unnecessary. However, I can't
                 // find another way to get the variable 'a' from 'query'.
@@ -101,6 +101,21 @@ namespace Bounced_Check_Manager
                 {
                     MessageBox.Show("There was an error writing to the database: \n\n" + e);
                 }
+            }
+        }
+
+        public static Account find(int routingNum, int accountNum)
+        {
+            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+            {
+                var query = from a in database.Accounts
+                            where (a.AccountRoutingNum == routingNum && a.AccountNum == accountNum)
+                            select a;
+                foreach (var a in query)
+                {
+                    return a;
+                }
+                return null;
             }
         }
     }

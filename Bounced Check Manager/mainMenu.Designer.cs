@@ -28,24 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.PayCheckBtn = new System.Windows.Forms.Button();
-            this.CreateCheckBtn = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.GenerateLettersBtn = new System.Windows.Forms.Button();
             this.updateBtn = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.CreateCheckBtn = new System.Windows.Forms.Button();
+            this.PayCheckBtn = new System.Windows.Forms.Button();
             this.createBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AccName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AccountNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RoutingNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GenerateLettersBtn = new System.Windows.Forms.Button();
+            this.accountBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
+            this.accountTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.AccountTableAdapter();
+            this.accountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.accountIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountFirstName1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountFirstName2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountLastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountPhoneNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bankIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountRoutingNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -89,27 +101,27 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(244, 509);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // PayCheckBtn
+            // GenerateLettersBtn
             // 
-            this.PayCheckBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PayCheckBtn.Location = new System.Drawing.Point(22, 384);
-            this.PayCheckBtn.Name = "PayCheckBtn";
-            this.PayCheckBtn.Size = new System.Drawing.Size(200, 23);
-            this.PayCheckBtn.TabIndex = 6;
-            this.PayCheckBtn.Text = "Pay Check";
-            this.PayCheckBtn.UseVisualStyleBackColor = true;
-            this.PayCheckBtn.Click += new System.EventHandler(this.PayCheckBtn_Click);
+            this.GenerateLettersBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GenerateLettersBtn.Location = new System.Drawing.Point(22, 24);
+            this.GenerateLettersBtn.Name = "GenerateLettersBtn";
+            this.GenerateLettersBtn.Size = new System.Drawing.Size(200, 23);
+            this.GenerateLettersBtn.TabIndex = 7;
+            this.GenerateLettersBtn.Text = "Generate Letters";
+            this.GenerateLettersBtn.UseVisualStyleBackColor = true;
+            this.GenerateLettersBtn.Click += new System.EventHandler(this.GenerateLettersBtn_Click);
             // 
-            // CreateCheckBtn
+            // updateBtn
             // 
-            this.CreateCheckBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateCheckBtn.Location = new System.Drawing.Point(22, 312);
-            this.CreateCheckBtn.Name = "CreateCheckBtn";
-            this.CreateCheckBtn.Size = new System.Drawing.Size(200, 23);
-            this.CreateCheckBtn.TabIndex = 5;
-            this.CreateCheckBtn.Text = "Input Check";
-            this.CreateCheckBtn.UseVisualStyleBackColor = true;
-            this.CreateCheckBtn.Click += new System.EventHandler(this.CreateCheckBtn_Click);
+            this.updateBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.updateBtn.Location = new System.Drawing.Point(22, 240);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Size = new System.Drawing.Size(200, 23);
+            this.updateBtn.TabIndex = 3;
+            this.updateBtn.Text = "Update";
+            this.updateBtn.UseVisualStyleBackColor = true;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
             // button5
             // 
@@ -122,16 +134,27 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // updateBtn
+            // CreateCheckBtn
             // 
-            this.updateBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.updateBtn.Location = new System.Drawing.Point(22, 240);
-            this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(200, 23);
-            this.updateBtn.TabIndex = 3;
-            this.updateBtn.Text = "Update";
-            this.updateBtn.UseVisualStyleBackColor = true;
-            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
+            this.CreateCheckBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CreateCheckBtn.Location = new System.Drawing.Point(22, 312);
+            this.CreateCheckBtn.Name = "CreateCheckBtn";
+            this.CreateCheckBtn.Size = new System.Drawing.Size(200, 23);
+            this.CreateCheckBtn.TabIndex = 5;
+            this.CreateCheckBtn.Text = "Input Check";
+            this.CreateCheckBtn.UseVisualStyleBackColor = true;
+            this.CreateCheckBtn.Click += new System.EventHandler(this.CreateCheckBtn_Click);
+            // 
+            // PayCheckBtn
+            // 
+            this.PayCheckBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PayCheckBtn.Location = new System.Drawing.Point(22, 384);
+            this.PayCheckBtn.Name = "PayCheckBtn";
+            this.PayCheckBtn.Size = new System.Drawing.Size(200, 23);
+            this.PayCheckBtn.TabIndex = 6;
+            this.PayCheckBtn.Text = "Pay Check";
+            this.PayCheckBtn.UseVisualStyleBackColor = true;
+            this.PayCheckBtn.Click += new System.EventHandler(this.PayCheckBtn_Click);
             // 
             // createBtn
             // 
@@ -159,13 +182,19 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.AccName,
-            this.Address,
-            this.AccountNumber,
-            this.RoutingNumber});
+            this.accountIDDataGridViewTextBoxColumn,
+            this.accountFirstName1DataGridViewTextBoxColumn,
+            this.accountFirstName2DataGridViewTextBoxColumn,
+            this.accountLastNameDataGridViewTextBoxColumn,
+            this.accountPhoneNumDataGridViewTextBoxColumn,
+            this.accountAddressDataGridViewTextBoxColumn,
+            this.accountNumDataGridViewTextBoxColumn,
+            this.bankIDDataGridViewTextBoxColumn,
+            this.accountRoutingNumDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.accountBindingSource1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(253, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -173,47 +202,87 @@
             this.dataGridView1.Size = new System.Drawing.Size(525, 509);
             this.dataGridView1.TabIndex = 1;
             // 
-            // Id
+            // accountBindingSource
             // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 50;
+            this.accountBindingSource.DataMember = "Account";
+            this.accountBindingSource.DataSource = this.teamPenguinDataSet;
             // 
-            // AccName
+            // teamPenguinDataSet
             // 
-            this.AccName.HeaderText = "Name";
-            this.AccName.Name = "AccName";
-            this.AccName.ReadOnly = true;
+            this.teamPenguinDataSet.DataSetName = "TeamPenguinDataSet";
+            this.teamPenguinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // Address
+            // accountTableAdapter
             // 
-            this.Address.HeaderText = "Address";
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
+            this.accountTableAdapter.ClearBeforeFill = true;
             // 
-            // AccountNumber
+            // accountBindingSource1
             // 
-            this.AccountNumber.HeaderText = "Account Number";
-            this.AccountNumber.Name = "AccountNumber";
-            this.AccountNumber.ReadOnly = true;
+            this.accountBindingSource1.DataMember = "Account";
+            this.accountBindingSource1.DataSource = this.teamPenguinDataSet;
             // 
-            // RoutingNumber
+            // accountIDDataGridViewTextBoxColumn
             // 
-            this.RoutingNumber.HeaderText = "Routing Number";
-            this.RoutingNumber.Name = "RoutingNumber";
-            this.RoutingNumber.ReadOnly = true;
+            this.accountIDDataGridViewTextBoxColumn.DataPropertyName = "AccountID";
+            this.accountIDDataGridViewTextBoxColumn.HeaderText = "AccountID";
+            this.accountIDDataGridViewTextBoxColumn.Name = "accountIDDataGridViewTextBoxColumn";
+            this.accountIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // GenerateLettersBtn
+            // accountFirstName1DataGridViewTextBoxColumn
             // 
-            this.GenerateLettersBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GenerateLettersBtn.Location = new System.Drawing.Point(22, 24);
-            this.GenerateLettersBtn.Name = "GenerateLettersBtn";
-            this.GenerateLettersBtn.Size = new System.Drawing.Size(200, 23);
-            this.GenerateLettersBtn.TabIndex = 7;
-            this.GenerateLettersBtn.Text = "Generate Letters";
-            this.GenerateLettersBtn.UseVisualStyleBackColor = true;
-            this.GenerateLettersBtn.Click += new System.EventHandler(this.GenerateLettersBtn_Click);
+            this.accountFirstName1DataGridViewTextBoxColumn.DataPropertyName = "AccountFirstName1";
+            this.accountFirstName1DataGridViewTextBoxColumn.HeaderText = "AccountFirstName1";
+            this.accountFirstName1DataGridViewTextBoxColumn.Name = "accountFirstName1DataGridViewTextBoxColumn";
+            this.accountFirstName1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountFirstName2DataGridViewTextBoxColumn
+            // 
+            this.accountFirstName2DataGridViewTextBoxColumn.DataPropertyName = "AccountFirstName2";
+            this.accountFirstName2DataGridViewTextBoxColumn.HeaderText = "AccountFirstName2";
+            this.accountFirstName2DataGridViewTextBoxColumn.Name = "accountFirstName2DataGridViewTextBoxColumn";
+            this.accountFirstName2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountLastNameDataGridViewTextBoxColumn
+            // 
+            this.accountLastNameDataGridViewTextBoxColumn.DataPropertyName = "AccountLastName";
+            this.accountLastNameDataGridViewTextBoxColumn.HeaderText = "AccountLastName";
+            this.accountLastNameDataGridViewTextBoxColumn.Name = "accountLastNameDataGridViewTextBoxColumn";
+            this.accountLastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountPhoneNumDataGridViewTextBoxColumn
+            // 
+            this.accountPhoneNumDataGridViewTextBoxColumn.DataPropertyName = "AccountPhoneNum";
+            this.accountPhoneNumDataGridViewTextBoxColumn.HeaderText = "AccountPhoneNum";
+            this.accountPhoneNumDataGridViewTextBoxColumn.Name = "accountPhoneNumDataGridViewTextBoxColumn";
+            this.accountPhoneNumDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountAddressDataGridViewTextBoxColumn
+            // 
+            this.accountAddressDataGridViewTextBoxColumn.DataPropertyName = "AccountAddress";
+            this.accountAddressDataGridViewTextBoxColumn.HeaderText = "AccountAddress";
+            this.accountAddressDataGridViewTextBoxColumn.Name = "accountAddressDataGridViewTextBoxColumn";
+            this.accountAddressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountNumDataGridViewTextBoxColumn
+            // 
+            this.accountNumDataGridViewTextBoxColumn.DataPropertyName = "AccountNum";
+            this.accountNumDataGridViewTextBoxColumn.HeaderText = "AccountNum";
+            this.accountNumDataGridViewTextBoxColumn.Name = "accountNumDataGridViewTextBoxColumn";
+            this.accountNumDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bankIDDataGridViewTextBoxColumn
+            // 
+            this.bankIDDataGridViewTextBoxColumn.DataPropertyName = "BankID";
+            this.bankIDDataGridViewTextBoxColumn.HeaderText = "BankID";
+            this.bankIDDataGridViewTextBoxColumn.Name = "bankIDDataGridViewTextBoxColumn";
+            this.bankIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountRoutingNumDataGridViewTextBoxColumn
+            // 
+            this.accountRoutingNumDataGridViewTextBoxColumn.DataPropertyName = "AccountRoutingNum";
+            this.accountRoutingNumDataGridViewTextBoxColumn.HeaderText = "AccountRoutingNum";
+            this.accountRoutingNumDataGridViewTextBoxColumn.Name = "accountRoutingNumDataGridViewTextBoxColumn";
+            this.accountRoutingNumDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // mainMenu
             // 
@@ -222,10 +291,14 @@
             this.ClientSize = new System.Drawing.Size(781, 515);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "mainMenu";
-            this.Text = "Form1";
+            this.Text = "s";
+            this.Load += new System.EventHandler(this.mainMenu_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,14 +312,27 @@
         private System.Windows.Forms.Button createBtn;
         private System.Windows.Forms.Button refreshBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AccName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AccountNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RoutingNumber;
         private System.Windows.Forms.Button PayCheckBtn;
         private System.Windows.Forms.Button CreateCheckBtn;
         private System.Windows.Forms.Button GenerateLettersBtn;
+        private TeamPenguinDataSet teamPenguinDataSet;
+        private System.Windows.Forms.BindingSource accountBindingSource;
+        private TeamPenguinDataSetTableAdapters.AccountTableAdapter accountTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accAddressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accRoutNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource accountBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountFirstName1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountFirstName2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountLastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountPhoneNumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountAddressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountNumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bankIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountRoutingNumDataGridViewTextBoxColumn;
     }
 }
 

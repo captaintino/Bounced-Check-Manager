@@ -60,9 +60,9 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.BankAddressTxtBox = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.BankNameTxtBox = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -327,9 +327,9 @@
             this.tableLayoutPanel1.Controls.Add(this.textBox4, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBox5, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBox6, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox7, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.BankAddressTxtBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBox8, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBox9, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.BankNameTxtBox, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox11, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 3, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -473,14 +473,14 @@
             this.textBox6.TabIndex = 15;
             this.textBox6.Text = "45678";
             // 
-            // textBox7
+            // BankAddressTxtBox
             // 
-            this.textBox7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox7.Location = new System.Drawing.Point(120, 179);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 16;
-            this.textBox7.Text = "Boring Street, bleh UT 11111";
+            this.BankAddressTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.BankAddressTxtBox.Location = new System.Drawing.Point(120, 179);
+            this.BankAddressTxtBox.Name = "BankAddressTxtBox";
+            this.BankAddressTxtBox.Size = new System.Drawing.Size(100, 20);
+            this.BankAddressTxtBox.TabIndex = 16;
+            this.BankAddressTxtBox.Text = "Boring Street, bleh UT 11111";
             // 
             // textBox8
             // 
@@ -490,14 +490,14 @@
             this.textBox8.Size = new System.Drawing.Size(100, 20);
             this.textBox8.TabIndex = 17;
             // 
-            // textBox9
+            // BankNameTxtBox
             // 
-            this.textBox9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox9.Location = new System.Drawing.Point(354, 125);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 18;
-            this.textBox9.Text = "Fail Bank";
+            this.BankNameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.BankNameTxtBox.Location = new System.Drawing.Point(354, 125);
+            this.BankNameTxtBox.Name = "BankNameTxtBox";
+            this.BankNameTxtBox.Size = new System.Drawing.Size(100, 20);
+            this.BankNameTxtBox.TabIndex = 18;
+            this.BankNameTxtBox.Text = "Fail Bank";
             // 
             // textBox11
             // 
@@ -582,9 +582,9 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox BankAddressTxtBox;
         private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox BankNameTxtBox;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label14;

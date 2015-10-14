@@ -24,11 +24,11 @@ namespace Bounced_Check_Manager
         private void refreshBtn_Click(object sender, EventArgs e)
         {
             accounts = AccountDAO.LoadAll();
-            dataGridView1.Rows.Clear();
-            foreach (Account acc in accounts){
-                string[] row = { acc.AccID.ToString(), acc.AccName.ToString(), acc.AccAddress.ToString(), acc.AccRoutNo.ToString(), acc.AccNo.ToString() };
-                dataGridView1.Rows.Add(row);
-            }
+            //dataGridView1.Rows.Clear();
+            //foreach (Account acc in accounts){
+            //    string[] row = { acc.AccID.ToString(), acc.AccName.ToString(), acc.AccAddress.ToString(), acc.AccRoutNo.ToString(), acc.AccNo.ToString() };
+            //    dataGridView1.Rows.Add(row);
+            //}
         }
 
         private void createBtn_Click(object sender, EventArgs e)
@@ -72,7 +72,7 @@ namespace Bounced_Check_Manager
         {
             foreach (Account acc in accounts)
             {
-                if (acc.AccID == id)
+                if (acc.AccountID == id)
                 {
                     return acc;
                 }
@@ -98,6 +98,13 @@ namespace Bounced_Check_Manager
         private void GenerateLettersBtn_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Your letters are printing...");
+        }
+
+        private void mainMenu_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'teamPenguinDataSet.Account' table. You can move, or remove it, as needed.
+            this.accountTableAdapter.Fill(this.teamPenguinDataSet.Account);
+
         }
 
         

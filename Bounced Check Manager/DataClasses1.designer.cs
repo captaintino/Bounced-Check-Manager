@@ -33,6 +33,21 @@ namespace Bounced_Check_Manager
     partial void InsertAccount(Account instance);
     partial void UpdateAccount(Account instance);
     partial void DeleteAccount(Account instance);
+    partial void InsertBank(Bank instance);
+    partial void UpdateBank(Bank instance);
+    partial void DeleteBank(Bank instance);
+    partial void InsertCheck(Check instance);
+    partial void UpdateCheck(Check instance);
+    partial void DeleteCheck(Check instance);
+    partial void InsertLetter(Letter instance);
+    partial void UpdateLetter(Letter instance);
+    partial void DeleteLetter(Letter instance);
+    partial void InsertStaff(Staff instance);
+    partial void UpdateStaff(Staff instance);
+    partial void DeleteStaff(Staff instance);
+    partial void InsertStore(Store instance);
+    partial void UpdateStore(Store instance);
+    partial void DeleteStore(Store instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -65,11 +80,43 @@ namespace Bounced_Check_Manager
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Account> Accounts
+		{
+			get
+			{
+				return this.GetTable<Account>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Bank> Banks
+		{
+			get
+			{
+				return this.GetTable<Bank>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Check> Checks
 		{
 			get
 			{
 				return this.GetTable<Check>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Letter> Letters
+		{
+			get
+			{
+				return this.GetTable<Letter>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Staff> Staffs
+		{
+			get
+			{
+				return this.GetTable<Staff>();
 			}
 		}
 		
@@ -80,230 +127,6 @@ namespace Bounced_Check_Manager
 				return this.GetTable<Store>();
 			}
 		}
-		
-		public System.Data.Linq.Table<Account> Accounts
-		{
-			get
-			{
-				return this.GetTable<Account>();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Check]")]
-	public partial class Check
-	{
-		
-		private int _Check_Number;
-		
-		private string _Bank_Name;
-		
-		private string _Bank_Address;
-		
-		private System.DateTime _Date_Written;
-		
-		private int _Total_Amount;
-		
-		private System.Nullable<int> _Cashier_ID;
-		
-		private int _Amount_Due;
-		
-		public Check()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Check Number]", Storage="_Check_Number", DbType="Int NOT NULL")]
-		public int Check_Number
-		{
-			get
-			{
-				return this._Check_Number;
-			}
-			set
-			{
-				if ((this._Check_Number != value))
-				{
-					this._Check_Number = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Bank Name]", Storage="_Bank_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Bank_Name
-		{
-			get
-			{
-				return this._Bank_Name;
-			}
-			set
-			{
-				if ((this._Bank_Name != value))
-				{
-					this._Bank_Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Bank Address]", Storage="_Bank_Address", DbType="NVarChar(75)")]
-		public string Bank_Address
-		{
-			get
-			{
-				return this._Bank_Address;
-			}
-			set
-			{
-				if ((this._Bank_Address != value))
-				{
-					this._Bank_Address = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Date Written]", Storage="_Date_Written", DbType="Date NOT NULL")]
-		public System.DateTime Date_Written
-		{
-			get
-			{
-				return this._Date_Written;
-			}
-			set
-			{
-				if ((this._Date_Written != value))
-				{
-					this._Date_Written = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Total Amount]", Storage="_Total_Amount", DbType="Int NOT NULL")]
-		public int Total_Amount
-		{
-			get
-			{
-				return this._Total_Amount;
-			}
-			set
-			{
-				if ((this._Total_Amount != value))
-				{
-					this._Total_Amount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Cashier ID]", Storage="_Cashier_ID", DbType="Int")]
-		public System.Nullable<int> Cashier_ID
-		{
-			get
-			{
-				return this._Cashier_ID;
-			}
-			set
-			{
-				if ((this._Cashier_ID != value))
-				{
-					this._Cashier_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Amount Due]", Storage="_Amount_Due", DbType="Int NOT NULL")]
-		public int Amount_Due
-		{
-			get
-			{
-				return this._Amount_Due;
-			}
-			set
-			{
-				if ((this._Amount_Due != value))
-				{
-					this._Amount_Due = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Store")]
-	public partial class Store
-	{
-		
-		private int _StoreID;
-		
-		private string _StoreName;
-		
-		private int _StoreNum;
-		
-		private System.Nullable<decimal> _StoreServCharge;
-		
-		public Store()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreID", DbType="Int NOT NULL")]
-		public int StoreID
-		{
-			get
-			{
-				return this._StoreID;
-			}
-			set
-			{
-				if ((this._StoreID != value))
-				{
-					this._StoreID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreName", DbType="VarChar(100)")]
-		public string StoreName
-		{
-			get
-			{
-				return this._StoreName;
-			}
-			set
-			{
-				if ((this._StoreName != value))
-				{
-					this._StoreName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreNum", DbType="Int NOT NULL")]
-		public int StoreNum
-		{
-			get
-			{
-				return this._StoreNum;
-			}
-			set
-			{
-				if ((this._StoreNum != value))
-				{
-					this._StoreNum = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreServCharge", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> StoreServCharge
-		{
-			get
-			{
-				return this._StoreServCharge;
-			}
-			set
-			{
-				if ((this._StoreServCharge != value))
-				{
-					this._StoreServCharge = value;
-				}
-			}
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Account")]
@@ -312,133 +135,286 @@ namespace Bounced_Check_Manager
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _AccID;
+		private int _AccountID;
 		
-		private int _AccNo;
+		private string _AccountFirstName1;
 		
-		private string _AccName;
+		private string _AccountFirstName2;
 		
-		private string _AccAddress;
+		private string _AccountLastName;
 		
-		private int _AccRoutNo;
+		private System.Nullable<int> _AccountPhoneNum;
+		
+		private string _AccountAddress;
+		
+		private int _AccountNum;
+		
+		private int _BankID;
+		
+		private int _AccountRoutingNum;
+		
+		private EntitySet<Check> _Checks;
+		
+		private EntityRef<Bank> _Bank;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnAccIDChanging(int value);
-    partial void OnAccIDChanged();
-    partial void OnAccNoChanging(int value);
-    partial void OnAccNoChanged();
-    partial void OnAccNameChanging(string value);
-    partial void OnAccNameChanged();
-    partial void OnAccAddressChanging(string value);
-    partial void OnAccAddressChanged();
-    partial void OnAccRoutNoChanging(int value);
-    partial void OnAccRoutNoChanged();
+    partial void OnAccountIDChanging(int value);
+    partial void OnAccountIDChanged();
+    partial void OnAccountFirstName1Changing(string value);
+    partial void OnAccountFirstName1Changed();
+    partial void OnAccountFirstName2Changing(string value);
+    partial void OnAccountFirstName2Changed();
+    partial void OnAccountLastNameChanging(string value);
+    partial void OnAccountLastNameChanged();
+    partial void OnAccountPhoneNumChanging(System.Nullable<int> value);
+    partial void OnAccountPhoneNumChanged();
+    partial void OnAccountAddressChanging(string value);
+    partial void OnAccountAddressChanged();
+    partial void OnAccountNumChanging(int value);
+    partial void OnAccountNumChanged();
+    partial void OnBankIDChanging(int value);
+    partial void OnBankIDChanged();
+    partial void OnAccountRoutingNumChanging(int value);
+    partial void OnAccountRoutingNumChanged();
     #endregion
 		
 		public Account()
 		{
+			this._Checks = new EntitySet<Check>(new Action<Check>(this.attach_Checks), new Action<Check>(this.detach_Checks));
+			this._Bank = default(EntityRef<Bank>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int AccID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int AccountID
 		{
 			get
 			{
-				return this._AccID;
+				return this._AccountID;
 			}
 			set
 			{
-				if ((this._AccID != value))
+				if ((this._AccountID != value))
 				{
-					this.OnAccIDChanging(value);
+					this.OnAccountIDChanging(value);
 					this.SendPropertyChanging();
-					this._AccID = value;
-					this.SendPropertyChanged("AccID");
-					this.OnAccIDChanged();
+					this._AccountID = value;
+					this.SendPropertyChanged("AccountID");
+					this.OnAccountIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccNo", DbType="Int NOT NULL")]
-		public int AccNo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountFirstName1", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string AccountFirstName1
 		{
 			get
 			{
-				return this._AccNo;
+				return this._AccountFirstName1;
 			}
 			set
 			{
-				if ((this._AccNo != value))
+				if ((this._AccountFirstName1 != value))
 				{
-					this.OnAccNoChanging(value);
+					this.OnAccountFirstName1Changing(value);
 					this.SendPropertyChanging();
-					this._AccNo = value;
-					this.SendPropertyChanged("AccNo");
-					this.OnAccNoChanged();
+					this._AccountFirstName1 = value;
+					this.SendPropertyChanged("AccountFirstName1");
+					this.OnAccountFirstName1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string AccName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountFirstName2", DbType="NVarChar(50)")]
+		public string AccountFirstName2
 		{
 			get
 			{
-				return this._AccName;
+				return this._AccountFirstName2;
 			}
 			set
 			{
-				if ((this._AccName != value))
+				if ((this._AccountFirstName2 != value))
 				{
-					this.OnAccNameChanging(value);
+					this.OnAccountFirstName2Changing(value);
 					this.SendPropertyChanging();
-					this._AccName = value;
-					this.SendPropertyChanged("AccName");
-					this.OnAccNameChanged();
+					this._AccountFirstName2 = value;
+					this.SendPropertyChanged("AccountFirstName2");
+					this.OnAccountFirstName2Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccAddress", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string AccAddress
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountLastName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string AccountLastName
 		{
 			get
 			{
-				return this._AccAddress;
+				return this._AccountLastName;
 			}
 			set
 			{
-				if ((this._AccAddress != value))
+				if ((this._AccountLastName != value))
 				{
-					this.OnAccAddressChanging(value);
+					this.OnAccountLastNameChanging(value);
 					this.SendPropertyChanging();
-					this._AccAddress = value;
-					this.SendPropertyChanged("AccAddress");
-					this.OnAccAddressChanged();
+					this._AccountLastName = value;
+					this.SendPropertyChanged("AccountLastName");
+					this.OnAccountLastNameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccRoutNo", DbType="Int NOT NULL")]
-		public int AccRoutNo
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountPhoneNum", DbType="Int")]
+		public System.Nullable<int> AccountPhoneNum
 		{
 			get
 			{
-				return this._AccRoutNo;
+				return this._AccountPhoneNum;
 			}
 			set
 			{
-				if ((this._AccRoutNo != value))
+				if ((this._AccountPhoneNum != value))
 				{
-					this.OnAccRoutNoChanging(value);
+					this.OnAccountPhoneNumChanging(value);
 					this.SendPropertyChanging();
-					this._AccRoutNo = value;
-					this.SendPropertyChanged("AccRoutNo");
-					this.OnAccRoutNoChanged();
+					this._AccountPhoneNum = value;
+					this.SendPropertyChanged("AccountPhoneNum");
+					this.OnAccountPhoneNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountAddress", DbType="NVarChar(75) NOT NULL", CanBeNull=false)]
+		public string AccountAddress
+		{
+			get
+			{
+				return this._AccountAddress;
+			}
+			set
+			{
+				if ((this._AccountAddress != value))
+				{
+					this.OnAccountAddressChanging(value);
+					this.SendPropertyChanging();
+					this._AccountAddress = value;
+					this.SendPropertyChanged("AccountAddress");
+					this.OnAccountAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountNum", DbType="Int NOT NULL")]
+		public int AccountNum
+		{
+			get
+			{
+				return this._AccountNum;
+			}
+			set
+			{
+				if ((this._AccountNum != value))
+				{
+					this.OnAccountNumChanging(value);
+					this.SendPropertyChanging();
+					this._AccountNum = value;
+					this.SendPropertyChanged("AccountNum");
+					this.OnAccountNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankID", DbType="Int NOT NULL")]
+		public int BankID
+		{
+			get
+			{
+				return this._BankID;
+			}
+			set
+			{
+				if ((this._BankID != value))
+				{
+					if (this._Bank.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnBankIDChanging(value);
+					this.SendPropertyChanging();
+					this._BankID = value;
+					this.SendPropertyChanged("BankID");
+					this.OnBankIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountRoutingNum", DbType="Int NOT NULL")]
+		public int AccountRoutingNum
+		{
+			get
+			{
+				return this._AccountRoutingNum;
+			}
+			set
+			{
+				if ((this._AccountRoutingNum != value))
+				{
+					this.OnAccountRoutingNumChanging(value);
+					this.SendPropertyChanging();
+					this._AccountRoutingNum = value;
+					this.SendPropertyChanged("AccountRoutingNum");
+					this.OnAccountRoutingNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_Check", Storage="_Checks", ThisKey="AccountID", OtherKey="AccountID")]
+		public EntitySet<Check> Checks
+		{
+			get
+			{
+				return this._Checks;
+			}
+			set
+			{
+				this._Checks.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Bank_Account", Storage="_Bank", ThisKey="BankID", OtherKey="BankID", IsForeignKey=true)]
+		public Bank Bank
+		{
+			get
+			{
+				return this._Bank.Entity;
+			}
+			set
+			{
+				Bank previousValue = this._Bank.Entity;
+				if (((previousValue != value) 
+							|| (this._Bank.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Bank.Entity = null;
+						previousValue.Accounts.Remove(this);
+					}
+					this._Bank.Entity = value;
+					if ((value != null))
+					{
+						value.Accounts.Add(this);
+						this._BankID = value.BankID;
+					}
+					else
+					{
+						this._BankID = default(int);
+					}
+					this.SendPropertyChanged("Bank");
 				}
 			}
 		}
@@ -461,6 +437,1180 @@ namespace Bounced_Check_Manager
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Checks(Check entity)
+		{
+			this.SendPropertyChanging();
+			entity.Account = this;
+		}
+		
+		private void detach_Checks(Check entity)
+		{
+			this.SendPropertyChanging();
+			entity.Account = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Bank")]
+	public partial class Bank : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _BankID;
+		
+		private string _BankName;
+		
+		private int _BankRoutingNum;
+		
+		private string _BankAddress;
+		
+		private EntitySet<Account> _Accounts;
+		
+		private EntitySet<Check> _Checks;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnBankIDChanging(int value);
+    partial void OnBankIDChanged();
+    partial void OnBankNameChanging(string value);
+    partial void OnBankNameChanged();
+    partial void OnBankRoutingNumChanging(int value);
+    partial void OnBankRoutingNumChanged();
+    partial void OnBankAddressChanging(string value);
+    partial void OnBankAddressChanged();
+    #endregion
+		
+		public Bank()
+		{
+			this._Accounts = new EntitySet<Account>(new Action<Account>(this.attach_Accounts), new Action<Account>(this.detach_Accounts));
+			this._Checks = new EntitySet<Check>(new Action<Check>(this.attach_Checks), new Action<Check>(this.detach_Checks));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int BankID
+		{
+			get
+			{
+				return this._BankID;
+			}
+			set
+			{
+				if ((this._BankID != value))
+				{
+					this.OnBankIDChanging(value);
+					this.SendPropertyChanging();
+					this._BankID = value;
+					this.SendPropertyChanged("BankID");
+					this.OnBankIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string BankName
+		{
+			get
+			{
+				return this._BankName;
+			}
+			set
+			{
+				if ((this._BankName != value))
+				{
+					this.OnBankNameChanging(value);
+					this.SendPropertyChanging();
+					this._BankName = value;
+					this.SendPropertyChanged("BankName");
+					this.OnBankNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankRoutingNum", DbType="Int NOT NULL")]
+		public int BankRoutingNum
+		{
+			get
+			{
+				return this._BankRoutingNum;
+			}
+			set
+			{
+				if ((this._BankRoutingNum != value))
+				{
+					this.OnBankRoutingNumChanging(value);
+					this.SendPropertyChanging();
+					this._BankRoutingNum = value;
+					this.SendPropertyChanged("BankRoutingNum");
+					this.OnBankRoutingNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankAddress", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string BankAddress
+		{
+			get
+			{
+				return this._BankAddress;
+			}
+			set
+			{
+				if ((this._BankAddress != value))
+				{
+					this.OnBankAddressChanging(value);
+					this.SendPropertyChanging();
+					this._BankAddress = value;
+					this.SendPropertyChanged("BankAddress");
+					this.OnBankAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Bank_Account", Storage="_Accounts", ThisKey="BankID", OtherKey="BankID")]
+		public EntitySet<Account> Accounts
+		{
+			get
+			{
+				return this._Accounts;
+			}
+			set
+			{
+				this._Accounts.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Bank_Check", Storage="_Checks", ThisKey="BankID", OtherKey="BankID")]
+		public EntitySet<Check> Checks
+		{
+			get
+			{
+				return this._Checks;
+			}
+			set
+			{
+				this._Checks.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Accounts(Account entity)
+		{
+			this.SendPropertyChanging();
+			entity.Bank = this;
+		}
+		
+		private void detach_Accounts(Account entity)
+		{
+			this.SendPropertyChanging();
+			entity.Bank = null;
+		}
+		
+		private void attach_Checks(Check entity)
+		{
+			this.SendPropertyChanging();
+			entity.Bank = this;
+		}
+		
+		private void detach_Checks(Check entity)
+		{
+			this.SendPropertyChanging();
+			entity.Bank = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Check]")]
+	public partial class Check : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CheckID;
+		
+		private System.DateTime _CheckDate;
+		
+		private int _AccountID;
+		
+		private int _BankID;
+		
+		private int _CheckNum;
+		
+		private int _CheckTotalAmount;
+		
+		private int _CheckAmountPaid;
+		
+		private System.DateTime _CheckPaidDate;
+		
+		private bool _CheckDeleted;
+		
+		private int _StoreID;
+		
+		private EntitySet<Letter> _Letters;
+		
+		private EntityRef<Account> _Account;
+		
+		private EntityRef<Bank> _Bank;
+		
+		private EntityRef<Store> _Store;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCheckIDChanging(int value);
+    partial void OnCheckIDChanged();
+    partial void OnCheckDateChanging(System.DateTime value);
+    partial void OnCheckDateChanged();
+    partial void OnAccountIDChanging(int value);
+    partial void OnAccountIDChanged();
+    partial void OnBankIDChanging(int value);
+    partial void OnBankIDChanged();
+    partial void OnCheckNumChanging(int value);
+    partial void OnCheckNumChanged();
+    partial void OnCheckTotalAmountChanging(int value);
+    partial void OnCheckTotalAmountChanged();
+    partial void OnCheckAmountPaidChanging(int value);
+    partial void OnCheckAmountPaidChanged();
+    partial void OnCheckPaidDateChanging(System.DateTime value);
+    partial void OnCheckPaidDateChanged();
+    partial void OnCheckDeletedChanging(bool value);
+    partial void OnCheckDeletedChanged();
+    partial void OnStoreIDChanging(int value);
+    partial void OnStoreIDChanged();
+    #endregion
+		
+		public Check()
+		{
+			this._Letters = new EntitySet<Letter>(new Action<Letter>(this.attach_Letters), new Action<Letter>(this.detach_Letters));
+			this._Account = default(EntityRef<Account>);
+			this._Bank = default(EntityRef<Bank>);
+			this._Store = default(EntityRef<Store>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int CheckID
+		{
+			get
+			{
+				return this._CheckID;
+			}
+			set
+			{
+				if ((this._CheckID != value))
+				{
+					this.OnCheckIDChanging(value);
+					this.SendPropertyChanging();
+					this._CheckID = value;
+					this.SendPropertyChanged("CheckID");
+					this.OnCheckIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckDate", DbType="Date NOT NULL")]
+		public System.DateTime CheckDate
+		{
+			get
+			{
+				return this._CheckDate;
+			}
+			set
+			{
+				if ((this._CheckDate != value))
+				{
+					this.OnCheckDateChanging(value);
+					this.SendPropertyChanging();
+					this._CheckDate = value;
+					this.SendPropertyChanged("CheckDate");
+					this.OnCheckDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountID", DbType="Int NOT NULL")]
+		public int AccountID
+		{
+			get
+			{
+				return this._AccountID;
+			}
+			set
+			{
+				if ((this._AccountID != value))
+				{
+					if (this._Account.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAccountIDChanging(value);
+					this.SendPropertyChanging();
+					this._AccountID = value;
+					this.SendPropertyChanged("AccountID");
+					this.OnAccountIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankID", DbType="Int NOT NULL")]
+		public int BankID
+		{
+			get
+			{
+				return this._BankID;
+			}
+			set
+			{
+				if ((this._BankID != value))
+				{
+					if (this._Bank.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnBankIDChanging(value);
+					this.SendPropertyChanging();
+					this._BankID = value;
+					this.SendPropertyChanged("BankID");
+					this.OnBankIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckNum", DbType="Int NOT NULL")]
+		public int CheckNum
+		{
+			get
+			{
+				return this._CheckNum;
+			}
+			set
+			{
+				if ((this._CheckNum != value))
+				{
+					this.OnCheckNumChanging(value);
+					this.SendPropertyChanging();
+					this._CheckNum = value;
+					this.SendPropertyChanged("CheckNum");
+					this.OnCheckNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckTotalAmount", DbType="Int NOT NULL")]
+		public int CheckTotalAmount
+		{
+			get
+			{
+				return this._CheckTotalAmount;
+			}
+			set
+			{
+				if ((this._CheckTotalAmount != value))
+				{
+					this.OnCheckTotalAmountChanging(value);
+					this.SendPropertyChanging();
+					this._CheckTotalAmount = value;
+					this.SendPropertyChanged("CheckTotalAmount");
+					this.OnCheckTotalAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckAmountPaid", DbType="Int NOT NULL")]
+		public int CheckAmountPaid
+		{
+			get
+			{
+				return this._CheckAmountPaid;
+			}
+			set
+			{
+				if ((this._CheckAmountPaid != value))
+				{
+					this.OnCheckAmountPaidChanging(value);
+					this.SendPropertyChanging();
+					this._CheckAmountPaid = value;
+					this.SendPropertyChanged("CheckAmountPaid");
+					this.OnCheckAmountPaidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckPaidDate", DbType="Date NOT NULL")]
+		public System.DateTime CheckPaidDate
+		{
+			get
+			{
+				return this._CheckPaidDate;
+			}
+			set
+			{
+				if ((this._CheckPaidDate != value))
+				{
+					this.OnCheckPaidDateChanging(value);
+					this.SendPropertyChanging();
+					this._CheckPaidDate = value;
+					this.SendPropertyChanged("CheckPaidDate");
+					this.OnCheckPaidDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckDeleted", DbType="Bit NOT NULL")]
+		public bool CheckDeleted
+		{
+			get
+			{
+				return this._CheckDeleted;
+			}
+			set
+			{
+				if ((this._CheckDeleted != value))
+				{
+					this.OnCheckDeletedChanging(value);
+					this.SendPropertyChanging();
+					this._CheckDeleted = value;
+					this.SendPropertyChanged("CheckDeleted");
+					this.OnCheckDeletedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreID", DbType="Int NOT NULL")]
+		public int StoreID
+		{
+			get
+			{
+				return this._StoreID;
+			}
+			set
+			{
+				if ((this._StoreID != value))
+				{
+					if (this._Store.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnStoreIDChanging(value);
+					this.SendPropertyChanging();
+					this._StoreID = value;
+					this.SendPropertyChanged("StoreID");
+					this.OnStoreIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Check_Letter", Storage="_Letters", ThisKey="CheckID", OtherKey="CheckID")]
+		public EntitySet<Letter> Letters
+		{
+			get
+			{
+				return this._Letters;
+			}
+			set
+			{
+				this._Letters.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Account_Check", Storage="_Account", ThisKey="AccountID", OtherKey="AccountID", IsForeignKey=true)]
+		public Account Account
+		{
+			get
+			{
+				return this._Account.Entity;
+			}
+			set
+			{
+				Account previousValue = this._Account.Entity;
+				if (((previousValue != value) 
+							|| (this._Account.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Account.Entity = null;
+						previousValue.Checks.Remove(this);
+					}
+					this._Account.Entity = value;
+					if ((value != null))
+					{
+						value.Checks.Add(this);
+						this._AccountID = value.AccountID;
+					}
+					else
+					{
+						this._AccountID = default(int);
+					}
+					this.SendPropertyChanged("Account");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Bank_Check", Storage="_Bank", ThisKey="BankID", OtherKey="BankID", IsForeignKey=true)]
+		public Bank Bank
+		{
+			get
+			{
+				return this._Bank.Entity;
+			}
+			set
+			{
+				Bank previousValue = this._Bank.Entity;
+				if (((previousValue != value) 
+							|| (this._Bank.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Bank.Entity = null;
+						previousValue.Checks.Remove(this);
+					}
+					this._Bank.Entity = value;
+					if ((value != null))
+					{
+						value.Checks.Add(this);
+						this._BankID = value.BankID;
+					}
+					else
+					{
+						this._BankID = default(int);
+					}
+					this.SendPropertyChanged("Bank");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Store_Check", Storage="_Store", ThisKey="StoreID", OtherKey="StoreID", IsForeignKey=true)]
+		public Store Store
+		{
+			get
+			{
+				return this._Store.Entity;
+			}
+			set
+			{
+				Store previousValue = this._Store.Entity;
+				if (((previousValue != value) 
+							|| (this._Store.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Store.Entity = null;
+						previousValue.Checks.Remove(this);
+					}
+					this._Store.Entity = value;
+					if ((value != null))
+					{
+						value.Checks.Add(this);
+						this._StoreID = value.StoreID;
+					}
+					else
+					{
+						this._StoreID = default(int);
+					}
+					this.SendPropertyChanged("Store");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Letters(Letter entity)
+		{
+			this.SendPropertyChanging();
+			entity.Check = this;
+		}
+		
+		private void detach_Letters(Letter entity)
+		{
+			this.SendPropertyChanging();
+			entity.Check = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Letter")]
+	public partial class Letter : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _LetterID;
+		
+		private int _CheckID;
+		
+		private int _LetterNum;
+		
+		private System.DateTime _LetterDateSent;
+		
+		private System.Nullable<System.DateTime> _LetterDateReceived;
+		
+		private EntityRef<Check> _Check;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnLetterIDChanging(int value);
+    partial void OnLetterIDChanged();
+    partial void OnCheckIDChanging(int value);
+    partial void OnCheckIDChanged();
+    partial void OnLetterNumChanging(int value);
+    partial void OnLetterNumChanged();
+    partial void OnLetterDateSentChanging(System.DateTime value);
+    partial void OnLetterDateSentChanged();
+    partial void OnLetterDateReceivedChanging(System.Nullable<System.DateTime> value);
+    partial void OnLetterDateReceivedChanged();
+    #endregion
+		
+		public Letter()
+		{
+			this._Check = default(EntityRef<Check>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LetterID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int LetterID
+		{
+			get
+			{
+				return this._LetterID;
+			}
+			set
+			{
+				if ((this._LetterID != value))
+				{
+					this.OnLetterIDChanging(value);
+					this.SendPropertyChanging();
+					this._LetterID = value;
+					this.SendPropertyChanged("LetterID");
+					this.OnLetterIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckID", DbType="Int NOT NULL")]
+		public int CheckID
+		{
+			get
+			{
+				return this._CheckID;
+			}
+			set
+			{
+				if ((this._CheckID != value))
+				{
+					if (this._Check.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCheckIDChanging(value);
+					this.SendPropertyChanging();
+					this._CheckID = value;
+					this.SendPropertyChanged("CheckID");
+					this.OnCheckIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LetterNum", DbType="Int NOT NULL")]
+		public int LetterNum
+		{
+			get
+			{
+				return this._LetterNum;
+			}
+			set
+			{
+				if ((this._LetterNum != value))
+				{
+					this.OnLetterNumChanging(value);
+					this.SendPropertyChanging();
+					this._LetterNum = value;
+					this.SendPropertyChanged("LetterNum");
+					this.OnLetterNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LetterDateSent", DbType="Date NOT NULL")]
+		public System.DateTime LetterDateSent
+		{
+			get
+			{
+				return this._LetterDateSent;
+			}
+			set
+			{
+				if ((this._LetterDateSent != value))
+				{
+					this.OnLetterDateSentChanging(value);
+					this.SendPropertyChanging();
+					this._LetterDateSent = value;
+					this.SendPropertyChanged("LetterDateSent");
+					this.OnLetterDateSentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LetterDateReceived", DbType="Date")]
+		public System.Nullable<System.DateTime> LetterDateReceived
+		{
+			get
+			{
+				return this._LetterDateReceived;
+			}
+			set
+			{
+				if ((this._LetterDateReceived != value))
+				{
+					this.OnLetterDateReceivedChanging(value);
+					this.SendPropertyChanging();
+					this._LetterDateReceived = value;
+					this.SendPropertyChanged("LetterDateReceived");
+					this.OnLetterDateReceivedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Check_Letter", Storage="_Check", ThisKey="CheckID", OtherKey="CheckID", IsForeignKey=true)]
+		public Check Check
+		{
+			get
+			{
+				return this._Check.Entity;
+			}
+			set
+			{
+				Check previousValue = this._Check.Entity;
+				if (((previousValue != value) 
+							|| (this._Check.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Check.Entity = null;
+						previousValue.Letters.Remove(this);
+					}
+					this._Check.Entity = value;
+					if ((value != null))
+					{
+						value.Letters.Add(this);
+						this._CheckID = value.CheckID;
+					}
+					else
+					{
+						this._CheckID = default(int);
+					}
+					this.SendPropertyChanged("Check");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Staff")]
+	public partial class Staff : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _StaffID;
+		
+		private string _StaffName;
+		
+		private string _StaffUsername;
+		
+		private string _StaffPassword;
+		
+		private string _StaffAccessLevel;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnStaffIDChanging(int value);
+    partial void OnStaffIDChanged();
+    partial void OnStaffNameChanging(string value);
+    partial void OnStaffNameChanged();
+    partial void OnStaffUsernameChanging(string value);
+    partial void OnStaffUsernameChanged();
+    partial void OnStaffPasswordChanging(string value);
+    partial void OnStaffPasswordChanged();
+    partial void OnStaffAccessLevelChanging(string value);
+    partial void OnStaffAccessLevelChanged();
+    #endregion
+		
+		public Staff()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int StaffID
+		{
+			get
+			{
+				return this._StaffID;
+			}
+			set
+			{
+				if ((this._StaffID != value))
+				{
+					this.OnStaffIDChanging(value);
+					this.SendPropertyChanging();
+					this._StaffID = value;
+					this.SendPropertyChanged("StaffID");
+					this.OnStaffIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string StaffName
+		{
+			get
+			{
+				return this._StaffName;
+			}
+			set
+			{
+				if ((this._StaffName != value))
+				{
+					this.OnStaffNameChanging(value);
+					this.SendPropertyChanging();
+					this._StaffName = value;
+					this.SendPropertyChanged("StaffName");
+					this.OnStaffNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffUsername", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string StaffUsername
+		{
+			get
+			{
+				return this._StaffUsername;
+			}
+			set
+			{
+				if ((this._StaffUsername != value))
+				{
+					this.OnStaffUsernameChanging(value);
+					this.SendPropertyChanging();
+					this._StaffUsername = value;
+					this.SendPropertyChanged("StaffUsername");
+					this.OnStaffUsernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffPassword", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string StaffPassword
+		{
+			get
+			{
+				return this._StaffPassword;
+			}
+			set
+			{
+				if ((this._StaffPassword != value))
+				{
+					this.OnStaffPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._StaffPassword = value;
+					this.SendPropertyChanged("StaffPassword");
+					this.OnStaffPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffAccessLevel", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string StaffAccessLevel
+		{
+			get
+			{
+				return this._StaffAccessLevel;
+			}
+			set
+			{
+				if ((this._StaffAccessLevel != value))
+				{
+					this.OnStaffAccessLevelChanging(value);
+					this.SendPropertyChanging();
+					this._StaffAccessLevel = value;
+					this.SendPropertyChanged("StaffAccessLevel");
+					this.OnStaffAccessLevelChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Store")]
+	public partial class Store : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _StoreID;
+		
+		private int _StoreNum;
+		
+		private string _StoreName;
+		
+		private string _StoreAddress;
+		
+		private System.Nullable<decimal> _StoreServiceCharge;
+		
+		private EntitySet<Check> _Checks;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnStoreIDChanging(int value);
+    partial void OnStoreIDChanged();
+    partial void OnStoreNumChanging(int value);
+    partial void OnStoreNumChanged();
+    partial void OnStoreNameChanging(string value);
+    partial void OnStoreNameChanged();
+    partial void OnStoreAddressChanging(string value);
+    partial void OnStoreAddressChanged();
+    partial void OnStoreServiceChargeChanging(System.Nullable<decimal> value);
+    partial void OnStoreServiceChargeChanged();
+    #endregion
+		
+		public Store()
+		{
+			this._Checks = new EntitySet<Check>(new Action<Check>(this.attach_Checks), new Action<Check>(this.detach_Checks));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int StoreID
+		{
+			get
+			{
+				return this._StoreID;
+			}
+			set
+			{
+				if ((this._StoreID != value))
+				{
+					this.OnStoreIDChanging(value);
+					this.SendPropertyChanging();
+					this._StoreID = value;
+					this.SendPropertyChanged("StoreID");
+					this.OnStoreIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreNum", DbType="Int NOT NULL")]
+		public int StoreNum
+		{
+			get
+			{
+				return this._StoreNum;
+			}
+			set
+			{
+				if ((this._StoreNum != value))
+				{
+					this.OnStoreNumChanging(value);
+					this.SendPropertyChanging();
+					this._StoreNum = value;
+					this.SendPropertyChanged("StoreNum");
+					this.OnStoreNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreName", DbType="NVarChar(50)")]
+		public string StoreName
+		{
+			get
+			{
+				return this._StoreName;
+			}
+			set
+			{
+				if ((this._StoreName != value))
+				{
+					this.OnStoreNameChanging(value);
+					this.SendPropertyChanging();
+					this._StoreName = value;
+					this.SendPropertyChanged("StoreName");
+					this.OnStoreNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreAddress", DbType="NVarChar(75) NOT NULL", CanBeNull=false)]
+		public string StoreAddress
+		{
+			get
+			{
+				return this._StoreAddress;
+			}
+			set
+			{
+				if ((this._StoreAddress != value))
+				{
+					this.OnStoreAddressChanging(value);
+					this.SendPropertyChanging();
+					this._StoreAddress = value;
+					this.SendPropertyChanged("StoreAddress");
+					this.OnStoreAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreServiceCharge", DbType="Money")]
+		public System.Nullable<decimal> StoreServiceCharge
+		{
+			get
+			{
+				return this._StoreServiceCharge;
+			}
+			set
+			{
+				if ((this._StoreServiceCharge != value))
+				{
+					this.OnStoreServiceChargeChanging(value);
+					this.SendPropertyChanging();
+					this._StoreServiceCharge = value;
+					this.SendPropertyChanged("StoreServiceCharge");
+					this.OnStoreServiceChargeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Store_Check", Storage="_Checks", ThisKey="StoreID", OtherKey="StoreID")]
+		public EntitySet<Check> Checks
+		{
+			get
+			{
+				return this._Checks;
+			}
+			set
+			{
+				this._Checks.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Checks(Check entity)
+		{
+			this.SendPropertyChanging();
+			entity.Store = this;
+		}
+		
+		private void detach_Checks(Check entity)
+		{
+			this.SendPropertyChanging();
+			entity.Store = null;
 		}
 	}
 }

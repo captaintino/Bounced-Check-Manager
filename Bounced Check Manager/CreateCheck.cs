@@ -21,9 +21,24 @@ namespace Bounced_Check_Manager
         {
             if (RoutingNumberTxtBox.Text != "" && AccNumberTxtBox.Text != "")
             {
-                FNameTxtBox.Text = "Austin";
-                LNameTextBox.Text = "Carroll";
-                AddressTxtBox.Text = "1234 A+ Lane\r\nAwesomeness SC 01337";
+                Account a = AccountDAO.find(Convert.ToInt32(RoutingNumberTxtBox.Text), Convert.ToInt32(AccNumberTxtBox.Text));
+                if (a != null)
+                {
+                    FNameTxtBox.Text = a.AccountFirstName1;
+                    LNameTextBox.Text = a.AccountLastName;
+                    AddressTxtBox.Text = a.AccountAddress;
+                    //Bank b = a.Bank;
+                    //BankAddressTxtBox.Text = b.BankAddress;
+                    //BankNameTxtBox.Text = b.BankName;
+                }
+                else
+                {
+                    MessageBox.Show("No Account found");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please insert routing number and account number");
             }
         }
 
