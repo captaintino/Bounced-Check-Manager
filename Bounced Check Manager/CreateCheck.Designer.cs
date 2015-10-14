@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.LNameTextBox = new System.Windows.Forms.TextBox();
+            this.LNameTxtBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.FNameTxtBox = new System.Windows.Forms.TextBox();
@@ -57,14 +58,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.CheckAmountTxtBox = new System.Windows.Forms.TextBox();
+            this.CashierNumberTxtBox = new System.Windows.Forms.TextBox();
+            this.CheckNumberTxtBox = new System.Windows.Forms.TextBox();
             this.BankAddressTxtBox = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.BankNameTxtBox = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.CheckDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.StoreNumberComboBox = new System.Windows.Forms.ComboBox();
+            this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
+            this.storeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storeTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.StoreTableAdapter();
+            this.PhoneNumberTxtBox = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -81,6 +87,8 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -123,15 +131,19 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Controls.Add(this.LNameTextBox, 3, 0);
+            this.tableLayoutPanel2.ColumnCount = 6;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.Controls.Add(this.LNameTxtBox, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label10, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.FNameTxtBox, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.PhoneNumberTxtBox, 5, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label15, 4, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -140,19 +152,19 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(471, 58);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // LNameTextBox
+            // LNameTxtBox
             // 
-            this.LNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.LNameTextBox.Location = new System.Drawing.Point(354, 19);
-            this.LNameTextBox.Name = "LNameTextBox";
-            this.LNameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.LNameTextBox.TabIndex = 13;
+            this.LNameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LNameTxtBox.Location = new System.Drawing.Point(237, 19);
+            this.LNameTxtBox.Name = "LNameTxtBox";
+            this.LNameTxtBox.Size = new System.Drawing.Size(72, 20);
+            this.LNameTxtBox.TabIndex = 13;
             // 
             // label9
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(57, 22);
+            this.label9.Location = new System.Drawing.Point(18, 22);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 13);
             this.label9.TabIndex = 10;
@@ -162,7 +174,7 @@
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(290, 22);
+            this.label10.Location = new System.Drawing.Point(173, 22);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 13);
             this.label10.TabIndex = 11;
@@ -171,9 +183,9 @@
             // FNameTxtBox
             // 
             this.FNameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.FNameTxtBox.Location = new System.Drawing.Point(120, 19);
+            this.FNameTxtBox.Location = new System.Drawing.Point(81, 19);
             this.FNameTxtBox.Name = "FNameTxtBox";
-            this.FNameTxtBox.Size = new System.Drawing.Size(100, 20);
+            this.FNameTxtBox.Size = new System.Drawing.Size(72, 20);
             this.FNameTxtBox.TabIndex = 12;
             // 
             // splitContainer3
@@ -324,14 +336,14 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.label8, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBox4, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox5, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox6, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.CheckAmountTxtBox, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.CashierNumberTxtBox, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.CheckNumberTxtBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.BankAddressTxtBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBox8, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.BankNameTxtBox, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox11, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.CheckDatePicker, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.StoreNumberComboBox, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -446,32 +458,30 @@
             this.label8.TabIndex = 9;
             this.label8.Text = "label8";
             // 
-            // textBox4
+            // CheckAmountTxtBox
             // 
-            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox4.Location = new System.Drawing.Point(120, 17);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 13;
-            this.textBox4.Text = "45";
+            this.CheckAmountTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CheckAmountTxtBox.Location = new System.Drawing.Point(120, 17);
+            this.CheckAmountTxtBox.Name = "CheckAmountTxtBox";
+            this.CheckAmountTxtBox.Size = new System.Drawing.Size(100, 20);
+            this.CheckAmountTxtBox.TabIndex = 13;
+            this.CheckAmountTxtBox.Text = "0.00";
             // 
-            // textBox5
+            // CashierNumberTxtBox
             // 
-            this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox5.Location = new System.Drawing.Point(120, 71);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 14;
-            this.textBox5.Text = "3";
+            this.CashierNumberTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CashierNumberTxtBox.Location = new System.Drawing.Point(120, 71);
+            this.CashierNumberTxtBox.Name = "CashierNumberTxtBox";
+            this.CashierNumberTxtBox.Size = new System.Drawing.Size(100, 20);
+            this.CashierNumberTxtBox.TabIndex = 14;
             // 
-            // textBox6
+            // CheckNumberTxtBox
             // 
-            this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox6.Location = new System.Drawing.Point(120, 125);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 15;
-            this.textBox6.Text = "45678";
+            this.CheckNumberTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CheckNumberTxtBox.Location = new System.Drawing.Point(120, 125);
+            this.CheckNumberTxtBox.Name = "CheckNumberTxtBox";
+            this.CheckNumberTxtBox.Size = new System.Drawing.Size(100, 20);
+            this.CheckNumberTxtBox.TabIndex = 15;
             // 
             // BankAddressTxtBox
             // 
@@ -480,7 +490,6 @@
             this.BankAddressTxtBox.Name = "BankAddressTxtBox";
             this.BankAddressTxtBox.Size = new System.Drawing.Size(100, 20);
             this.BankAddressTxtBox.TabIndex = 16;
-            this.BankAddressTxtBox.Text = "Boring Street, bleh UT 11111";
             // 
             // textBox8
             // 
@@ -497,25 +506,60 @@
             this.BankNameTxtBox.Name = "BankNameTxtBox";
             this.BankNameTxtBox.Size = new System.Drawing.Size(100, 20);
             this.BankNameTxtBox.TabIndex = 18;
-            this.BankNameTxtBox.Text = "Fail Bank";
             // 
-            // textBox11
+            // CheckDatePicker
             // 
-            this.textBox11.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox11.Location = new System.Drawing.Point(354, 17);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 20);
-            this.textBox11.TabIndex = 20;
-            this.textBox11.Text = "4";
+            this.CheckDatePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CheckDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.CheckDatePicker.Location = new System.Drawing.Point(354, 71);
+            this.CheckDatePicker.Name = "CheckDatePicker";
+            this.CheckDatePicker.Size = new System.Drawing.Size(114, 20);
+            this.CheckDatePicker.TabIndex = 21;
+            this.CheckDatePicker.Value = new System.DateTime(2015, 10, 14, 0, 0, 0, 0);
             // 
-            // dateTimePicker1
+            // StoreNumberComboBox
             // 
-            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(354, 71);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(114, 20);
-            this.dateTimePicker1.TabIndex = 21;
+            this.StoreNumberComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.StoreNumberComboBox.DataSource = this.storeBindingSource;
+            this.StoreNumberComboBox.DisplayMember = "StoreNum";
+            this.StoreNumberComboBox.FormattingEnabled = true;
+            this.StoreNumberComboBox.Location = new System.Drawing.Point(354, 16);
+            this.StoreNumberComboBox.Name = "StoreNumberComboBox";
+            this.StoreNumberComboBox.Size = new System.Drawing.Size(114, 21);
+            this.StoreNumberComboBox.TabIndex = 22;
+            this.StoreNumberComboBox.ValueMember = "StoreNum";
+            // 
+            // teamPenguinDataSet
+            // 
+            this.teamPenguinDataSet.DataSetName = "TeamPenguinDataSet";
+            this.teamPenguinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // storeBindingSource
+            // 
+            this.storeBindingSource.DataMember = "Store";
+            this.storeBindingSource.DataSource = this.teamPenguinDataSet;
+            // 
+            // storeTableAdapter
+            // 
+            this.storeTableAdapter.ClearBeforeFill = true;
+            // 
+            // PhoneNumberTxtBox
+            // 
+            this.PhoneNumberTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PhoneNumberTxtBox.Location = new System.Drawing.Point(393, 19);
+            this.PhoneNumberTxtBox.Name = "PhoneNumberTxtBox";
+            this.PhoneNumberTxtBox.Size = new System.Drawing.Size(72, 20);
+            this.PhoneNumberTxtBox.TabIndex = 14;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(339, 22);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(48, 13);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "Phone #";
             // 
             // CreateCheck
             // 
@@ -525,6 +569,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "CreateCheck";
             this.Text = "CreateCheck";
+            this.Load += new System.EventHandler(this.CreateCheck_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -546,6 +591,8 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -569,7 +616,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox LNameTextBox;
+        private System.Windows.Forms.TextBox LNameTxtBox;
         private System.Windows.Forms.TextBox FNameTxtBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label13;
@@ -579,15 +626,20 @@
         private System.Windows.Forms.TextBox RoutingNumberTxtBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox CheckAmountTxtBox;
+        private System.Windows.Forms.TextBox CashierNumberTxtBox;
+        private System.Windows.Forms.TextBox CheckNumberTxtBox;
         private System.Windows.Forms.TextBox BankAddressTxtBox;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox BankNameTxtBox;
-        private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker CheckDatePicker;
+        private System.Windows.Forms.ComboBox StoreNumberComboBox;
+        private TeamPenguinDataSet teamPenguinDataSet;
+        private System.Windows.Forms.BindingSource storeBindingSource;
+        private TeamPenguinDataSetTableAdapters.StoreTableAdapter storeTableAdapter;
+        private System.Windows.Forms.TextBox PhoneNumberTxtBox;
+        private System.Windows.Forms.Label label15;
     }
 }

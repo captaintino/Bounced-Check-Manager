@@ -88,7 +88,7 @@ namespace Bounced_Check_Manager
             }
         }
 
-        public static void create(Account acc)
+        public static bool create(Account acc)
         {
             using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
             {
@@ -96,10 +96,11 @@ namespace Bounced_Check_Manager
                 try
                 {
                     database.SubmitChanges();
+                    return true;
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("There was an error writing to the database: \n\n" + e);
+                    return false;
                 }
             }
         }
@@ -113,6 +114,7 @@ namespace Bounced_Check_Manager
                             select a;
                 foreach (var a in query)
                 {
+                    var s = a.Bank;
                     return a;
                 }
                 return null;
