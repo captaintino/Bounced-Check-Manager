@@ -25,44 +25,76 @@ namespace Bounced_Check_Manager
             //}
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void AutofillBtn_Click(object sender, EventArgs e)
         {
             if (RoutingNumberTxtBox.Enabled == false)
             {
+                // Unlock all of the textboxes
                 TextBox[] textBoxes = { FNameTxtBox, LNameTxtBox, AddressTxtBox, RoutingNumberTxtBox, AccNumberTxtBox, BankAddressTxtBox, BankNameTxtBox, PhoneNumberTxtBox };
                 foreach (var box in textBoxes)
                 {
                     box.Enabled = true;
                 }
+                AutofillBtn.Text = "Autofill";
                 return;
             }
-            if (RoutingNumberTxtBox.Text != "" && AccNumberTxtBox.Text != "")
+            if (RoutingNumberTxtBox.Text != "")
             {
-                Account a = AccountDAO.find(Convert.ToInt32(RoutingNumberTxtBox.Text), Convert.ToInt32(AccNumberTxtBox.Text));
-                if (a != null)
+                if (AccNumberTxtBox.Text != "")
                 {
-                    FNameTxtBox.Text = a.AccountFirstName1;
-                    LNameTxtBox.Text = a.AccountLastName;
-                    AddressTxtBox.Text = a.AccountAddress;
-                    PhoneNumberTxtBox.Text = a.AccountPhoneNum.ToString();
-                    Bank b = a.Bank;
-                    BankAddressTxtBox.Text = b.BankAddress;
-                    BankNameTxtBox.Text = b.BankName;
-                    
-                    TextBox[] textBoxes = { FNameTxtBox, LNameTxtBox, AddressTxtBox, RoutingNumberTxtBox, AccNumberTxtBox, BankAddressTxtBox, BankNameTxtBox, PhoneNumberTxtBox, };
-                    foreach (var box in textBoxes)
+                    // Lookup Account and related bank information and autofill the UI.
+                    Account acc = AccountDAO.find(Convert.ToInt32(RoutingNumberTxtBox.Text), Convert.ToInt32(AccNumberTxtBox.Text));
+                    if (acc != null)
                     {
-                        box.Enabled = false;
+                        // Autofill values
+                        FNameTxtBox.Text = acc.AccountFirstName1;
+                        LNameTxtBox.Text = acc.AccountLastName;
+                        AddressTxtBox.Text = acc.AccountAddress;
+                        PhoneNumberTxtBox.Text = acc.AccountPhoneNum.ToString();
+                        Bank bank = acc.Bank;
+                        BankAddressTxtBox.Text = bank.BankAddress;
+                        BankNameTxtBox.Text = bank.BankName;
+
+                        // Lock the text boxes
+                        TextBox[] textBoxes = { FNameTxtBox, LNameTxtBox, AddressTxtBox, RoutingNumberTxtBox, AccNumberTxtBox, BankAddressTxtBox, BankNameTxtBox, PhoneNumberTxtBox, };
+                        foreach (var box in textBoxes)
+                        {
+                            box.Enabled = false;
+                        }
+                        AutofillBtn.Text = "Unlock";
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Account found");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No Account found");
+                    // Otherwise just look up the bank information if no account number is provided
+                    Bank bank = BankDAO.find(Convert.ToInt32(RoutingNumberTxtBox.Text));
+                    if (bank != null)
+                    {
+                        // Autofill values
+                        BankAddressTxtBox.Text = bank.BankAddress;
+                        BankNameTxtBox.Text = bank.BankName;
+
+                        // Lock the text boxes
+                        TextBox[] textBoxes = { RoutingNumberTxtBox, BankAddressTxtBox, BankNameTxtBox };
+                        foreach (var box in textBoxes)
+                        {
+                            box.Enabled = false;
+                        }
+                        AutofillBtn.Text = "Unlock";
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Bank found");
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Please insert routing number and account number");
+                MessageBox.Show("Please insert routing number or routing number and account number");
             }
         }
 
@@ -109,11 +141,10 @@ namespace Bounced_Check_Manager
                     }
                 }
 
+                // Create Check
                 Check check = new Check();
                 check.AccountID = AccountDAO.find(Convert.ToInt32(RoutingNumberTxtBox.Text), Convert.ToInt32(AccNumberTxtBox.Text)).AccountID;
                 check.BankID = BankDAO.find(Convert.ToInt32(RoutingNumberTxtBox.Text)).BankID;
-                var asd = StoreNumberComboBox.SelectedValue;
-                var ddd = asd.ToString();
                 check.StoreID = Convert.ToInt32(StoreNumberComboBox.SelectedValue);
                 
                 check.CheckDate = CheckDatePicker.Value;
@@ -136,31 +167,37 @@ namespace Bounced_Check_Manager
         {
             bool ret = true;
             int toss;
+            // First Name
             if (FNameTxtBox.Text == "" || FNameTxtBox.Text.Length > 50)
             {
                 MessageBox.Show("First name either missing or too long.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 ret = false;
             }
+            // Last Name
             if (LNameTxtBox.Text == "" || LNameTxtBox.Text.Length > 50)
             {
                 MessageBox.Show("Last name either missing or too long.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 ret = false;
             }
+            // Address
             if (AddressTxtBox.Text == "" || AddressTxtBox.Text.Length > 75)
             {
                 MessageBox.Show("Address either missing or too long.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 ret = false;
             }
+            // Routing Number
             if (RoutingNumberTxtBox.Text == "" || !Int32.TryParse(RoutingNumberTxtBox.Text, out toss))
             {
                 MessageBox.Show("Routing Number either missing or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 ret = false;
             }
+            // Account Number
             if (AccNumberTxtBox.Text == "" || !Int32.TryParse(AccNumberTxtBox.Text, out toss))
             {
                 MessageBox.Show("Account Number either missing or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 ret = false;
             }
+            // Phone Number
             // more advanced regex: @"^(?:\(?)(\d{3})(?:[\).]?)(\d{3})(?:[-\.]?)(\d{4})(?!\d)"
             if (PhoneNumberTxtBox.Text == "" || !Regex.Match(PhoneNumberTxtBox.Text, @"^\d{10}").Success)
             {
@@ -174,16 +211,19 @@ namespace Bounced_Check_Manager
         {
             bool ret = true;
             int toss;
+            // Check Amount
             if (CheckAmountTxtBox.Text == "" || !Int32.TryParse(CheckAmountTxtBox.Text, out toss))
             {
                 MessageBox.Show("Check Amount either missing or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 ret = false;
             }
+            // Cashier Number
             if (CashierNumberTxtBox.Text == "" || !Int32.TryParse(CashierNumberTxtBox.Text, out toss))
             {
                 MessageBox.Show("Cashier Number either missing or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 ret = false;
             }
+            // Check Number
             if (CheckNumberTxtBox.Text == "" || !Int32.TryParse(CheckNumberTxtBox.Text, out toss))
             {
                 MessageBox.Show("Check Number either missing or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
@@ -195,11 +235,13 @@ namespace Bounced_Check_Manager
         private bool validateBank()
         {
             bool ret = true;
+            // Bank Name
             if (BankNameTxtBox.Text == "" || BankNameTxtBox.Text.Length > 50)
             {
                 MessageBox.Show("Bank Name either missing or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 ret = false;
             }
+            // Bank Address
             if (BankAddressTxtBox.Text == "" || BankAddressTxtBox.Text.Length > 50)
             {
                 MessageBox.Show("Bank Address either missing or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);

@@ -318,11 +318,6 @@
         private TeamPenguinDataSet teamPenguinDataSet;
         private System.Windows.Forms.BindingSource accountBindingSource;
         private TeamPenguinDataSetTableAdapters.AccountTableAdapter accountTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accNoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accAddressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accRoutNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource accountBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountFirstName1DataGridViewTextBoxColumn;

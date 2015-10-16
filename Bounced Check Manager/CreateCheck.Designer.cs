@@ -41,7 +41,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.AddressTxtBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.AutofillBtn = new System.Windows.Forms.Button();
             this.AccNumberTxtBox = new System.Windows.Forms.TextBox();
             this.RoutingNumberTxtBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -247,7 +247,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.button3, 4, 0);
+            this.tableLayoutPanel3.Controls.Add(this.AutofillBtn, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.AccNumberTxtBox, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.RoutingNumberTxtBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label11, 0, 0);
@@ -260,16 +260,16 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(471, 40);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
-            // button3
+            // AutofillBtn
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.Location = new System.Drawing.Point(386, 8);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "Autofill";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.AutofillBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.AutofillBtn.Location = new System.Drawing.Point(386, 8);
+            this.AutofillBtn.Name = "AutofillBtn";
+            this.AutofillBtn.Size = new System.Drawing.Size(75, 23);
+            this.AutofillBtn.TabIndex = 23;
+            this.AutofillBtn.Text = "Autofill";
+            this.AutofillBtn.UseVisualStyleBackColor = true;
+            this.AutofillBtn.Click += new System.EventHandler(this.AutofillBtn_Click);
             // 
             // AccNumberTxtBox
             // 
@@ -632,7 +632,7 @@
         private System.Windows.Forms.TextBox BankAddressTxtBox;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox BankNameTxtBox;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button AutofillBtn;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DateTimePicker CheckDatePicker;
         private System.Windows.Forms.ComboBox StoreNumberComboBox;

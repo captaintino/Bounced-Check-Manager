@@ -9,6 +9,7 @@ namespace Bounced_Check_Manager
 {
     class CheckDAO
     {
+        // Create Check <check>
         public static bool create(Check check)
         {
             using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))

@@ -11,13 +11,7 @@ namespace Bounced_Check_Manager
     static class AccountDAO
     {
 
-        public static bool connectToDB(String user, String pass)
-        {
-
-
-            return true;
-        }
-
+        // Get list of all of the Accounts in the database
         public static List<Account> LoadAll()
         {
             List<Account> list = new List<Account>();
@@ -34,6 +28,7 @@ namespace Bounced_Check_Manager
             return list;
         }
 
+        // Update Account <acc>
         public static void update(Account acc)
         {
             using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
@@ -64,6 +59,7 @@ namespace Bounced_Check_Manager
             }
         }
 
+        // Delete Account <acc>
         public static void delete(Account acc)
         {
             using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
@@ -88,6 +84,7 @@ namespace Bounced_Check_Manager
             }
         }
 
+        // Create Account <acc>
         public static bool create(Account acc)
         {
             using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
@@ -105,6 +102,7 @@ namespace Bounced_Check_Manager
             }
         }
 
+        // Find first account having routing number of <routingNum> and account number of <accountNum>
         public static Account find(int routingNum, int accountNum)
         {
             using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))

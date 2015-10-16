@@ -9,7 +9,7 @@ namespace Bounced_Check_Manager
 {
     class BankDAO
     {
-
+        // Create <bank> in database
         public static bool create(Bank bank)
         {
             using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
@@ -27,6 +27,7 @@ namespace Bounced_Check_Manager
             }
         }
 
+        // Find first bank having routing number of <routingNum>
         public static Bank find(int routingNum)
         {
             using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))

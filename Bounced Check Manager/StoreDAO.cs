@@ -8,6 +8,7 @@ namespace Bounced_Check_Manager
 {
     class StoreDAO
     {
+        // Get list of all of the Stores in the database
         public static List<Store> LoadAll()
         {
             List<Store> list = new List<Store>();
