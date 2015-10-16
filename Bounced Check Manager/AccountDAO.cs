@@ -4,7 +4,6 @@ using System.Linq;
 using System.ServiceModel.DomainServices.Server;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Bounced_Check_Manager
 {
@@ -29,7 +28,7 @@ namespace Bounced_Check_Manager
         }
 
         // Update Account <acc>
-        public static void update(Account acc)
+        public static bool update(Account acc)
         {
             using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
             {
@@ -42,25 +41,29 @@ namespace Bounced_Check_Manager
                 // find another way to get the variable 'a' from 'query'.
                 foreach (var a in query)
                 {
-                    // DANGEROUS DIRECT DATA INSERTIONS. NEED CLEANING
-                    a.AccountID = acc.AccountID;
-                    a.AccountFirstName1 = acc.AccountFirstName1;
                     a.AccountAddress = acc.AccountAddress;
+                    a.AccountFirstName1 = acc.AccountFirstName1;
+                    a.AccountFirstName2 = acc.AccountFirstName2;
+                    a.AccountLastName = acc.AccountLastName;
+                    a.AccountNum = acc.AccountNum;
+                    a.AccountPhoneNum = acc.AccountPhoneNum;
                     a.AccountRoutingNum = acc.AccountRoutingNum;
+                    a.BankID = acc.BankID;
                 }
                 try
                 {
                     database.SubmitChanges();
+                    return true;
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("There was an error writing to the database: \n\n" + e);
+                    return false;
                 }
             }
         }
 
         // Delete Account <acc>
-        public static void delete(Account acc)
+        public static bool delete(Account acc)
         {
             using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
             {
@@ -75,12 +78,14 @@ namespace Bounced_Check_Manager
                     try
                     {
                         database.SubmitChanges();
+                        return true;
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show("There was an error writing to the database: \n\n" + e);
+                        return false;
                     }
                 }
+                return false;
             }
         }
 
