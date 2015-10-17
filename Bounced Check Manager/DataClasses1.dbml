@@ -32,8 +32,8 @@
       <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="BankID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CheckNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CheckTotalAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CheckAmountPaid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CheckAmount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CheckAmountOwed" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CheckPaidDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="CheckDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="StoreID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />

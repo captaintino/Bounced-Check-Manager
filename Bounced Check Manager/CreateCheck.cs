@@ -149,8 +149,8 @@ namespace Bounced_Check_Manager
                 
                 check.CheckDate = CheckDatePicker.Value;
                 check.CheckNum = Convert.ToInt32(CheckNumberTxtBox.Text);
-                check.CheckTotalAmount = Convert.ToInt32(CheckAmountTxtBox.Text);
-                check.CheckAmountPaid = 0;
+                check.CheckAmount = Convert.ToInt32(CheckAmountTxtBox.Text);
+                check.CheckAmountOwed = check.CheckAmount;
                 check.CheckDeleted = false;
                 if (!CheckDAO.create(check))
                 {
