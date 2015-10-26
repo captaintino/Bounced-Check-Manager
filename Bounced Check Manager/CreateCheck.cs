@@ -47,7 +47,7 @@ namespace Bounced_Check_Manager
                     if (acc != null)
                     {
                         // Autofill values
-                        FNameTxtBox.Text = acc.AccountFirstName1;
+                        FNameTxtBox.Text = acc.AccountFirstName;
                         LNameTxtBox.Text = acc.AccountLastName;
                         AddressTxtBox.Text = acc.AccountAddress;
                         PhoneNumberTxtBox.Text = acc.AccountPhoneNum.ToString();
@@ -128,11 +128,10 @@ namespace Bounced_Check_Manager
                     Account acc = new Account();
                     acc.AccountRoutingNum = Convert.ToInt32(RoutingNumberTxtBox.Text);
                     acc.AccountNum = Convert.ToInt32(AccNumberTxtBox.Text);
-                    acc.AccountFirstName1 = FNameTxtBox.Text;
+                    acc.AccountFirstName = FNameTxtBox.Text;
                     acc.AccountLastName = LNameTxtBox.Text;
                     acc.AccountPhoneNum = Convert.ToInt32(PhoneNumberTxtBox.Text);
                     acc.AccountAddress = AddressTxtBox.Text;
-                    acc.AccountFirstName2 = "DELETE THIS COLUMN";
                     acc.BankID = BankDAO.find(acc.AccountRoutingNum).BankID;
                     if (!AccountDAO.create(acc))
                     {

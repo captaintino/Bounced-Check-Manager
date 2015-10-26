@@ -104,7 +104,11 @@ namespace Bounced_Check_Manager
         {
             // TODO: This line of code loads data into the 'teamPenguinDataSet.Account' table. You can move, or remove it, as needed.
             this.accountTableAdapter.Fill(this.teamPenguinDataSet.Account);
+        }
 
+        private void supervisorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Supervisor().Show();
         }
 
         

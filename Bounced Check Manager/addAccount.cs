@@ -42,7 +42,7 @@ namespace Bounced_Check_Manager
                 }
 
                 Account acc = new Account();
-                acc.AccountFirstName1 = nameTextBox.Text;
+                acc.AccountFirstName = nameTextBox.Text;
                 acc.AccountAddress = addressTextBox.Text;
                 acc.AccountRoutingNum = routing;
                 //acc.AccNo = account;

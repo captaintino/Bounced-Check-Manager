@@ -64,6 +64,12 @@
     <Compile Include="CreateCheck.Designer.cs">
       <DependentUpon>CreateCheck.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateUser.Designer.cs">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,6 +88,12 @@
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModifyUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyUsers.Designer.cs">
+      <DependentUpon>ModifyUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="PayCheck.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +103,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoreDAO.cs" />
+    <Compile Include="Supervisor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supervisor.Designer.cs">
+      <DependentUpon>Supervisor.cs</DependentUpon>
+    </Compile>
     <Compile Include="TeamPenguinDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -102,6 +120,8 @@
     <Compile Include="updateAccount.Designer.cs">
       <DependentUpon>updateAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="UserDAO.cs" />
     <EmbeddedResource Include="addAccount.resx">
       <DependentUpon>addAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,11 +132,17 @@
     <EmbeddedResource Include="CreateCheck.resx">
       <DependentUpon>CreateCheck.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CreateUser.resx">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mainMenu.resx">
       <DependentUpon>mainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyUsers.resx">
+      <DependentUpon>ModifyUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PayCheck.resx">
       <DependentUpon>PayCheck.cs</DependentUpon>
@@ -130,6 +156,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Supervisor.resx">
+      <DependentUpon>Supervisor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="updateAccount.resx">
       <DependentUpon>updateAccount.cs</DependentUpon>
     </EmbeddedResource>

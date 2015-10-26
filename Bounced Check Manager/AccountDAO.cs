@@ -42,8 +42,7 @@ namespace Bounced_Check_Manager
                 foreach (var a in query)
                 {
                     a.AccountAddress = acc.AccountAddress;
-                    a.AccountFirstName1 = acc.AccountFirstName1;
-                    a.AccountFirstName2 = acc.AccountFirstName2;
+                    a.AccountFirstName = acc.AccountFirstName;
                     a.AccountLastName = acc.AccountLastName;
                     a.AccountNum = acc.AccountNum;
                     a.AccountPhoneNum = acc.AccountPhoneNum;
