@@ -230,6 +230,7 @@
             this.SearchBtn.TabIndex = 23;
             this.SearchBtn.Text = "Search";
             this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // AccNumberTxtBox
             // 
@@ -322,6 +323,7 @@
             this.CheckNumber.HeaderText = "Check Number";
             this.CheckNumber.Name = "CheckNumber";
             this.CheckNumber.ReadOnly = true;
+            this.CheckNumber.Width = 60;
             // 
             // BankName
             // 
@@ -329,6 +331,7 @@
             this.BankName.HeaderText = "Bank Name";
             this.BankName.Name = "BankName";
             this.BankName.ReadOnly = true;
+            this.BankName.Width = 80;
             // 
             // BankAddress
             // 
@@ -343,6 +346,7 @@
             this.DateIssued.HeaderText = "Date Issued";
             this.DateIssued.Name = "DateIssued";
             this.DateIssued.ReadOnly = true;
+            this.DateIssued.Width = 70;
             // 
             // Amount
             // 
@@ -350,6 +354,7 @@
             this.Amount.HeaderText = "Amount";
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
+            this.Amount.Width = 60;
             // 
             // CashierId
             // 
@@ -357,6 +362,7 @@
             this.CashierId.HeaderText = "Cashier Id";
             this.CashierId.Name = "CashierId";
             this.CashierId.ReadOnly = true;
+            this.CashierId.Width = 60;
             // 
             // AmountOwed
             // 
@@ -364,6 +370,7 @@
             this.AmountOwed.HeaderText = "Amount Owed";
             this.AmountOwed.Name = "AmountOwed";
             this.AmountOwed.ReadOnly = true;
+            this.AmountOwed.Width = 60;
             // 
             // PayCheck
             // 

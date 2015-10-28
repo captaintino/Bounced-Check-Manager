@@ -26,5 +26,24 @@ namespace Bounced_Check_Manager
                 }
             }
         }
+
+        public static List<Check> getChecksFromAcc(int accID)
+        {
+            List<Check> result = new List<Check>();
+            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+            {
+                var query = from a in database.Checks
+                            where (a.AccountID == accID)
+                            select a;
+
+                foreach (var a in query)
+                {
+                    // Look at the Bank member so LINQ doesn't trim it from the Check object...
+                    var s = a.Bank;
+                    result.Add(a);
+                }
+            }
+            return result;
+        }
     }
 }

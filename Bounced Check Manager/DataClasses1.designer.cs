@@ -42,9 +42,6 @@ namespace Bounced_Check_Manager
     partial void InsertLetter(Letter instance);
     partial void UpdateLetter(Letter instance);
     partial void DeleteLetter(Letter instance);
-    partial void InsertStaff(Staff instance);
-    partial void UpdateStaff(Staff instance);
-    partial void DeleteStaff(Staff instance);
     partial void InsertStore(Store instance);
     partial void UpdateStore(Store instance);
     partial void DeleteStore(Store instance);
@@ -112,14 +109,6 @@ namespace Bounced_Check_Manager
 			}
 		}
 		
-		public System.Data.Linq.Table<Staff> Staffs
-		{
-			get
-			{
-				return this.GetTable<Staff>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Store> Stores
 		{
 			get
@@ -137,9 +126,7 @@ namespace Bounced_Check_Manager
 		
 		private int _AccountID;
 		
-		private string _AccountFirstName1;
-		
-		private string _AccountFirstName2;
+		private string _AccountFirstName;
 		
 		private string _AccountLastName;
 		
@@ -163,10 +150,8 @@ namespace Bounced_Check_Manager
     partial void OnCreated();
     partial void OnAccountIDChanging(int value);
     partial void OnAccountIDChanged();
-    partial void OnAccountFirstName1Changing(string value);
-    partial void OnAccountFirstName1Changed();
-    partial void OnAccountFirstName2Changing(string value);
-    partial void OnAccountFirstName2Changed();
+    partial void OnAccountFirstNameChanging(string value);
+    partial void OnAccountFirstNameChanged();
     partial void OnAccountLastNameChanging(string value);
     partial void OnAccountLastNameChanged();
     partial void OnAccountPhoneNumChanging(System.Nullable<int> value);
@@ -188,7 +173,7 @@ namespace Bounced_Check_Manager
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int AccountID
 		{
 			get
@@ -208,42 +193,22 @@ namespace Bounced_Check_Manager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountFirstName1", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string AccountFirstName1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountFirstName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string AccountFirstName
 		{
 			get
 			{
-				return this._AccountFirstName1;
+				return this._AccountFirstName;
 			}
 			set
 			{
-				if ((this._AccountFirstName1 != value))
+				if ((this._AccountFirstName != value))
 				{
-					this.OnAccountFirstName1Changing(value);
+					this.OnAccountFirstNameChanging(value);
 					this.SendPropertyChanging();
-					this._AccountFirstName1 = value;
-					this.SendPropertyChanged("AccountFirstName1");
-					this.OnAccountFirstName1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountFirstName2", DbType="NVarChar(50)")]
-		public string AccountFirstName2
-		{
-			get
-			{
-				return this._AccountFirstName2;
-			}
-			set
-			{
-				if ((this._AccountFirstName2 != value))
-				{
-					this.OnAccountFirstName2Changing(value);
-					this.SendPropertyChanging();
-					this._AccountFirstName2 = value;
-					this.SendPropertyChanged("AccountFirstName2");
-					this.OnAccountFirstName2Changed();
+					this._AccountFirstName = value;
+					this.SendPropertyChanged("AccountFirstName");
+					this.OnAccountFirstNameChanged();
 				}
 			}
 		}
@@ -491,7 +456,7 @@ namespace Bounced_Check_Manager
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int BankID
 		{
 			get
@@ -658,15 +623,17 @@ namespace Bounced_Check_Manager
 		
 		private int _CheckNum;
 		
-		private int _CheckAmount;
+		private double _CheckAmount;
 		
-		private int _CheckAmountOwed;
+		private double _CheckAmountOwed;
 		
-		private System.DateTime _CheckPaidDate;
+		private System.Nullable<System.DateTime> _CheckPaidDate;
 		
 		private bool _CheckDeleted;
 		
 		private int _StoreID;
+		
+		private int _CheckCashierID;
 		
 		private EntitySet<Letter> _Letters;
 		
@@ -690,16 +657,18 @@ namespace Bounced_Check_Manager
     partial void OnBankIDChanged();
     partial void OnCheckNumChanging(int value);
     partial void OnCheckNumChanged();
-    partial void OnCheckAmountChanging(int value);
+    partial void OnCheckAmountChanging(double value);
     partial void OnCheckAmountChanged();
-    partial void OnCheckAmountOwedChanging(int value);
+    partial void OnCheckAmountOwedChanging(double value);
     partial void OnCheckAmountOwedChanged();
-    partial void OnCheckPaidDateChanging(System.DateTime value);
+    partial void OnCheckPaidDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCheckPaidDateChanged();
     partial void OnCheckDeletedChanging(bool value);
     partial void OnCheckDeletedChanged();
     partial void OnStoreIDChanging(int value);
     partial void OnStoreIDChanged();
+    partial void OnCheckCashierIDChanging(int value);
+    partial void OnCheckCashierIDChanged();
     #endregion
 		
 		public Check()
@@ -711,7 +680,7 @@ namespace Bounced_Check_Manager
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int CheckID
 		{
 			get
@@ -819,8 +788,8 @@ namespace Bounced_Check_Manager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckAmount", DbType="Int NOT NULL")]
-		public int CheckAmount
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckAmount", DbType="Float NOT NULL")]
+		public double CheckAmount
 		{
 			get
 			{
@@ -839,8 +808,8 @@ namespace Bounced_Check_Manager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckAmountOwed", DbType="Int NOT NULL")]
-		public int CheckAmountOwed
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckAmountOwed", DbType="Float NOT NULL")]
+		public double CheckAmountOwed
 		{
 			get
 			{
@@ -859,8 +828,8 @@ namespace Bounced_Check_Manager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckPaidDate", DbType="Date NOT NULL")]
-		public System.DateTime CheckPaidDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckPaidDate", DbType="Date")]
+		public System.Nullable<System.DateTime> CheckPaidDate
 		{
 			get
 			{
@@ -919,6 +888,26 @@ namespace Bounced_Check_Manager
 					this._StoreID = value;
 					this.SendPropertyChanged("StoreID");
 					this.OnStoreIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckCashierID", DbType="Int NOT NULL")]
+		public int CheckCashierID
+		{
+			get
+			{
+				return this._CheckCashierID;
+			}
+			set
+			{
+				if ((this._CheckCashierID != value))
+				{
+					this.OnCheckCashierIDChanging(value);
+					this.SendPropertyChanging();
+					this._CheckCashierID = value;
+					this.SendPropertyChanged("CheckCashierID");
+					this.OnCheckCashierIDChanged();
 				}
 			}
 		}
@@ -1111,7 +1100,7 @@ namespace Bounced_Check_Manager
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LetterID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LetterID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int LetterID
 		{
 			get
@@ -1270,164 +1259,6 @@ namespace Bounced_Check_Manager
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Staff")]
-	public partial class Staff : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _StaffID;
-		
-		private string _StaffName;
-		
-		private string _StaffUsername;
-		
-		private string _StaffPassword;
-		
-		private string _StaffAccessLevel;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnStaffIDChanging(int value);
-    partial void OnStaffIDChanged();
-    partial void OnStaffNameChanging(string value);
-    partial void OnStaffNameChanged();
-    partial void OnStaffUsernameChanging(string value);
-    partial void OnStaffUsernameChanged();
-    partial void OnStaffPasswordChanging(string value);
-    partial void OnStaffPasswordChanged();
-    partial void OnStaffAccessLevelChanging(string value);
-    partial void OnStaffAccessLevelChanged();
-    #endregion
-		
-		public Staff()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int StaffID
-		{
-			get
-			{
-				return this._StaffID;
-			}
-			set
-			{
-				if ((this._StaffID != value))
-				{
-					this.OnStaffIDChanging(value);
-					this.SendPropertyChanging();
-					this._StaffID = value;
-					this.SendPropertyChanged("StaffID");
-					this.OnStaffIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string StaffName
-		{
-			get
-			{
-				return this._StaffName;
-			}
-			set
-			{
-				if ((this._StaffName != value))
-				{
-					this.OnStaffNameChanging(value);
-					this.SendPropertyChanging();
-					this._StaffName = value;
-					this.SendPropertyChanged("StaffName");
-					this.OnStaffNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffUsername", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string StaffUsername
-		{
-			get
-			{
-				return this._StaffUsername;
-			}
-			set
-			{
-				if ((this._StaffUsername != value))
-				{
-					this.OnStaffUsernameChanging(value);
-					this.SendPropertyChanging();
-					this._StaffUsername = value;
-					this.SendPropertyChanged("StaffUsername");
-					this.OnStaffUsernameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffPassword", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string StaffPassword
-		{
-			get
-			{
-				return this._StaffPassword;
-			}
-			set
-			{
-				if ((this._StaffPassword != value))
-				{
-					this.OnStaffPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._StaffPassword = value;
-					this.SendPropertyChanged("StaffPassword");
-					this.OnStaffPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffAccessLevel", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string StaffAccessLevel
-		{
-			get
-			{
-				return this._StaffAccessLevel;
-			}
-			set
-			{
-				if ((this._StaffAccessLevel != value))
-				{
-					this.OnStaffAccessLevelChanging(value);
-					this.SendPropertyChanging();
-					this._StaffAccessLevel = value;
-					this.SendPropertyChanged("StaffAccessLevel");
-					this.OnStaffAccessLevelChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Store")]
 	public partial class Store : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1468,7 +1299,7 @@ namespace Bounced_Check_Manager
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StoreID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int StoreID
 		{
 			get

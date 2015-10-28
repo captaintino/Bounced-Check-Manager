@@ -39,25 +39,29 @@
             this.createBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.accountBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
-            this.accountTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.AccountTableAdapter();
-            this.accountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.accountIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountFirstName1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountFirstName2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountLastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountPhoneNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bankIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountRoutingNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
+            this.accountBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.accountTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.AccountTableAdapter();
+            this.accountBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.accountBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.accountBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource4)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -186,15 +190,13 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.accountIDDataGridViewTextBoxColumn,
-            this.accountFirstName1DataGridViewTextBoxColumn,
-            this.accountFirstName2DataGridViewTextBoxColumn,
             this.accountLastNameDataGridViewTextBoxColumn,
             this.accountPhoneNumDataGridViewTextBoxColumn,
             this.accountAddressDataGridViewTextBoxColumn,
             this.accountNumDataGridViewTextBoxColumn,
             this.bankIDDataGridViewTextBoxColumn,
             this.accountRoutingNumDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.accountBindingSource1;
+            this.dataGridView1.DataSource = this.accountBindingSource4;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(253, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -202,45 +204,12 @@
             this.dataGridView1.Size = new System.Drawing.Size(525, 509);
             this.dataGridView1.TabIndex = 1;
             // 
-            // accountBindingSource
-            // 
-            this.accountBindingSource.DataMember = "Account";
-            this.accountBindingSource.DataSource = this.teamPenguinDataSet;
-            // 
-            // teamPenguinDataSet
-            // 
-            this.teamPenguinDataSet.DataSetName = "TeamPenguinDataSet";
-            this.teamPenguinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // accountTableAdapter
-            // 
-            this.accountTableAdapter.ClearBeforeFill = true;
-            // 
-            // accountBindingSource1
-            // 
-            this.accountBindingSource1.DataMember = "Account";
-            this.accountBindingSource1.DataSource = this.teamPenguinDataSet;
-            // 
             // accountIDDataGridViewTextBoxColumn
             // 
             this.accountIDDataGridViewTextBoxColumn.DataPropertyName = "AccountID";
             this.accountIDDataGridViewTextBoxColumn.HeaderText = "AccountID";
             this.accountIDDataGridViewTextBoxColumn.Name = "accountIDDataGridViewTextBoxColumn";
             this.accountIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountFirstName1DataGridViewTextBoxColumn
-            // 
-            this.accountFirstName1DataGridViewTextBoxColumn.DataPropertyName = "AccountFirstName1";
-            this.accountFirstName1DataGridViewTextBoxColumn.HeaderText = "AccountFirstName1";
-            this.accountFirstName1DataGridViewTextBoxColumn.Name = "accountFirstName1DataGridViewTextBoxColumn";
-            this.accountFirstName1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountFirstName2DataGridViewTextBoxColumn
-            // 
-            this.accountFirstName2DataGridViewTextBoxColumn.DataPropertyName = "AccountFirstName2";
-            this.accountFirstName2DataGridViewTextBoxColumn.HeaderText = "AccountFirstName2";
-            this.accountFirstName2DataGridViewTextBoxColumn.Name = "accountFirstName2DataGridViewTextBoxColumn";
-            this.accountFirstName2DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // accountLastNameDataGridViewTextBoxColumn
             // 
@@ -284,6 +253,40 @@
             this.accountRoutingNumDataGridViewTextBoxColumn.Name = "accountRoutingNumDataGridViewTextBoxColumn";
             this.accountRoutingNumDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // accountBindingSource1
+            // 
+            this.accountBindingSource1.DataMember = "Account";
+            this.accountBindingSource1.DataSource = this.teamPenguinDataSet;
+            // 
+            // teamPenguinDataSet
+            // 
+            this.teamPenguinDataSet.DataSetName = "TeamPenguinDataSet";
+            this.teamPenguinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // accountBindingSource
+            // 
+            this.accountBindingSource.DataMember = "Account";
+            this.accountBindingSource.DataSource = this.teamPenguinDataSet;
+            // 
+            // accountTableAdapter
+            // 
+            this.accountTableAdapter.ClearBeforeFill = true;
+            // 
+            // accountBindingSource2
+            // 
+            this.accountBindingSource2.DataMember = "Account";
+            this.accountBindingSource2.DataSource = this.teamPenguinDataSet;
+            // 
+            // accountBindingSource3
+            // 
+            this.accountBindingSource3.DataMember = "Account";
+            this.accountBindingSource3.DataSource = this.teamPenguinDataSet;
+            // 
+            // accountBindingSource4
+            // 
+            this.accountBindingSource4.DataMember = "Account";
+            this.accountBindingSource4.DataSource = this.teamPenguinDataSet;
+            // 
             // mainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,9 +299,12 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -319,15 +325,16 @@
         private System.Windows.Forms.BindingSource accountBindingSource;
         private TeamPenguinDataSetTableAdapters.AccountTableAdapter accountTableAdapter;
         private System.Windows.Forms.BindingSource accountBindingSource1;
+        private System.Windows.Forms.BindingSource accountBindingSource2;
+        private System.Windows.Forms.BindingSource accountBindingSource3;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accountFirstName1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accountFirstName2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountLastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountPhoneNumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountAddressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountNumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bankIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn accountRoutingNumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource accountBindingSource4;
     }
 }
 

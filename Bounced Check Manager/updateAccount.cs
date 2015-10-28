@@ -17,7 +17,7 @@ namespace Bounced_Check_Manager
         {
             InitializeComponent();
             this.account = acc;
-            nameTextBox.Text = account.AccountFirstName1;
+            nameTextBox.Text = account.AccountFirstName;
             addressTextBox.Text = account.AccountAddress;
             //accountNumberTextBox.Text = account.AccNo.ToString();
             routingNumberTextBox.Text = account.AccountRoutingNum.ToString();
@@ -39,7 +39,7 @@ namespace Bounced_Check_Manager
                     MessageBox.Show("Invalid account or routing number");
                     return;
                 }
-                this.account.AccountFirstName1 = nameTextBox.Text;
+                this.account.AccountFirstName = nameTextBox.Text;
                 this.account.AccountAddress = addressTextBox.Text;
                 //this.account.AccNo = accountNum;
                 this.account.AccountRoutingNum = routing;
