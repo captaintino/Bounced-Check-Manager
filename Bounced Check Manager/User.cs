@@ -8,27 +8,21 @@ namespace Bounced_Check_Manager
 {
     public class User
     {
-        public int uid;
+        public int sid;
         public int status;
         public String name;
-        public String roles;
         public DateTime createdate;
         public DateTime updatedate;
-        public int altuid;
-        public int gid;
-        public int islogin;
+        public DateTime accdate;
 
-        public User(int uidNew, int statusNew, String nameNew, String rolesNew, DateTime createdateNew, DateTime updatedateNew, int altuidNew, int gidNew, int isloginNew)
+        public User(int sidNew, int statusNew, String nameNew, DateTime createdateNew, DateTime updatedateNew, DateTime accdateNew)
         {
-            uid = uidNew;
+            sid = sidNew;
             status = statusNew;
             name = nameNew;
-            roles = rolesNew;
             createdate = createdateNew;
             updatedate = updatedateNew;
-            altuid = altuidNew;
-            gid = gidNew;
-            islogin = isloginNew;
+            accdate = accdateNew;
         }
     }
 }

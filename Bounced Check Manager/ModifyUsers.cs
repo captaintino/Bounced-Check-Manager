@@ -19,7 +19,7 @@ namespace Bounced_Check_Manager
             users = UserDAO.listAll();
             UsersDataGridView.Rows.Clear();
             foreach (User user in users){
-                string[] row = { user.uid.ToString(), user.status.ToString(), user.name, user.roles, user.createdate.ToShortDateString(), user.updatedate.ToShortDateString(), user.altuid.ToString(), user.gid.ToString() };
+                string[] row = { user.sid.ToString(), user.status.ToString(), user.name, user.createdate.ToShortDateString(), user.updatedate.ToShortDateString(), user.accdate.ToShortDateString() };
                 UsersDataGridView.Rows.Add(row);
             }
         }

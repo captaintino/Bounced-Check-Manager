@@ -15,6 +15,7 @@ namespace Bounced_Check_Manager
         public CreateUser()
         {
             InitializeComponent();
+            RoleComboBox.SelectedIndex = 0;
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -26,7 +27,16 @@ namespace Bounced_Check_Manager
         {
             if (UsernameTxtBox.Text != "" && PasswordTxtBox.Text != "")
             {
-
+                bool success = UserDAO.create(UsernameTxtBox.Text, PasswordTxtBox.Text);
+                if (success)
+                {
+                    MessageBox.Show("User Created");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to create user in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                }
             }
             else
             {

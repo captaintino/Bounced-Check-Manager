@@ -32,11 +32,9 @@
             this.uid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.altuid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,11 +47,9 @@
             this.uid,
             this.status,
             this.name,
-            this.roles,
             this.createdate,
             this.updatedate,
-            this.altuid,
-            this.gid});
+            this.accdate});
             this.UsersDataGridView.Dock = System.Windows.Forms.DockStyle.Top;
             this.UsersDataGridView.Location = new System.Drawing.Point(0, 0);
             this.UsersDataGridView.Name = "UsersDataGridView";
@@ -79,12 +75,6 @@
             this.name.Name = "name";
             this.name.ReadOnly = true;
             // 
-            // roles
-            // 
-            this.roles.HeaderText = "roles";
-            this.roles.Name = "roles";
-            this.roles.ReadOnly = true;
-            // 
             // createdate
             // 
             this.createdate.HeaderText = "createdate";
@@ -101,21 +91,11 @@
             this.updatedate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.updatedate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // altuid
+            // accdate
             // 
-            this.altuid.HeaderText = "altuid";
-            this.altuid.Name = "altuid";
-            this.altuid.ReadOnly = true;
-            this.altuid.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.altuid.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // gid
-            // 
-            this.gid.HeaderText = "gid";
-            this.gid.Name = "gid";
-            this.gid.ReadOnly = true;
-            this.gid.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.gid.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.accdate.HeaderText = "accdate";
+            this.accdate.Name = "accdate";
+            this.accdate.ReadOnly = true;
             // 
             // ModifyUsers
             // 
@@ -136,10 +116,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn uid;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roles;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn updatedate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn altuid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accdate;
     }
 }
