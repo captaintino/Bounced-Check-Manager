@@ -30,6 +30,21 @@ namespace Bounced_Check_Manager
             this.checkTableAdapter.Fill(this.teamPenguinDataSet.Check);
 
         }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            checksGridView.Rows.Clear();
+            List<Account> accounts = AccountDAO.findAny(AccNumberTxtBox.Text, FNameTxtBox.Text, LNameTextBox.Text, "", AddressTxtBox.Text, RoutingNumberTxtBox.Text);
+            for (int i = 0; i < accounts.Count; i++)
+            {
+                List<Check> checks = CheckDAO.getChecksFromAcc(accounts[i].AccountID);
+                foreach (Check check in checks)
+                {
+                    string[] row = { check.CheckNum.ToString(), check.Bank.BankName, check.Bank.BankAddress, check.CheckDate.ToString(), check.CheckAmount.ToString(), check.CheckCashierID.ToString(), check.CheckAmountOwed.ToString() };
+                    checksGridView.Rows.Add(row);
+                }
+            }
+        }
     }
 
     public static class Prompt

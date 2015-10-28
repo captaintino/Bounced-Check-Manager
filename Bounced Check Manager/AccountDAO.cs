@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel.DomainServices.Server;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Linq.SqlClient;
 
 namespace Bounced_Check_Manager
 {
@@ -116,10 +117,118 @@ namespace Bounced_Check_Manager
                             select a;
                 foreach (var a in query)
                 {
+                    // Look at the Bank member so LINQ doesn't trim it from the Account object...
                     var s = a.Bank;
                     return a;
                 }
                 return null;
+            }
+        }
+
+        // Return a list of all accounts matching the information given.
+        // If a string is given as "" (empty string), that parameter is ignored.
+        public static List<Account> findAny(string accNum, string accFirstName, string accLastName, string accPhoneNum, string accAddress, string accRoutNum)
+        {
+            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+            {
+                accFirstName = "%" + accFirstName + "%";
+                accLastName = "%" + accLastName + "%";
+                accAddress = "%" + accAddress + "%";
+                IQueryable<Account> query;
+                if ((accNum != "") && (accRoutNum != "") && (accPhoneNum != ""))
+                {
+                    int accNumber = Convert.ToInt32(accNum);
+                    int accRoutNumber = Convert.ToInt32(accRoutNum);
+                    int accPhoneNumber = Convert.ToInt32(accPhoneNum);
+                    query = from a in database.Accounts
+                            where (a.AccountNum == accNumber && a.AccountRoutingNum == accRoutNumber && a.AccountPhoneNum == accPhoneNumber &&
+                                   SqlMethods.Like(a.AccountFirstName, accFirstName) &&
+                                   SqlMethods.Like(a.AccountLastName, accLastName) &&
+                                   SqlMethods.Like(a.AccountAddress, accAddress))
+                            select a;
+                }
+                else if ((accNum == "") && (accRoutNum != "") && (accPhoneNum != ""))
+                {
+                    int accRoutNumber = Convert.ToInt32(accRoutNum);
+                    int accPhoneNumber = Convert.ToInt32(accPhoneNum);
+                    query = from a in database.Accounts
+                            where (a.AccountRoutingNum == accRoutNumber && a.AccountPhoneNum == accPhoneNumber &&
+                                   SqlMethods.Like(a.AccountFirstName, accFirstName) &&
+                                   SqlMethods.Like(a.AccountLastName, accLastName) &&
+                                   SqlMethods.Like(a.AccountAddress, accAddress))
+                            select a;
+                }
+                else if ((accNum != "") && (accRoutNum == "") && (accPhoneNum != ""))
+                {
+                    int accNumber = Convert.ToInt32(accNum);
+                    int accPhoneNumber = Convert.ToInt32(accPhoneNum);
+                    query = from a in database.Accounts
+                            where (a.AccountNum == accNumber && a.AccountPhoneNum == accPhoneNumber &&
+                                   SqlMethods.Like(a.AccountFirstName, accFirstName) &&
+                                   SqlMethods.Like(a.AccountLastName, accLastName) &&
+                                   SqlMethods.Like(a.AccountAddress, accAddress))
+                            select a;
+                }
+                else if ((accNum != "") && (accRoutNum != "") && (accPhoneNum == ""))
+                {
+                    int accNumber = Convert.ToInt32(accNum);
+                    int accRoutNumber = Convert.ToInt32(accRoutNum);
+                    query = from a in database.Accounts
+                            where (a.AccountNum == accNumber && a.AccountRoutingNum == accRoutNumber &&
+                                   SqlMethods.Like(a.AccountFirstName, accFirstName) &&
+                                   SqlMethods.Like(a.AccountLastName, accLastName) &&
+                                   SqlMethods.Like(a.AccountAddress, accAddress))
+                            select a;
+                }
+                else if ((accNum != "") && (accRoutNum == "") && (accPhoneNum == ""))
+                {
+                    int accNumber = Convert.ToInt32(accNum);
+                    query = from a in database.Accounts
+                            where (a.AccountNum == accNumber &&
+                                   SqlMethods.Like(a.AccountFirstName, accFirstName) &&
+                                   SqlMethods.Like(a.AccountLastName, accLastName) &&
+                                   SqlMethods.Like(a.AccountAddress, accAddress))
+                            select a;
+                }
+                else if ((accNum == "") && (accRoutNum != "") && (accPhoneNum == ""))
+                {
+                    int accRoutNumber = Convert.ToInt32(accRoutNum);
+                    query = from a in database.Accounts
+                            where (a.AccountRoutingNum == accRoutNumber &&
+                                   SqlMethods.Like(a.AccountFirstName, accFirstName) &&
+                                   SqlMethods.Like(a.AccountLastName, accLastName) &&
+                                   SqlMethods.Like(a.AccountAddress, accAddress))
+                            select a;
+                }
+                else if ((accNum == "") && (accRoutNum == "") && (accPhoneNum != ""))
+                {
+                    int accPhoneNumber = Convert.ToInt32(accPhoneNum);
+                    query = from a in database.Accounts
+                            where (a.AccountPhoneNum == accPhoneNumber &&
+                                   SqlMethods.Like(a.AccountFirstName, accFirstName) &&
+                                   SqlMethods.Like(a.AccountLastName, accLastName) &&
+                                   SqlMethods.Like(a.AccountAddress, accAddress))
+                            select a;
+                }
+                else
+                {
+                    query = from a in database.Accounts
+                            where (SqlMethods.Like(a.AccountFirstName, accFirstName) &&
+                                   SqlMethods.Like(a.AccountLastName, accLastName) &&
+                                   SqlMethods.Like(a.AccountAddress, accAddress))
+                            select a;
+                }
+
+                List<Account> accounts = new List<Account>();
+
+                foreach (var a in query)
+                {
+                    // Look at the Bank member so LINQ doesn't trim it from the Account object...
+                    var s = a.Bank;
+                    accounts.Add(a);
+                }
+
+                return accounts;
             }
         }
     }
