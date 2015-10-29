@@ -16,11 +16,42 @@ namespace Bounced_Check_Manager
         public ModifyUsers()
         {
             InitializeComponent();
+            UpdateList();
+        }
+
+        public void UpdateList()
+        {
             users = UserDAO.listAll();
             UsersDataGridView.Rows.Clear();
-            foreach (User user in users){
+            foreach (User user in users)
+            {
                 string[] row = { user.sid.ToString(), user.status.ToString(), user.name, user.createdate.ToShortDateString(), user.updatedate.ToShortDateString(), user.accdate.ToShortDateString() };
                 UsersDataGridView.Rows.Add(row);
+            }
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            if (UsersDataGridView.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("Please Select a singe login to delete");
+                return;
+            }
+            int index = UsersDataGridView.SelectedRows[0].Index;
+            User user = users[index];
+            if(MessageBox.Show("Are you sure you want to delete " + user.name + "?", "Delete " + user.name, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) != DialogResult.Yes){
+                return;
+            }
+            if (user.name == Globals.username)
+            {
+                MessageBox.Show("You're not allowed to delete yourself!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                return;
+            }
+            bool success = UserDAO.delete(user);
+            if (success)
+            {
+                MessageBox.Show("Deleted " + user.name);
+                UpdateList();
             }
         }
     }

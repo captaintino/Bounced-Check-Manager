@@ -18,7 +18,7 @@ namespace Bounced_Check_Manager
             SqlDataReader reader;
 
             // Possible columns: sid, status, createdate, updatedate, accdate, totcpu, totio, spacelimitl, timelimit, resultlimit, name, dbname, password, denylogin, hasaccess, instname, isntgroup, isntuser, sysadmin, securityadmin, serveradmin, setupadmin, processadmin, diskadmin,dbcreator, bulkadmin, loginname
-            cmd.CommandText = @"SELECT sid, status, name, createdate, updatedate, accdate FROM sys.syslogins where password IS NOT NULL and hasaccess = 1";
+            cmd.CommandText = @"SELECT sid, status, name, createdate, updatedate, accdate FROM sys.syslogins where password IS NOT NULL and hasaccess = 1 and isntname = 0 and not name like '##%##' and name not like 'sa';";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = sqlConnection1;
 
@@ -57,20 +57,38 @@ namespace Bounced_Check_Manager
 
 
             cmd.Connection = sqlConnection1;
-            cmd.Parameters.Add("@UNAME", SqlDbType.VarChar);
-            cmd.Parameters.Add("@UNameN", SqlDbType.NVarChar);
-            cmd.Parameters.Add("@Password", SqlDbType.VarChar);
-            cmd.Parameters["@UNAME"].Value = username;
-            cmd.Parameters["@UNameN"].Value = username;
-            cmd.Parameters["@Password"].Value = password;
+            cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
+            cmd.Parameters.Add("{Password}", SqlDbType.VarChar);
+            cmd.Parameters["{UNAME}"].Value = username;
+            cmd.Parameters["{Password}"].Value = password;
 
             sqlConnection1.Open();
 
             int result = cmd.ExecuteNonQuery();
             // TODO Figure out how to use parameters instead of direct replacement (DANGEROUS!!!!)
             cmd.CommandText = @"EXEC master..sp_addsrvrolemember @loginame = N'{UNAME}', @rolename = N'sysadmin';".Replace("{UNAME}", username);
+            cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
+            cmd.Parameters["{UNAME}"].Value = username;
             cmd.ExecuteNonQuery();
+            sqlConnection1.Close();
             return result > 0;
+        }
+
+        public static bool delete(User user)
+        {
+            SqlConnection sqlConnection1 = new SqlConnection(Globals.connectionString);
+            SqlCommand cmd = new SqlCommand();
+
+            // TODO Figure out how to use parameters instead of direct replacement (DANGEROUS!!!!)
+            cmd.CommandText = @"DROP LOGIN {UNAME};".Replace("{UNAME}", user.name);
+
+            cmd.Connection = sqlConnection1;
+            //cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
+            //cmd.Parameters["{UNAME}"].Value = user.name;
+            sqlConnection1.Open();
+            int result = cmd.ExecuteNonQuery();
+            sqlConnection1.Close();
+            return result == -1;
         }
     }
 }

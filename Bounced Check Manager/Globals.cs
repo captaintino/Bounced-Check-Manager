@@ -9,5 +9,6 @@ namespace Bounced_Check_Manager
     public static class Globals
     {
         public static String connectionString = "";
+        public static String username = "";
     }
 }

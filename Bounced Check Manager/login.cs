@@ -28,6 +28,7 @@ namespace Bounced_Check_Manager
                 return;
             }
             Globals.connectionString = connectionString;
+            Globals.username = username.Text;
             this.loggedIn = true;
             this.Close();
         }
