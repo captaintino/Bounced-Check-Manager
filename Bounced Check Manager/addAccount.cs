@@ -10,49 +10,54 @@ using System.Windows.Forms;
 
 namespace Bounced_Check_Manager
 {
-    public partial class addAccount : Form
+    namespace Bounced_Check_Manager_UI_Layer
     {
-        private int accountID;
-
-        public addAccount(int id)
+        public partial class addAccount : Form
         {
-            accountID = id;
+            private int accountID;
 
-            InitializeComponent();
-        }
-
-        private void cancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void submit_Click(object sender, EventArgs e)
-        {
-            if (nameTextBox.Text != "" && addressTextBox.Text != "" && routingNumberTextBox.Text != "" && accountNumberTextBox.Text != "")
+            public addAccount(int id)
             {
-                int routing = 0;
-                int account = 0;
-                try
-                {
-                    routing = Convert.ToInt32(routingNumberTextBox.Text);
-                    account = Convert.ToInt32(accountNumberTextBox.Text);
-                }catch(Exception ex){
-                    MessageBox.Show("Invalid account or routing number");
-                    return;
-                }
+                accountID = id;
 
-                Account acc = new Account();
-                acc.AccountFirstName = nameTextBox.Text;
-                acc.AccountAddress = addressTextBox.Text;
-                acc.AccountRoutingNum = routing;
-                //acc.AccNo = account;
-                //Account acc = new Account(accountID, nameTextBox.Text, addressTextBox.Text, routing, account);
-                AccountDAO.create(acc);
+                InitializeComponent();
+            }
+
+            private void cancel_Click(object sender, EventArgs e)
+            {
                 this.Close();
             }
-            else
+
+            private void submit_Click(object sender, EventArgs e)
             {
-                MessageBox.Show("Please fill out all fields");
+                if (nameTextBox.Text != "" && addressTextBox.Text != "" && routingNumberTextBox.Text != "" && accountNumberTextBox.Text != "")
+                {
+                    int routing = 0;
+                    int account = 0;
+                    try
+                    {
+                        routing = Convert.ToInt32(routingNumberTextBox.Text);
+                        account = Convert.ToInt32(accountNumberTextBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Invalid account or routing number");
+                        return;
+                    }
+
+                    Account acc = new Account();
+                    acc.AccountFirstName = nameTextBox.Text;
+                    acc.AccountAddress = addressTextBox.Text;
+                    acc.AccountRoutingNum = routing;
+                    //acc.AccNo = account;
+                    //Account acc = new Account(accountID, nameTextBox.Text, addressTextBox.Text, routing, account);
+                    Bounced_Check_Manager_Data_Layer.AccountDAO.create(acc);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Please fill out all fields");
+                }
             }
         }
     }

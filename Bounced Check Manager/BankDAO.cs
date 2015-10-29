@@ -7,39 +7,42 @@ using System.Windows.Forms;
 
 namespace Bounced_Check_Manager
 {
-    class BankDAO
+    namespace Bounced_Check_Manager_Data_Layer
     {
-        // Create <bank> in database
-        public static bool create(Bank bank)
+        class BankDAO
         {
-            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+            // Create <bank> in database
+            public static bool create(Bank bank)
             {
-                database.Banks.InsertOnSubmit(bank);
-                try
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
-                    database.SubmitChanges();
-                    return true;
-                }
-                catch (Exception e)
-                {
-                    return false;
+                    database.Banks.InsertOnSubmit(bank);
+                    try
+                    {
+                        database.SubmitChanges();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        return false;
+                    }
                 }
             }
-        }
 
-        // Find first bank having routing number of <routingNum>
-        public static Bank find(int routingNum)
-        {
-            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+            // Find first bank having routing number of <routingNum>
+            public static Bank find(int routingNum)
             {
-                var query = from a in database.Banks
-                            where (a.BankRoutingNum == routingNum)
-                            select a;
-                foreach (var a in query)
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
-                    return a;
+                    var query = from a in database.Banks
+                                where (a.BankRoutingNum == routingNum)
+                                select a;
+                    foreach (var a in query)
+                    {
+                        return a;
+                    }
+                    return null;
                 }
-                return null;
             }
         }
     }

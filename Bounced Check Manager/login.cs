@@ -10,32 +10,35 @@ using System.Windows.Forms;
 
 namespace Bounced_Check_Manager
 {
-    public partial class login : Form
+    namespace Bounced_Check_Manager_UI_Layer
     {
-        public bool loggedIn = false;
-        public login()
+        public partial class login : Form
         {
-            InitializeComponent();
-        }
-
-        private void loginBtn_Click(object sender, EventArgs e)
-        {
-            String connectionString = "Data Source=CPSLABSERVER\\TEAMPENGUIN;Initial Catalog=TeamPenguin;Persist Security Info=True;User ID=" + username.Text + ";Password=" + password.Text;
-            DataClasses1DataContext database = new DataClasses1DataContext(connectionString);
-            if (!database.DatabaseExists())
+            public bool loggedIn = false;
+            public login()
             {
-                MessageBox.Show("Unable to reach database. Invalid Login/Password", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                InitializeComponent();
             }
-            Globals.connectionString = connectionString;
-            Globals.username = username.Text;
-            this.loggedIn = true;
-            this.Close();
-        }
 
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            private void loginBtn_Click(object sender, EventArgs e)
+            {
+                String connectionString = "Data Source=CPSLABSERVER\\TEAMPENGUIN;Initial Catalog=TeamPenguin;Persist Security Info=True;User ID=" + username.Text + ";Password=" + password.Text;
+                DataClasses1DataContext database = new DataClasses1DataContext(connectionString);
+                if (!database.DatabaseExists())
+                {
+                    MessageBox.Show("Unable to reach database. Invalid Login/Password", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                Globals.connectionString = connectionString;
+                Globals.username = username.Text;
+                this.loggedIn = true;
+                this.Close();
+            }
+
+            private void cancelBtn_Click(object sender, EventArgs e)
+            {
+                this.Close();
+            }
         }
     }
 }

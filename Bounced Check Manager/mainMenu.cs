@@ -10,107 +10,110 @@ using System.Windows.Forms;
 
 namespace Bounced_Check_Manager
 {
-    public partial class mainMenu : Form
+    namespace Bounced_Check_Manager_UI_Layer
     {
-        List<Account> accounts = new List<Account>();
-        public mainMenu()
+        public partial class mainMenu : Form
         {
-            InitializeComponent();
-            // Might be a better way to do this. Basically the table should start out refreshed, without
-            // the user clicking on anything.
-            refreshBtn_Click(null, null);
-        }
-
-        private void refreshBtn_Click(object sender, EventArgs e)
-        {
-            accounts = AccountDAO.LoadAll();
-            //dataGridView1.Rows.Clear();
-            //foreach (Account acc in accounts){
-            //    string[] row = { acc.AccID.ToString(), acc.AccName.ToString(), acc.AccAddress.ToString(), acc.AccRoutNo.ToString(), acc.AccNo.ToString() };
-            //    dataGridView1.Rows.Add(row);
-            //}
-        }
-
-        private void createBtn_Click(object sender, EventArgs e)
-        {
-            // The count comes from the current list, NOT the one in the DB! This will NOT work for
-            // a network DB serving multiple programs!
-            new addAccount(accounts.Count).Show();
-        }
-
-        private void deleteBtn_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count < 1)
+            List<Account> accounts = new List<Account>();
+            public mainMenu()
             {
-                MessageBox.Show("Please Select an account");
-                return;
+                InitializeComponent();
+                // Might be a better way to do this. Basically the table should start out refreshed, without
+                // the user clicking on anything.
+                refreshBtn_Click(null, null);
             }
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                int id = Convert.ToInt32(row.Cells[0].Value);
-                Account acc = findAccount(id);
-                AccountDAO.delete(acc);
-            }
-        }
 
-        private void updateBtn_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count != 1)
+            private void refreshBtn_Click(object sender, EventArgs e)
             {
-                MessageBox.Show("Please Select one and only one account");
-                return;
+                accounts = Bounced_Check_Manager_Data_Layer.AccountDAO.LoadAll();
+                //dataGridView1.Rows.Clear();
+                //foreach (Account acc in accounts){
+                //    string[] row = { acc.AccID.ToString(), acc.AccName.ToString(), acc.AccAddress.ToString(), acc.AccRoutNo.ToString(), acc.AccNo.ToString() };
+                //    dataGridView1.Rows.Add(row);
+                //}
             }
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                int id = Convert.ToInt32(row.Cells[0].Value);
-                Account acc = findAccount(id);
-                new updateAccount(acc).Show();
-            }
-        }
 
-        public Account findAccount(int id)
-        {
-            foreach (Account acc in accounts)
+            private void createBtn_Click(object sender, EventArgs e)
             {
-                if (acc.AccountID == id)
+                // The count comes from the current list, NOT the one in the DB! This will NOT work for
+                // a network DB serving multiple programs!
+                new addAccount(accounts.Count).Show();
+            }
+
+            private void deleteBtn_Click(object sender, EventArgs e)
+            {
+                if (dataGridView1.SelectedRows.Count < 1)
                 {
-                    return acc;
+                    MessageBox.Show("Please Select an account");
+                    return;
+                }
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    int id = Convert.ToInt32(row.Cells[0].Value);
+                    Account acc = findAccount(id);
+                    Bounced_Check_Manager_Data_Layer.AccountDAO.delete(acc);
                 }
             }
-            return null;
-        }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+            private void updateBtn_Click(object sender, EventArgs e)
+            {
+                if (dataGridView1.SelectedRows.Count != 1)
+                {
+                    MessageBox.Show("Please Select one and only one account");
+                    return;
+                }
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    int id = Convert.ToInt32(row.Cells[0].Value);
+                    Account acc = findAccount(id);
+                    new updateAccount(acc).Show();
+                }
+            }
 
-        private void CreateCheckBtn_Click(object sender, EventArgs e)
-        {
-            new CreateCheck().Show();
-        }
+            public Account findAccount(int id)
+            {
+                foreach (Account acc in accounts)
+                {
+                    if (acc.AccountID == id)
+                    {
+                        return acc;
+                    }
+                }
+                return null;
+            }
 
-        private void PayCheckBtn_Click(object sender, EventArgs e)
-        {
-            new PayCheck().Show();
-        }
+            private void button5_Click(object sender, EventArgs e)
+            {
+                this.Close();
+            }
 
-        private void GenerateLettersBtn_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Your letters are printing...");
-        }
+            private void CreateCheckBtn_Click(object sender, EventArgs e)
+            {
+                new CreateCheck().Show();
+            }
 
-        private void mainMenu_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'teamPenguinDataSet.Account' table. You can move, or remove it, as needed.
-            this.accountTableAdapter.Fill(this.teamPenguinDataSet.Account);
-        }
+            private void PayCheckBtn_Click(object sender, EventArgs e)
+            {
+                new PayCheck().Show();
+            }
 
-        private void supervisorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new Supervisor().Show();
-        }
+            private void GenerateLettersBtn_Click(object sender, EventArgs e)
+            {
+                MessageBox.Show("Your letters are printing...");
+            }
 
-        
+            private void mainMenu_Load(object sender, EventArgs e)
+            {
+                // TODO: This line of code loads data into the 'teamPenguinDataSet.Account' table. You can move, or remove it, as needed.
+                this.accountTableAdapter.Fill(this.teamPenguinDataSet.Account);
+            }
+
+            private void supervisorToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                new Supervisor().Show();
+            }
+
+
+        }
     }
 }

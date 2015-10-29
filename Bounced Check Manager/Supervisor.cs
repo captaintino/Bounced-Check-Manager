@@ -10,21 +10,24 @@ using System.Windows.Forms;
 
 namespace Bounced_Check_Manager
 {
-    public partial class Supervisor : Form
+    namespace Bounced_Check_Manager_UI_Layer
     {
-        public Supervisor()
+        public partial class Supervisor : Form
         {
-            InitializeComponent();
-        }
+            public Supervisor()
+            {
+                InitializeComponent();
+            }
 
-        private void ModifyUsersBtn_Click(object sender, EventArgs e)
-        {
-            new ModifyUsers().Show();
-        }
+            private void ModifyUsersBtn_Click(object sender, EventArgs e)
+            {
+                new ModifyUsers().Show();
+            }
 
-        private void AddUserBtn_Click(object sender, EventArgs e)
-        {
-            new CreateUser().Show();
+            private void AddUserBtn_Click(object sender, EventArgs e)
+            {
+                new CreateUser().Show();
+            }
         }
     }
 }

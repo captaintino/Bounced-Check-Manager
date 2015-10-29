@@ -10,45 +10,48 @@ using System.Windows.Forms;
 
 namespace Bounced_Check_Manager
 {
-    public partial class updateAccount : Form
+    namespace Bounced_Check_Manager_UI_Layer
     {
-        Account account = null;
-        public updateAccount(Account acc)
+        public partial class updateAccount : Form
         {
-            InitializeComponent();
-            this.account = acc;
-            nameTextBox.Text = account.AccountFirstName;
-            addressTextBox.Text = account.AccountAddress;
-            //accountNumberTextBox.Text = account.AccNo.ToString();
-            routingNumberTextBox.Text = account.AccountRoutingNum.ToString();
-        }
-
-        private void submit_Click(object sender, EventArgs e)
-        {
-            if (nameTextBox.Text != "" && addressTextBox.Text != "" && routingNumberTextBox.Text != "" && accountNumberTextBox.Text != "")
+            Account account = null;
+            public updateAccount(Account acc)
             {
-                int routing = 0;
-                int accountNum = 0;
-                try
-                {
-                    routing = Convert.ToInt32(routingNumberTextBox.Text);
-                    accountNum = Convert.ToInt32(accountNumberTextBox.Text);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Invalid account or routing number");
-                    return;
-                }
-                this.account.AccountFirstName = nameTextBox.Text;
-                this.account.AccountAddress = addressTextBox.Text;
-                //this.account.AccNo = accountNum;
-                this.account.AccountRoutingNum = routing;
-                AccountDAO.update(this.account);
-                this.Close();
+                InitializeComponent();
+                this.account = acc;
+                nameTextBox.Text = account.AccountFirstName;
+                addressTextBox.Text = account.AccountAddress;
+                //accountNumberTextBox.Text = account.AccNo.ToString();
+                routingNumberTextBox.Text = account.AccountRoutingNum.ToString();
             }
-            else
+
+            private void submit_Click(object sender, EventArgs e)
             {
-                MessageBox.Show("Please fill out all fields");
+                if (nameTextBox.Text != "" && addressTextBox.Text != "" && routingNumberTextBox.Text != "" && accountNumberTextBox.Text != "")
+                {
+                    int routing = 0;
+                    int accountNum = 0;
+                    try
+                    {
+                        routing = Convert.ToInt32(routingNumberTextBox.Text);
+                        accountNum = Convert.ToInt32(accountNumberTextBox.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Invalid account or routing number");
+                        return;
+                    }
+                    this.account.AccountFirstName = nameTextBox.Text;
+                    this.account.AccountAddress = addressTextBox.Text;
+                    //this.account.AccNo = accountNum;
+                    this.account.AccountRoutingNum = routing;
+                    Bounced_Check_Manager_Data_Layer.AccountDAO.update(this.account);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Please fill out all fields");
+                }
             }
         }
     }

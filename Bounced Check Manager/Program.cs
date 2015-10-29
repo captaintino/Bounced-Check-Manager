@@ -16,11 +16,11 @@ namespace Bounced_Check_Manager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var loginMenu = new login();
+            var loginMenu = new Bounced_Check_Manager_UI_Layer.login();
             Application.Run(loginMenu);
             if (loginMenu.loggedIn)
             {
-                Application.Run(new mainMenu());
+                Application.Run(new Bounced_Check_Manager_UI_Layer.mainMenu());
             }
         }
     }

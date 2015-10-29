@@ -6,23 +6,26 @@ using System.Threading.Tasks;
 
 namespace Bounced_Check_Manager
 {
-    class StoreDAO
+    namespace Bounced_Check_Manager_Data_Layer
     {
-        // Get list of all of the Stores in the database
-        public static List<Store> LoadAll()
+        class StoreDAO
         {
-            List<Store> list = new List<Store>();
-            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+            // Get list of all of the Stores in the database
+            public static List<Store> LoadAll()
             {
-                var query = from a in database.Stores
-                            select a;
-
-                foreach (var a in query)
+                List<Store> list = new List<Store>();
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
-                    list.Add(a);
+                    var query = from a in database.Stores
+                                select a;
+
+                    foreach (var a in query)
+                    {
+                        list.Add(a);
+                    }
                 }
+                return list;
             }
-            return list;
         }
     }
 }

@@ -7,43 +7,46 @@ using System.Windows.Forms;
 
 namespace Bounced_Check_Manager
 {
-    class CheckDAO
+    namespace Bounced_Check_Manager_Data_Layer
     {
-        // Create Check <check>
-        public static bool create(Check check)
+        class CheckDAO
         {
-            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+            // Create Check <check>
+            public static bool create(Check check)
             {
-                database.Checks.InsertOnSubmit(check);
-                try
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
-                    database.SubmitChanges();
-                    return true;
-                }
-                catch (Exception e)
-                {
-                    return false;
+                    database.Checks.InsertOnSubmit(check);
+                    try
+                    {
+                        database.SubmitChanges();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        return false;
+                    }
                 }
             }
-        }
 
-        public static List<Check> getChecksFromAcc(int accID)
-        {
-            List<Check> result = new List<Check>();
-            using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+            public static List<Check> getChecksFromAcc(int accID)
             {
-                var query = from a in database.Checks
-                            where (a.AccountID == accID)
-                            select a;
-
-                foreach (var a in query)
+                List<Check> result = new List<Check>();
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
-                    // Look at the Bank member so LINQ doesn't trim it from the Check object...
-                    var s = a.Bank;
-                    result.Add(a);
+                    var query = from a in database.Checks
+                                where (a.AccountID == accID)
+                                select a;
+
+                    foreach (var a in query)
+                    {
+                        // Look at the Bank member so LINQ doesn't trim it from the Check object...
+                        var s = a.Bank;
+                        result.Add(a);
+                    }
                 }
+                return result;
             }
-            return result;
         }
     }
 }
