@@ -114,6 +114,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TeamPenguinDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="UnitTest.cs" />
     <Compile Include="updateAccount.cs">
       <SubType>Form</SubType>
     </Compile>

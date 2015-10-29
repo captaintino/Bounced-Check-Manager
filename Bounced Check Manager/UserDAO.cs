@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace Bounced_Check_Manager
 {
@@ -59,21 +60,21 @@ namespace Bounced_Check_Manager
 
 
                 cmd.Connection = sqlConnection1;
-                cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
-                cmd.Parameters.Add("{Password}", SqlDbType.VarChar);
-                cmd.Parameters["{UNAME}"].Value = username;
-                cmd.Parameters["{Password}"].Value = password;
+                //cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
+                //cmd.Parameters.Add("{Password}", SqlDbType.VarChar);
+                //cmd.Parameters["{UNAME}"].Value = username;
+                //cmd.Parameters["{Password}"].Value = password;
 
                 sqlConnection1.Open();
 
                 int result = cmd.ExecuteNonQuery();
                 // TODO Figure out how to use parameters instead of direct replacement (DANGEROUS!!!!)
                 cmd.CommandText = @"EXEC master..sp_addsrvrolemember @loginame = N'{UNAME}', @rolename = N'sysadmin';".Replace("{UNAME}", username);
-                cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
-                cmd.Parameters["{UNAME}"].Value = username;
+                //cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
+                //cmd.Parameters["{UNAME}"].Value = username;
                 cmd.ExecuteNonQuery();
                 sqlConnection1.Close();
-                return result > 0;
+                return result == -1;
             }
 
             public static bool delete(User user)
@@ -91,6 +92,16 @@ namespace Bounced_Check_Manager
                 int result = cmd.ExecuteNonQuery();
                 sqlConnection1.Close();
                 return result == -1;
+            }
+
+            public static bool UnitTest()
+            {
+                Debug.Assert(create("UNITTESttttt1", "PasswordPassingTest123!"));
+                List<User> u = listAll();
+                Debug.Assert(u.Count > 0);
+                Debug.Assert(delete(u[u.Count - 1]));
+
+                return true;
             }
         }
     }

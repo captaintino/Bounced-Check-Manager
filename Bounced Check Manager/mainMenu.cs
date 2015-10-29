@@ -20,7 +20,6 @@ namespace Bounced_Check_Manager
                 InitializeComponent();
                 // Might be a better way to do this. Basically the table should start out refreshed, without
                 // the user clicking on anything.
-                refreshBtn_Click(null, null);
             }
 
             private void refreshBtn_Click(object sender, EventArgs e)
@@ -31,6 +30,7 @@ namespace Bounced_Check_Manager
                 //    string[] row = { acc.AccID.ToString(), acc.AccName.ToString(), acc.AccAddress.ToString(), acc.AccRoutNo.ToString(), acc.AccNo.ToString() };
                 //    dataGridView1.Rows.Add(row);
                 //}
+                Bounced_Check_Manager_Data_Layer.UnitTest.run();
             }
 
             private void createBtn_Click(object sender, EventArgs e)

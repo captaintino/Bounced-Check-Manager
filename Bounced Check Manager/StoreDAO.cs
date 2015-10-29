@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Bounced_Check_Manager
 {
@@ -25,6 +26,12 @@ namespace Bounced_Check_Manager
                     }
                 }
                 return list;
+            }
+
+            public static bool UnitTest()
+            {
+                Debug.Assert(LoadAll().Count > 0);
+                return true;
             }
         }
     }

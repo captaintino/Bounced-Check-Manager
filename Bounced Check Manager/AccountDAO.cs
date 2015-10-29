@@ -5,6 +5,7 @@ using System.ServiceModel.DomainServices.Server;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Linq.SqlClient;
+using System.Diagnostics;
 
 namespace Bounced_Check_Manager
 {
@@ -232,6 +233,23 @@ namespace Bounced_Check_Manager
 
                     return accounts;
                 }
+            }
+
+
+            public static bool UnitTest()
+            {
+                //Account acc = new Account();
+                //acc.AccountAddress = "TEST";
+                //acc.AccountFirstName = "TEST";
+                //acc.AccountLastName = "TEST";
+                //acc.AccountNum = 0;
+                //acc.AccountPhoneNum = 0;
+                //acc.AccountRoutingNum = 0;
+                //acc.BankID = 0;
+                //Debug.Assert(create(acc));
+                Debug.Assert(LoadAll().Count > 0);
+
+                return true;
             }
         }
     }
