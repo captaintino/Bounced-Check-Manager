@@ -113,6 +113,11 @@ namespace Bounced_Check_Manager
                 new Supervisor().Show();
             }
 
+            private void updatePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                new ChangePassword().Show();
+            }
+
 
         }
     }

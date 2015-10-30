@@ -57,6 +57,12 @@
       <DependentUpon>addAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="BankDAO.cs" />
+    <Compile Include="ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="CheckDAO.cs" />
     <Compile Include="CreateCheck.cs">
       <SubType>Form</SubType>
@@ -130,6 +136,9 @@
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
+    <EmbeddedResource Include="ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateCheck.resx">
       <DependentUpon>CreateCheck.cs</DependentUpon>
     </EmbeddedResource>

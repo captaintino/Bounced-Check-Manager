@@ -1625,10 +1625,10 @@ namespace Bounced_Check_Manager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CheckRow AddCheckRow(int CheckID, System.DateTime CheckDate, AccountRow parentAccountRowByFK_Check_Account, BankRow parentBankRowByFK_Check_Bank, int CheckNum, double CheckAmount, double CheckAmountOwed, System.DateTime CheckPaidDate, bool CheckDeleted, StoreRow parentStoreRowByFK_Check_Store, int CheckCashierID) {
+            public CheckRow AddCheckRow(System.DateTime CheckDate, AccountRow parentAccountRowByFK_Check_Account, BankRow parentBankRowByFK_Check_Bank, int CheckNum, double CheckAmount, double CheckAmountOwed, System.DateTime CheckPaidDate, bool CheckDeleted, StoreRow parentStoreRowByFK_Check_Store, int CheckCashierID) {
                 CheckRow rowCheckRow = ((CheckRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        CheckID,
+                        null,
                         CheckDate,
                         null,
                         null,
@@ -1717,6 +1717,9 @@ namespace Bounced_Check_Manager {
                 base.Columns.Add(this.columnCheckCashierID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCheckID}, true));
+                this.columnCheckID.AutoIncrement = true;
+                this.columnCheckID.AutoIncrementSeed = -1;
+                this.columnCheckID.AutoIncrementStep = -1;
                 this.columnCheckID.AllowDBNull = false;
                 this.columnCheckID.Unique = true;
                 this.columnCheckDate.AllowDBNull = false;

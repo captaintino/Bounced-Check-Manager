@@ -57,6 +57,29 @@ namespace Bounced_Check_Manager
                     UpdateList();
                 }
             }
+
+            private void ChangePasswordBtn_Click(object sender, EventArgs e)
+            {
+                if (UsersDataGridView.SelectedRows.Count != 1)
+                {
+                    MessageBox.Show("Please Select a singe login to change its password.");
+                    return;
+                }
+                int index = UsersDataGridView.SelectedRows[0].Index;
+                User user = users[index];
+                String password = Prompt.ShowDialog("Change Password to?", "");
+                if (password.Length < 2)
+                {
+                    MessageBox.Show("Invalid Password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    return;
+                }
+                bool success = Bounced_Check_Manager_Data_Layer.UserDAO.changePasswordAdmin(user, password);
+                if (success)
+                {
+                    MessageBox.Show("Updated password for " + user.name);
+                    UpdateList();
+                }
+            }
         }
     }
 }

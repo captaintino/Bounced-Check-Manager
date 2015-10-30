@@ -21,7 +21,9 @@ namespace Bounced_Check_Manager
                 SqlDataReader reader;
 
                 // Possible columns: sid, status, createdate, updatedate, accdate, totcpu, totio, spacelimitl, timelimit, resultlimit, name, dbname, password, denylogin, hasaccess, instname, isntgroup, isntuser, sysadmin, securityadmin, serveradmin, setupadmin, processadmin, diskadmin,dbcreator, bulkadmin, loginname
-                cmd.CommandText = @"SELECT sid, status, name, createdate, updatedate, accdate FROM sys.syslogins where password IS NOT NULL and hasaccess = 1 and isntname = 0 and not name like '##%##' and name not like 'sa';";
+                cmd.CommandText = @"SELECT sl.sid, sl.status, sl.name, sl.createdate, sl.updatedate, sl.accdate FROM sys.syslogins sl
+                                    join sys.sql_logins sql on sl.sid=sql.sid
+where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and sl.isntname = 0 and not sl.name like '##%##' and sl.name not like 'sa';";
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = sqlConnection1;
 
@@ -83,7 +85,7 @@ namespace Bounced_Check_Manager
                 SqlCommand cmd = new SqlCommand();
 
                 // TODO Figure out how to use parameters instead of direct replacement (DANGEROUS!!!!)
-                cmd.CommandText = @"DROP LOGIN {UNAME};".Replace("{UNAME}", user.name);
+                cmd.CommandText = @"ALTER LOGIN {UNAME} DISABLE;".Replace("{UNAME}", user.name);
 
                 cmd.Connection = sqlConnection1;
                 //cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
@@ -92,6 +94,73 @@ namespace Bounced_Check_Manager
                 int result = cmd.ExecuteNonQuery();
                 sqlConnection1.Close();
                 return result == -1;
+            }
+
+            public static bool changePasswordAdmin(User user, String password)
+            {
+                SqlConnection sqlConnection1 = new SqlConnection(Globals.connectionString);
+                SqlCommand cmd = new SqlCommand();
+
+                // TODO Figure out how to use parameters instead of direct replacement (DANGEROUS!!!!)
+                cmd.CommandText = @"ALTER LOGIN {UNAME} WITH PASSWORD = '{PASSWORD}';".Replace("{UNAME}", user.name).Replace("{PASSWORD}", password);
+
+                cmd.Connection = sqlConnection1;
+                //cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
+                //cmd.Parameters["{UNAME}"].Value = user.name;
+                sqlConnection1.Open();
+                int result = cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+                return result == -1;
+            }
+
+            public static bool changePasswordUser(User user, String oldPassword, String password)
+            {
+                SqlConnection sqlConnection1 = new SqlConnection(Globals.connectionString);
+                SqlCommand cmd = new SqlCommand();
+
+                // TODO Figure out how to use parameters instead of direct replacement (DANGEROUS!!!!)
+                cmd.CommandText = @"ALTER LOGIN {UNAME} WITH PASSWORD = '{PASSWORD}' OLD_PASSWORD = '{OLDPASSWORD}';".Replace("{UNAME}", user.name).Replace("{PASSWORD}", password).Replace("{OLDPASSWORD}",oldPassword);
+
+                cmd.Connection = sqlConnection1;
+                //cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
+                //cmd.Parameters["{UNAME}"].Value = user.name;
+                sqlConnection1.Open();
+                int result = cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+                return result == -1;
+            }
+
+            public static User find(String username)
+            {
+                User user = null;
+                SqlConnection sqlConnection1 = new SqlConnection(Globals.connectionString);
+                SqlCommand cmd = new SqlCommand();
+                SqlDataReader reader;
+
+                // Possible columns: sid, status, createdate, updatedate, accdate, totcpu, totio, spacelimitl, timelimit, resultlimit, name, dbname, password, denylogin, hasaccess, instname, isntgroup, isntuser, sysadmin, securityadmin, serveradmin, setupadmin, processadmin, diskadmin,dbcreator, bulkadmin, loginname
+                cmd.CommandText = @"SELECT sl.sid, sl.status, sl.name, sl.createdate, sl.updatedate, sl.accdate FROM sys.syslogins sl where name like '{UNAME}';".Replace("{UNAME}", username);
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = sqlConnection1;
+
+                sqlConnection1.Open();
+
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    //int sid = reader.GetInt16(0);
+                    int sid = 0;
+                    int status = reader.GetInt16(1);
+                    String name = reader.GetString(2);
+                    DateTime createdate = reader.GetDateTime(3);
+                    DateTime updatedate = reader.GetDateTime(4);
+                    DateTime accdate = reader.GetDateTime(5);
+                    user = new User(sid, status, name, createdate, updatedate, accdate);
+                }
+                reader.Close();
+                sqlConnection1.Close();
+                return user;
+
             }
 
             public static bool UnitTest()
