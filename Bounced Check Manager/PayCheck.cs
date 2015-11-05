@@ -17,7 +17,7 @@ namespace Bounced_Check_Manager
             public PayCheck()
             {
                 InitializeComponent();
-                string[] row = { "42", "Fail Bank", "blegh", "10/8/2015", "45.00", "23", "80.00" };
+                string[] row = { "1337 Hackzor", "123456789", "42", "Fail Bank", "blegh", "10/8/2015", "45.00", "80.00" };
                 checksGridView.Rows.Add(row);
             }
 
@@ -35,14 +35,20 @@ namespace Bounced_Check_Manager
 
             private void SearchBtn_Click(object sender, EventArgs e)
             {
+                int phone = 0;
+                if (PhoneNumberTxtBox.Text != "" && !Int32.TryParse(PhoneNumberTxtBox.Text, out phone))
+                {
+                    MessageBox.Show("Please enter a valid phone number!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    return;
+                }
                 checksGridView.Rows.Clear();
-                List<Account> accounts = Bounced_Check_Manager_Data_Layer.AccountDAO.findAny(AccNumberTxtBox.Text, FNameTxtBox.Text, LNameTextBox.Text, "", AddressTxtBox.Text, RoutingNumberTxtBox.Text);
+                List<Account> accounts = Bounced_Check_Manager_Data_Layer.AccountDAO.findAny(AccNumberTxtBox.Text, FNameTxtBox.Text, LNameTextBox.Text, PhoneNumberTxtBox.Text, AddressTxtBox.Text, RoutingNumberTxtBox.Text);
                 for (int i = 0; i < accounts.Count; i++)
                 {
                     List<Check> checks = Bounced_Check_Manager_Data_Layer.CheckDAO.getChecksFromAcc(accounts[i].AccountID);
                     foreach (Check check in checks)
                     {
-                        string[] row = { check.CheckNum.ToString(), check.Bank.BankName, check.Bank.BankAddress, check.CheckDate.ToString(), check.CheckAmount.ToString(), check.CheckCashierID.ToString(), check.CheckAmountOwed.ToString() };
+                        string[] row = { accounts[i].AccountFirstName + " " + accounts[i].AccountLastName, accounts[i].AccountPhoneNum.ToString(), check.CheckNum.ToString(), check.Bank.BankName, check.Bank.BankAddress, check.CheckDate.ToString(), check.CheckAmount.ToString("C"), check.CheckAmountOwed.ToString("C") };
                         checksGridView.Rows.Add(row);
                     }
                 }
