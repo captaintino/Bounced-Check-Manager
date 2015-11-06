@@ -21,7 +21,7 @@ namespace Bounced_Check_Manager
                 this.account = acc;
                 nameTextBox.Text = account.AccountFirstName;
                 addressTextBox.Text = account.AccountAddress;
-                //accountNumberTextBox.Text = account.AccNo.ToString();
+                accountNumberTextBox.Text = account.AccountNum.ToString();
                 routingNumberTextBox.Text = account.AccountRoutingNum.ToString();
             }
 
@@ -43,7 +43,7 @@ namespace Bounced_Check_Manager
                     }
                     this.account.AccountFirstName = nameTextBox.Text;
                     this.account.AccountAddress = addressTextBox.Text;
-                    //this.account.AccNo = accountNum;
+                    this.account.AccountNum = accountNum;
                     this.account.AccountRoutingNum = routing;
                     Bounced_Check_Manager_Data_Layer.AccountDAO.update(this.account);
                     this.Close();
@@ -52,6 +52,11 @@ namespace Bounced_Check_Manager
                 {
                     MessageBox.Show("Please fill out all fields");
                 }
+            }
+
+            private void cancel_Click(object sender, EventArgs e)
+            {
+                this.Close();
             }
         }
     }

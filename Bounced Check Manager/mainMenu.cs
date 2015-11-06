@@ -18,6 +18,7 @@ namespace Bounced_Check_Manager
             public mainMenu()
             {
                 InitializeComponent();
+                accounts = Bounced_Check_Manager_Data_Layer.AccountDAO.LoadAll();
                 // Might be a better way to do this. Basically the table should start out refreshed, without
                 // the user clicking on anything.
             }
@@ -66,7 +67,15 @@ namespace Bounced_Check_Manager
                 {
                     int id = Convert.ToInt32(row.Cells[0].Value);
                     Account acc = findAccount(id);
-                    new updateAccount(acc).Show();
+                    if (acc != null)
+                    {
+                        new updateAccount(acc).Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("There was an error locating the account");
+                        return;
+                    }
                 }
             }
 

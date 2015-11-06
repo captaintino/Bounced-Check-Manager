@@ -17,8 +17,21 @@ namespace Bounced_Check_Manager
             public PayCheck()
             {
                 InitializeComponent();
-                string[] row = { "1337 Hackzor", "123456789", "42", "Fail Bank", "blegh", "10/8/2015", "45.00", "80.00" };
-                checksGridView.Rows.Add(row);
+                //string[] row = { "1337 Hackzor", "123456789", "42", "Fail Bank", "blegh", "10/8/2015", "45.00", "80.00" };
+                //checksGridView.Rows.Add(row);
+
+                // To load all checks when the window comes up:
+                // Might consider making this an option
+                List<Account> accounts = Bounced_Check_Manager_Data_Layer.AccountDAO.findAny(AccNumberTxtBox.Text, FNameTxtBox.Text, LNameTextBox.Text, PhoneNumberTxtBox.Text, AddressTxtBox.Text, RoutingNumberTxtBox.Text);
+                for (int i = 0; i < accounts.Count; i++)
+                {
+                    List<Check> checks = Bounced_Check_Manager_Data_Layer.CheckDAO.getChecksFromAcc(accounts[i].AccountID);
+                    foreach (Check check in checks)
+                    {
+                        string[] row = { accounts[i].AccountFirstName + " " + accounts[i].AccountLastName, accounts[i].AccountPhoneNum.ToString(), check.CheckNum.ToString(), check.Bank.BankName, check.Bank.BankAddress, check.CheckDate.ToString(), check.CheckAmount.ToString("C"), check.CheckAmountOwed.ToString("C") };
+                        checksGridView.Rows.Add(row);
+                    }
+                }
             }
 
             private void PayBtn_Click(object sender, EventArgs e)
