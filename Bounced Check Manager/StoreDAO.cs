@@ -67,14 +67,14 @@ namespace Bounced_Check_Manager
             {
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
-                    var query = from a in database.Checks
+                    var query = from a in database.Stores
                                 where (a.StoreID == store.StoreID)
                                 select a;
                     // It seems to me that a single account renders the foreach unnecessary. However, I can't
                     // find another way to get the variable 'a' from 'query'.
                     foreach (var a in query)
                     {
-                        database.Checks.DeleteOnSubmit(a);
+                        database.Stores.DeleteOnSubmit(a);
                         try
                         {
                             database.SubmitChanges();
