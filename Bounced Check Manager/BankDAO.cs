@@ -29,7 +29,34 @@ namespace Bounced_Check_Manager
                 }
             }
 
-            // Find first bank having routing number of <routingNum>
+            // Delete Bank <bank> from database
+            public static bool delete(Bank bank)
+            {
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+                {
+                    var query = from a in database.Banks
+                                where (a.BankID == bank.BankID)
+                                select a;
+                    // It seems to me that a single account renders the foreach unnecessary. However, I can't
+                    // find another way to get the variable 'a' from 'query'.
+                    foreach (var a in query)
+                    {
+                        database.Banks.DeleteOnSubmit(a);
+                        try
+                        {
+                            database.SubmitChanges();
+                            return true;
+                        }
+                        catch (Exception e)
+                        {
+                            return false;
+                        }
+                    }
+                    return false;
+                }
+            }
+
+            // Find first bank having routing number of <routingNum> in database
             public static Bank find(int routingNum)
             {
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
@@ -47,17 +74,6 @@ namespace Bounced_Check_Manager
 
             public static bool UnitTest()
             {
-                //Account acc = new Account();
-                //acc.AccountAddress = "TEST";
-                //acc.AccountFirstName = "TEST";
-                //acc.AccountLastName = "TEST";
-                //acc.AccountNum = 0;
-                //acc.AccountPhoneNum = 0;
-                //acc.AccountRoutingNum = 0;
-                //acc.BankID = 0;
-                //Debug.Assert(create(acc));
-                //Debug.Assert(LoadAll().Count > 0);
-
                 return true;
             }
         }

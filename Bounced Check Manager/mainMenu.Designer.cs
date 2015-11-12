@@ -41,13 +41,6 @@
             this.createBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.accountIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountLastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountPhoneNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bankIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountRoutingNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -58,6 +51,14 @@
             this.accountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.accountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.accountTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.AccountTableAdapter();
+            this.accountIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountFirstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountLastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountPhoneNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bankIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountRoutingNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -194,68 +195,20 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.accountIDDataGridViewTextBoxColumn,
+            this.accountFirstNameDataGridViewTextBoxColumn,
             this.accountLastNameDataGridViewTextBoxColumn,
             this.accountPhoneNumDataGridViewTextBoxColumn,
             this.accountAddressDataGridViewTextBoxColumn,
             this.accountNumDataGridViewTextBoxColumn,
             this.bankIDDataGridViewTextBoxColumn,
             this.accountRoutingNumDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.accountBindingSource2;
+            this.dataGridView1.DataSource = this.accountBindingSource1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(253, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(525, 485);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // accountIDDataGridViewTextBoxColumn
-            // 
-            this.accountIDDataGridViewTextBoxColumn.DataPropertyName = "AccountID";
-            this.accountIDDataGridViewTextBoxColumn.HeaderText = "AccountID";
-            this.accountIDDataGridViewTextBoxColumn.Name = "accountIDDataGridViewTextBoxColumn";
-            this.accountIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountLastNameDataGridViewTextBoxColumn
-            // 
-            this.accountLastNameDataGridViewTextBoxColumn.DataPropertyName = "AccountLastName";
-            this.accountLastNameDataGridViewTextBoxColumn.HeaderText = "AccountLastName";
-            this.accountLastNameDataGridViewTextBoxColumn.Name = "accountLastNameDataGridViewTextBoxColumn";
-            this.accountLastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountPhoneNumDataGridViewTextBoxColumn
-            // 
-            this.accountPhoneNumDataGridViewTextBoxColumn.DataPropertyName = "AccountPhoneNum";
-            this.accountPhoneNumDataGridViewTextBoxColumn.HeaderText = "AccountPhoneNum";
-            this.accountPhoneNumDataGridViewTextBoxColumn.Name = "accountPhoneNumDataGridViewTextBoxColumn";
-            this.accountPhoneNumDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountAddressDataGridViewTextBoxColumn
-            // 
-            this.accountAddressDataGridViewTextBoxColumn.DataPropertyName = "AccountAddress";
-            this.accountAddressDataGridViewTextBoxColumn.HeaderText = "AccountAddress";
-            this.accountAddressDataGridViewTextBoxColumn.Name = "accountAddressDataGridViewTextBoxColumn";
-            this.accountAddressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountNumDataGridViewTextBoxColumn
-            // 
-            this.accountNumDataGridViewTextBoxColumn.DataPropertyName = "AccountNum";
-            this.accountNumDataGridViewTextBoxColumn.HeaderText = "AccountNum";
-            this.accountNumDataGridViewTextBoxColumn.Name = "accountNumDataGridViewTextBoxColumn";
-            this.accountNumDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bankIDDataGridViewTextBoxColumn
-            // 
-            this.bankIDDataGridViewTextBoxColumn.DataPropertyName = "BankID";
-            this.bankIDDataGridViewTextBoxColumn.HeaderText = "BankID";
-            this.bankIDDataGridViewTextBoxColumn.Name = "bankIDDataGridViewTextBoxColumn";
-            this.bankIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountRoutingNumDataGridViewTextBoxColumn
-            // 
-            this.accountRoutingNumDataGridViewTextBoxColumn.DataPropertyName = "AccountRoutingNum";
-            this.accountRoutingNumDataGridViewTextBoxColumn.HeaderText = "AccountRoutingNum";
-            this.accountRoutingNumDataGridViewTextBoxColumn.Name = "accountRoutingNumDataGridViewTextBoxColumn";
-            this.accountRoutingNumDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // accountBindingSource2
             // 
@@ -321,6 +274,70 @@
             // 
             this.accountTableAdapter.ClearBeforeFill = true;
             // 
+            // accountIDDataGridViewTextBoxColumn
+            // 
+            this.accountIDDataGridViewTextBoxColumn.DataPropertyName = "AccountID";
+            this.accountIDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.accountIDDataGridViewTextBoxColumn.Name = "accountIDDataGridViewTextBoxColumn";
+            this.accountIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.accountIDDataGridViewTextBoxColumn.Width = 25;
+            // 
+            // accountFirstNameDataGridViewTextBoxColumn
+            // 
+            this.accountFirstNameDataGridViewTextBoxColumn.DataPropertyName = "AccountFirstName";
+            this.accountFirstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
+            this.accountFirstNameDataGridViewTextBoxColumn.Name = "accountFirstNameDataGridViewTextBoxColumn";
+            this.accountFirstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.accountFirstNameDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // accountLastNameDataGridViewTextBoxColumn
+            // 
+            this.accountLastNameDataGridViewTextBoxColumn.DataPropertyName = "AccountLastName";
+            this.accountLastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
+            this.accountLastNameDataGridViewTextBoxColumn.Name = "accountLastNameDataGridViewTextBoxColumn";
+            this.accountLastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.accountLastNameDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // accountPhoneNumDataGridViewTextBoxColumn
+            // 
+            this.accountPhoneNumDataGridViewTextBoxColumn.DataPropertyName = "AccountPhoneNum";
+            this.accountPhoneNumDataGridViewTextBoxColumn.HeaderText = "Phone #";
+            this.accountPhoneNumDataGridViewTextBoxColumn.Name = "accountPhoneNumDataGridViewTextBoxColumn";
+            this.accountPhoneNumDataGridViewTextBoxColumn.ReadOnly = true;
+            this.accountPhoneNumDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // accountAddressDataGridViewTextBoxColumn
+            // 
+            this.accountAddressDataGridViewTextBoxColumn.DataPropertyName = "AccountAddress";
+            this.accountAddressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.accountAddressDataGridViewTextBoxColumn.Name = "accountAddressDataGridViewTextBoxColumn";
+            this.accountAddressDataGridViewTextBoxColumn.ReadOnly = true;
+            this.accountAddressDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // accountNumDataGridViewTextBoxColumn
+            // 
+            this.accountNumDataGridViewTextBoxColumn.DataPropertyName = "AccountNum";
+            this.accountNumDataGridViewTextBoxColumn.HeaderText = "Account Number";
+            this.accountNumDataGridViewTextBoxColumn.Name = "accountNumDataGridViewTextBoxColumn";
+            this.accountNumDataGridViewTextBoxColumn.ReadOnly = true;
+            this.accountNumDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // bankIDDataGridViewTextBoxColumn
+            // 
+            this.bankIDDataGridViewTextBoxColumn.DataPropertyName = "BankID";
+            this.bankIDDataGridViewTextBoxColumn.HeaderText = "BankID";
+            this.bankIDDataGridViewTextBoxColumn.Name = "bankIDDataGridViewTextBoxColumn";
+            this.bankIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bankIDDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // accountRoutingNumDataGridViewTextBoxColumn
+            // 
+            this.accountRoutingNumDataGridViewTextBoxColumn.DataPropertyName = "AccountRoutingNum";
+            this.accountRoutingNumDataGridViewTextBoxColumn.HeaderText = "Routing Number";
+            this.accountRoutingNumDataGridViewTextBoxColumn.Name = "accountRoutingNumDataGridViewTextBoxColumn";
+            this.accountRoutingNumDataGridViewTextBoxColumn.ReadOnly = true;
+            this.accountRoutingNumDataGridViewTextBoxColumn.Width = 85;
+            // 
             // mainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,19 +379,20 @@
             private System.Windows.Forms.BindingSource accountBindingSource;
             private TeamPenguinDataSetTableAdapters.AccountTableAdapter accountTableAdapter;
             private System.Windows.Forms.BindingSource accountBindingSource1;
-            private System.Windows.Forms.DataGridViewTextBoxColumn accountIDDataGridViewTextBoxColumn;
-            private System.Windows.Forms.DataGridViewTextBoxColumn accountLastNameDataGridViewTextBoxColumn;
-            private System.Windows.Forms.DataGridViewTextBoxColumn accountPhoneNumDataGridViewTextBoxColumn;
-            private System.Windows.Forms.DataGridViewTextBoxColumn accountAddressDataGridViewTextBoxColumn;
-            private System.Windows.Forms.DataGridViewTextBoxColumn accountNumDataGridViewTextBoxColumn;
-            private System.Windows.Forms.DataGridViewTextBoxColumn bankIDDataGridViewTextBoxColumn;
-            private System.Windows.Forms.DataGridViewTextBoxColumn accountRoutingNumDataGridViewTextBoxColumn;
             private System.Windows.Forms.MenuStrip menuStrip1;
             private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
             private System.Windows.Forms.ToolStripMenuItem updatePasswordToolStripMenuItem;
             private System.Windows.Forms.ToolStripMenuItem supervisorToolStripMenuItem;
             private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
             private System.Windows.Forms.BindingSource accountBindingSource2;
+            private System.Windows.Forms.DataGridViewTextBoxColumn accountIDDataGridViewTextBoxColumn;
+            private System.Windows.Forms.DataGridViewTextBoxColumn accountFirstNameDataGridViewTextBoxColumn;
+            private System.Windows.Forms.DataGridViewTextBoxColumn accountLastNameDataGridViewTextBoxColumn;
+            private System.Windows.Forms.DataGridViewTextBoxColumn accountPhoneNumDataGridViewTextBoxColumn;
+            private System.Windows.Forms.DataGridViewTextBoxColumn accountAddressDataGridViewTextBoxColumn;
+            private System.Windows.Forms.DataGridViewTextBoxColumn accountNumDataGridViewTextBoxColumn;
+            private System.Windows.Forms.DataGridViewTextBoxColumn bankIDDataGridViewTextBoxColumn;
+            private System.Windows.Forms.DataGridViewTextBoxColumn accountRoutingNumDataGridViewTextBoxColumn;
         }
     }
 

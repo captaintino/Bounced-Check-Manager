@@ -18,13 +18,6 @@ namespace Bounced_Check_Manager
             public CreateCheck()
             {
                 InitializeComponent();
-                //List<Store> stores = StoreDAO.LoadAll();
-                //stores.Sort();
-                //foreach (var store in stores)
-                //{
-                //    var c = StoreNumberComboBox;
-                //    c.
-                //}
             }
 
             private void AutofillBtn_Click(object sender, EventArgs e)
@@ -150,9 +143,10 @@ namespace Bounced_Check_Manager
 
                     check.CheckDate = CheckDatePicker.Value;
                     check.CheckNum = Convert.ToInt32(CheckNumberTxtBox.Text);
-                    check.CheckAmount = Convert.ToInt32(CheckAmountTxtBox.Text);
+                    check.CheckAmount = Convert.ToDouble(CheckAmountTxtBox.Text);
                     check.CheckAmountOwed = check.CheckAmount;
                     check.CheckDeleted = false;
+                    check.CheckCashierID = Convert.ToInt32(CashierNumberTxtBox.Text);
                     if (!Bounced_Check_Manager_Data_Layer.CheckDAO.create(check))
                     {
                         MessageBox.Show("Failed to create Check in database.");
@@ -211,21 +205,22 @@ namespace Bounced_Check_Manager
             private bool validateCheck()
             {
                 bool ret = true;
-                int toss;
+                int itoss;
+                float ftoss;
                 // Check Amount
-                if (CheckAmountTxtBox.Text == "" || !Int32.TryParse(CheckAmountTxtBox.Text, out toss))
+                if (CheckAmountTxtBox.Text == "" || !float.TryParse(CheckAmountTxtBox.Text, out ftoss))
                 {
                     MessageBox.Show("Check Amount either missing or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                     ret = false;
                 }
                 // Cashier Number
-                if (CashierNumberTxtBox.Text == "" || !Int32.TryParse(CashierNumberTxtBox.Text, out toss))
+                if (CashierNumberTxtBox.Text == "" || !Int32.TryParse(CashierNumberTxtBox.Text, out itoss))
                 {
                     MessageBox.Show("Cashier Number either missing or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                     ret = false;
                 }
                 // Check Number
-                if (CheckNumberTxtBox.Text == "" || !Int32.TryParse(CheckNumberTxtBox.Text, out toss))
+                if (CheckNumberTxtBox.Text == "" || !Int32.TryParse(CheckNumberTxtBox.Text, out itoss))
                 {
                     MessageBox.Show("Check Number either missing or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                     ret = false;

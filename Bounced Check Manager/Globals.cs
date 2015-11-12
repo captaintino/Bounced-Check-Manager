@@ -8,7 +8,9 @@ namespace Bounced_Check_Manager
 {
     public static class Globals
     {
+        // Connection String used when accessing the database
         public static String connectionString = "";
+        // Username of current user
         public static String username = "";
     }
 }

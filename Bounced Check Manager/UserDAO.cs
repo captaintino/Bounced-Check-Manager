@@ -13,6 +13,7 @@ namespace Bounced_Check_Manager
     {
         class UserDAO
         {
+            // Get list of all of the Users
             public static List<User> listAll()
             {
                 List<User> users = new List<User>();
@@ -51,7 +52,7 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
                 return users;
             }
 
-            // Create User <user>
+            // Create User <user> on database
             public static bool create(String username, String password)
             {
                 SqlConnection sqlConnection1 = new SqlConnection(Globals.connectionString);
@@ -79,6 +80,7 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
                 return result == -1;
             }
 
+            // Mark User <user> as disabled on database
             public static bool delete(User user)
             {
                 SqlConnection sqlConnection1 = new SqlConnection(Globals.connectionString);
@@ -96,6 +98,7 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
                 return result == -1;
             }
 
+            // Changes password of <user> to <password> in admin mode
             public static bool changePasswordAdmin(User user, String password)
             {
                 SqlConnection sqlConnection1 = new SqlConnection(Globals.connectionString);
@@ -113,6 +116,7 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
                 return result == -1;
             }
 
+            // Changes password of <user> to <password> using <oldPassword> for confirmation
             public static bool changePasswordUser(User user, String oldPassword, String password)
             {
                 SqlConnection sqlConnection1 = new SqlConnection(Globals.connectionString);
@@ -130,6 +134,7 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
                 return result == -1;
             }
 
+            // Find User with name of <username>
             public static User find(String username)
             {
                 User user = null;
@@ -168,7 +173,21 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
                 Debug.Assert(create("UNITTESttttt1", "PasswordPassingTest123!"));
                 List<User> u = listAll();
                 Debug.Assert(u.Count > 0);
-                Debug.Assert(delete(u[u.Count - 1]));
+                User user = u[u.Count - 1];
+                Debug.Assert(delete(user));
+                SqlConnection sqlConnection1 = new SqlConnection(Globals.connectionString);
+                SqlCommand cmd = new SqlCommand();
+
+                // TODO Figure out how to use parameters instead of direct replacement (DANGEROUS!!!!)
+                cmd.CommandText = @"DROP LOGIN {UNAME};".Replace("{UNAME}", user.name);
+
+                cmd.Connection = sqlConnection1;
+                //cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
+                //cmd.Parameters["{UNAME}"].Value = user.name;
+                sqlConnection1.Open();
+                int result = cmd.ExecuteNonQuery();
+                sqlConnection1.Close();
+
 
                 return true;
             }
