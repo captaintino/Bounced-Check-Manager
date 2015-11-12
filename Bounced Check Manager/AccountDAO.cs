@@ -31,7 +31,7 @@ namespace Bounced_Check_Manager
                 return list;
             }
 
-            // Update Account <acc>
+            // Update Account <acc> in database
             public static bool update(Account acc)
             {
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
@@ -65,7 +65,7 @@ namespace Bounced_Check_Manager
                 }
             }
 
-            // Delete Account <acc>
+            // Delete Account <acc> from database
             public static bool delete(Account acc)
             {
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
@@ -238,15 +238,6 @@ namespace Bounced_Check_Manager
 
             public static bool UnitTest()
             {
-                //Account acc = new Account();
-                //acc.AccountAddress = "TEST";
-                //acc.AccountFirstName = "TEST";
-                //acc.AccountLastName = "TEST";
-                //acc.AccountNum = 0;
-                //acc.AccountPhoneNum = 0;
-                //acc.AccountRoutingNum = 0;
-                //acc.BankID = 0;
-                //Debug.Assert(create(acc));
                 Debug.Assert(LoadAll().Count > 0);
 
                 return true;

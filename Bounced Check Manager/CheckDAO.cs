@@ -29,6 +29,34 @@ namespace Bounced_Check_Manager
                 }
             }
 
+            // Delete Check <check> from database
+            public static bool delete(Check check)
+            {
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+                {
+                    var query = from c in database.Checks
+                                where (c.CheckID == check.CheckID)
+                                select c;
+                    // It seems to me that a single account renders the foreach unnecessary. However, I can't
+                    // find another way to get the variable 'a' from 'query'.
+                    foreach (var c in query)
+                    {
+                        database.Checks.DeleteOnSubmit(c);
+                        try
+                        {
+                            database.SubmitChanges();
+                            return true;
+                        }
+                        catch (Exception e)
+                        {
+                            return false;
+                        }
+                    }
+                    return false;
+                }
+            }
+
+            // Returns all checks in the database associated with <accId>
             public static List<Check> getChecksFromAcc(int accID)
             {
                 List<Check> result = new List<Check>();
@@ -50,17 +78,6 @@ namespace Bounced_Check_Manager
 
             public static bool UnitTest()
             {
-                //Account acc = new Account();
-                //acc.AccountAddress = "TEST";
-                //acc.AccountFirstName = "TEST";
-                //acc.AccountLastName = "TEST";
-                //acc.AccountNum = 0;
-                //acc.AccountPhoneNum = 0;
-                //acc.AccountRoutingNum = 0;
-                //acc.BankID = 0;
-                //Debug.Assert(create(acc));
-                //Debug.Assert(LoadAll().Count > 0);
-
                 return true;
             }
         }
