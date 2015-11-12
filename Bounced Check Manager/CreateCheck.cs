@@ -150,7 +150,7 @@ namespace Bounced_Check_Manager
 
                     check.CheckDate = CheckDatePicker.Value;
                     check.CheckNum = Convert.ToInt32(CheckNumberTxtBox.Text);
-                    check.CheckAmount = Convert.ToInt32(CheckAmountTxtBox.Text);
+                    check.CheckAmount = Convert.ToDouble(CheckAmountTxtBox.Text);
                     check.CheckAmountOwed = check.CheckAmount;
                     check.CheckDeleted = false;
                     if (!Bounced_Check_Manager_Data_Layer.CheckDAO.create(check))
@@ -212,8 +212,9 @@ namespace Bounced_Check_Manager
             {
                 bool ret = true;
                 int toss;
+                double tossdouble;
                 // Check Amount
-                if (CheckAmountTxtBox.Text == "" || !Int32.TryParse(CheckAmountTxtBox.Text, out toss))
+                if (CheckAmountTxtBox.Text == "" || !Double.TryParse(CheckAmountTxtBox.Text, out tossdouble))
                 {
                     MessageBox.Show("Check Amount either missing or invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                     ret = false;

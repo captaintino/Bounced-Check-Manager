@@ -22,6 +22,7 @@ namespace Bounced_Check_Manager
 
                 // To load all checks when the window comes up:
                 // Might consider making this an option
+                /*
                 List<Account> accounts = Bounced_Check_Manager_Data_Layer.AccountDAO.findAny(AccNumberTxtBox.Text, FNameTxtBox.Text, LNameTextBox.Text, PhoneNumberTxtBox.Text, AddressTxtBox.Text, RoutingNumberTxtBox.Text);
                 for (int i = 0; i < accounts.Count; i++)
                 {
@@ -31,12 +32,15 @@ namespace Bounced_Check_Manager
                         string[] row = { accounts[i].AccountFirstName + " " + accounts[i].AccountLastName, accounts[i].AccountPhoneNum.ToString(), check.CheckNum.ToString(), check.Bank.BankName, check.Bank.BankAddress, check.CheckDate.ToString(), check.CheckAmount.ToString("C"), check.CheckAmountOwed.ToString("C") };
                         checksGridView.Rows.Add(row);
                     }
-                }
+                }*/
             }
 
             private void PayBtn_Click(object sender, EventArgs e)
             {
-                String prompt = Prompt.ShowDialog("How much to pay?", "0.00");
+                if (Prompt.ShowCheckDialog("Pay full amount?", "Pay"))
+                {
+                    // Pay the check off.
+                }
             }
 
             private void PayCheck_Load(object sender, EventArgs e)
@@ -88,6 +92,26 @@ namespace Bounced_Check_Manager
                 prompt.AcceptButton = confirmation;
 
                 return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+            }
+            public static bool ShowCheckDialog(string text, string caption)
+            {
+                Form prompt = new Form();
+                prompt.Width = 170;
+                prompt.Height = 150;
+                prompt.FormBorderStyle = FormBorderStyle.FixedDialog;
+                prompt.Text = caption;
+                prompt.StartPosition = FormStartPosition.CenterScreen;
+                Label textLabel = new Label() { Left = 10, Top = 20, Text = text };
+                Button confirmation = new Button() { Text = "Yes", Left = 80, Width = 60, Top = 70, DialogResult = DialogResult.OK };
+                Button cancellation = new Button() { Text = "No", Left = 10, Width = 60, Top = 70, DialogResult = DialogResult.Cancel };
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+                cancellation.Click += (sender, e) => { prompt.Close(); };
+                prompt.Controls.Add(confirmation);
+                prompt.Controls.Add(cancellation);
+                prompt.Controls.Add(textLabel);
+                prompt.AcceptButton = confirmation;
+
+                return prompt.ShowDialog() == DialogResult.OK;
             }
         }
     }

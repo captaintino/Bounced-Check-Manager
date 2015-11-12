@@ -10,5 +10,6 @@ namespace Bounced_Check_Manager
     {
         public static String connectionString = "";
         public static String username = "";
+        public static bool isSupervisor;
     }
 }

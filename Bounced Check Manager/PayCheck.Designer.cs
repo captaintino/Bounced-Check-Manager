@@ -35,8 +35,10 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.LNameTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.FNameTxtBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.PhoneNumberTxtBox = new System.Windows.Forms.TextBox();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
@@ -61,8 +63,6 @@
             this.DateIssued = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountOwed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.PhoneNumberTxtBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -124,38 +124,56 @@
             // LNameTextBox
             // 
             this.LNameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.LNameTextBox.Location = new System.Drawing.Point(312, 19);
+            this.LNameTextBox.Location = new System.Drawing.Point(309, 19);
             this.LNameTextBox.Name = "LNameTextBox";
-            this.LNameTextBox.Size = new System.Drawing.Size(97, 20);
+            this.LNameTextBox.Size = new System.Drawing.Size(96, 20);
             this.LNameTextBox.TabIndex = 13;
             // 
             // label9
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(43, 22);
+            this.label9.Location = new System.Drawing.Point(42, 22);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 13);
             this.label9.TabIndex = 10;
             this.label9.Text = "First Name";
             // 
+            // FNameTxtBox
+            // 
+            this.FNameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.FNameTxtBox.Location = new System.Drawing.Point(105, 19);
+            this.FNameTxtBox.Name = "FNameTxtBox";
+            this.FNameTxtBox.Size = new System.Drawing.Size(96, 20);
+            this.FNameTxtBox.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(245, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Last Name";
+            // 
             // label10
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(464, 22);
+            this.label10.Location = new System.Drawing.Point(459, 22);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(48, 13);
             this.label10.TabIndex = 11;
             this.label10.Text = "Phone #";
             // 
-            // FNameTxtBox
+            // PhoneNumberTxtBox
             // 
-            this.FNameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.FNameTxtBox.Location = new System.Drawing.Point(106, 19);
-            this.FNameTxtBox.Name = "FNameTxtBox";
-            this.FNameTxtBox.Size = new System.Drawing.Size(97, 20);
-            this.FNameTxtBox.TabIndex = 12;
+            this.PhoneNumberTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PhoneNumberTxtBox.Location = new System.Drawing.Point(513, 19);
+            this.PhoneNumberTxtBox.Name = "PhoneNumberTxtBox";
+            this.PhoneNumberTxtBox.Size = new System.Drawing.Size(97, 20);
+            this.PhoneNumberTxtBox.TabIndex = 15;
             // 
             // splitContainer3
             // 
@@ -342,6 +360,7 @@
             this.PhoneNumber.HeaderText = "Phone #";
             this.PhoneNumber.Name = "PhoneNumber";
             this.PhoneNumber.ReadOnly = true;
+            this.PhoneNumber.Width = 70;
             // 
             // CheckNumber
             // 
@@ -349,7 +368,7 @@
             this.CheckNumber.HeaderText = "Check Number";
             this.CheckNumber.Name = "CheckNumber";
             this.CheckNumber.ReadOnly = true;
-            this.CheckNumber.Width = 60;
+            this.CheckNumber.Width = 50;
             // 
             // BankName
             // 
@@ -380,7 +399,7 @@
             this.Amount.HeaderText = "Amount";
             this.Amount.Name = "Amount";
             this.Amount.ReadOnly = true;
-            this.Amount.Width = 60;
+            this.Amount.Width = 50;
             // 
             // AmountOwed
             // 
@@ -388,25 +407,7 @@
             this.AmountOwed.HeaderText = "Amount Owed";
             this.AmountOwed.Name = "AmountOwed";
             this.AmountOwed.ReadOnly = true;
-            this.AmountOwed.Width = 60;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(248, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Last Name";
-            // 
-            // PhoneNumberTxtBox
-            // 
-            this.PhoneNumberTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.PhoneNumberTxtBox.Location = new System.Drawing.Point(518, 19);
-            this.PhoneNumberTxtBox.Name = "PhoneNumberTxtBox";
-            this.PhoneNumberTxtBox.Size = new System.Drawing.Size(97, 20);
-            this.PhoneNumberTxtBox.TabIndex = 15;
+            this.AmountOwed.Width = 50;
             // 
             // PayCheck
             // 
@@ -465,6 +466,8 @@
             private System.Windows.Forms.BindingSource checkBindingSource;
             private TeamPenguinDataSetTableAdapters.CheckTableAdapter checkTableAdapter;
             private System.Windows.Forms.BindingSource checkBindingSource1;
+            private System.Windows.Forms.Label label1;
+            private System.Windows.Forms.TextBox PhoneNumberTxtBox;
             private System.Windows.Forms.DataGridViewTextBoxColumn AccName;
             private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
             private System.Windows.Forms.DataGridViewTextBoxColumn CheckNumber;
@@ -473,8 +476,6 @@
             private System.Windows.Forms.DataGridViewTextBoxColumn DateIssued;
             private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
             private System.Windows.Forms.DataGridViewTextBoxColumn AmountOwed;
-            private System.Windows.Forms.Label label1;
-            private System.Windows.Forms.TextBox PhoneNumberTxtBox;
         }
     }
 }
