@@ -168,6 +168,20 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
 
             }
 
+            // Attempt to login to server with <username> and <password> and update the relevant global variables <username> and <connectionString>
+            public static bool login(string username, string password)
+            {
+                String connectionString = "Data Source=CPSLABSERVER\\TEAMPENGUIN;Initial Catalog=TeamPenguin;Persist Security Info=True;User ID=" + username + ";Password=" + password;
+                DataClasses1DataContext database = new DataClasses1DataContext(connectionString);
+                if (!database.DatabaseExists())
+                {
+                    return false;
+                }
+                Globals.connectionString = connectionString;
+                Globals.username = username;
+                return true;
+            }
+
             public static bool UnitTest()
             {
                 Debug.Assert(create("UNITTESttttt1", "PasswordPassingTest123!"));
