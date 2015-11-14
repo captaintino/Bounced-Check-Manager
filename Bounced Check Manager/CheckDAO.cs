@@ -29,6 +29,35 @@ namespace Bounced_Check_Manager
                 }
             }
 
+            public static bool update(Check check)
+            {
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+                {
+                    var query = from a in database.Checks
+                                where (a.CheckID == check.CheckID)
+                                select a;
+                    foreach (var a in query)
+                    {
+                        a.CheckAmount = check.CheckAmount;
+                        a.CheckAmountOwed = check.CheckAmountOwed;
+                        a.CheckCashierID = check.CheckCashierID;
+                        a.CheckDate = check.CheckDate;
+                        a.CheckDeleted = check.CheckDeleted;
+                        a.CheckNum = check.CheckNum;
+                        a.CheckPaidDate = check.CheckPaidDate;
+                    }
+                    try
+                    {
+                        database.SubmitChanges();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        return false;
+                    }
+                }
+            }
+
             // Delete Check <check> from database
             public static bool delete(Check check)
             {
@@ -70,6 +99,7 @@ namespace Bounced_Check_Manager
                     {
                         // Look at the Bank member so LINQ doesn't trim it from the Check object...
                         var s = a.Bank;
+                        var t = a.Account;
                         result.Add(a);
                     }
                 }
