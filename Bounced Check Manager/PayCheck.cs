@@ -71,7 +71,8 @@ namespace Bounced_Check_Manager
                 List<Account> accounts = Bounced_Check_Manager_Data_Layer.AccountDAO.findAny(AccNumberTxtBox.Text, FNameTxtBox.Text, LNameTextBox.Text, PhoneNumberTxtBox.Text, AddressTxtBox.Text, RoutingNumberTxtBox.Text);
                 for (int i = 0; i < accounts.Count; i++)
                 {
-                    checks = Bounced_Check_Manager_Data_Layer.CheckDAO.getChecksFromAcc(accounts[i].AccountID);
+                    List<Check> newChecks = Bounced_Check_Manager_Data_Layer.CheckDAO.getChecksFromAcc(accounts[i].AccountID);
+                    checks.AddRange(newChecks);
                 }
                 foreach (Check check in checks)
                 {
