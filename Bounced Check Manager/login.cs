@@ -22,15 +22,11 @@ namespace Bounced_Check_Manager
 
             private void loginBtn_Click(object sender, EventArgs e)
             {
-                String connectionString = "Data Source=CPSLABSERVER\\TEAMPENGUIN;Initial Catalog=TeamPenguin;Persist Security Info=True;User ID=" + username.Text + ";Password=" + password.Text;
-                DataClasses1DataContext database = new DataClasses1DataContext(connectionString);
-                if (!database.DatabaseExists())
+                if (!Bounced_Check_Manager_Data_Layer.UserDAO.login(username.Text, password.Text))
                 {
                     MessageBox.Show("Unable to reach database. Invalid Login/Password", "Critical Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                Globals.connectionString = connectionString;
-                Globals.username = username.Text;
                 this.loggedIn = true;
                 this.Close();
             }
