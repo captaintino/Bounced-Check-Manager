@@ -31,66 +31,35 @@ namespace Bounced_Check_Manager
                         box.Enabled = true;
                     }
                     AutofillBtn.Text = "Autofill";
+                    ClearBtn.Enabled = true;
                     return;
                 }
-                if (RoutingNumberTxtBox.Text != "")
+                var selecter = new Bounced_Check_Manager_UI_Layer.SelectAccount(AccNumberTxtBox.Text, FNameTxtBox.Text, LNameTxtBox.Text, PhoneNumberTxtBox.Text, AddressTxtBox.Text, RoutingNumberTxtBox.Text);
+                selecter.ShowDialog();
+                Account acc = selecter.returnAccount;
+                if (acc != null)
                 {
-                    if (AccNumberTxtBox.Text != "")
-                    {
-                        // Lookup Account and related bank information and autofill the UI.
-                        Account acc = Bounced_Check_Manager_Data_Layer.AccountDAO.find(Convert.ToInt32(RoutingNumberTxtBox.Text), Convert.ToInt32(AccNumberTxtBox.Text));
-                        if (acc != null)
-                        {
-                            // Autofill values
-                            FNameTxtBox.Text = acc.AccountFirstName;
-                            LNameTxtBox.Text = acc.AccountLastName;
-                            AddressTxtBox.Text = acc.AccountAddress;
-                            PhoneNumberTxtBox.Text = acc.AccountPhoneNum.ToString();
-                            Bank bank = acc.Bank;
-                            BankAddressTxtBox.Text = bank.BankAddress;
-                            BankNameTxtBox.Text = bank.BankName;
+                    // Autofill values
+                    FNameTxtBox.Text = acc.AccountFirstName;
+                    LNameTxtBox.Text = acc.AccountLastName;
+                    AddressTxtBox.Text = acc.AccountAddress;
+                    PhoneNumberTxtBox.Text = acc.AccountPhoneNum.ToString();
+                    Bank bank = acc.Bank;
+                    BankAddressTxtBox.Text = bank.BankAddress;
+                    BankNameTxtBox.Text = bank.BankName;
+                    RoutingNumberTxtBox.Text = acc.AccountRoutingNum.ToString();
+                    AccNumberTxtBox.Text = acc.AccountNum.ToString();
 
-                            // Lock the text boxes
-                            TextBox[] textBoxes = { FNameTxtBox, LNameTxtBox, AddressTxtBox, RoutingNumberTxtBox, AccNumberTxtBox, BankAddressTxtBox, BankNameTxtBox, PhoneNumberTxtBox, };
-                            foreach (var box in textBoxes)
-                            {
-                                box.Enabled = false;
-                            }
-                            AutofillBtn.Text = "Unlock";
-                        }
-                        else
-                        {
-                            MessageBox.Show("No Account found");
-                        }
-                    }
-                    else
+                    // Lock the text boxes
+                    TextBox[] textBoxes = { FNameTxtBox, LNameTxtBox, AddressTxtBox, RoutingNumberTxtBox, AccNumberTxtBox, BankAddressTxtBox, BankNameTxtBox, PhoneNumberTxtBox, };
+                    foreach (var box in textBoxes)
                     {
-                        // Otherwise just look up the bank information if no account number is provided
-                        Bank bank = Bounced_Check_Manager_Data_Layer.BankDAO.find(Convert.ToInt32(RoutingNumberTxtBox.Text));
-                        if (bank != null)
-                        {
-                            // Autofill values
-                            BankAddressTxtBox.Text = bank.BankAddress;
-                            BankNameTxtBox.Text = bank.BankName;
-
-                            // Lock the text boxes
-                            TextBox[] textBoxes = { RoutingNumberTxtBox, BankAddressTxtBox, BankNameTxtBox };
-                            foreach (var box in textBoxes)
-                            {
-                                box.Enabled = false;
-                            }
-                            AutofillBtn.Text = "Unlock";
-                        }
-                        else
-                        {
-                            MessageBox.Show("No Bank found");
-                        }
+                        box.Enabled = false;
                     }
+                    AutofillBtn.Text = "Unlock";
+                    ClearBtn.Enabled = false;
                 }
-                else
-                {
-                    MessageBox.Show("Please insert routing number or routing number and account number");
-                }
+                return;
             }
 
             private void CancelBtn_Click(object sender, EventArgs e)
@@ -251,6 +220,18 @@ namespace Bounced_Check_Manager
                 // TODO: This line of code loads data into the 'teamPenguinDataSet.Store' table. You can move, or remove it, as needed.
                 this.storeTableAdapter.Fill(this.teamPenguinDataSet.Store);
 
+            }
+
+            private void ClearBtn_Click(object sender, EventArgs e)
+            {
+                FNameTxtBox.Text = "";
+                LNameTxtBox.Text = "";
+                AddressTxtBox.Text = "";
+                PhoneNumberTxtBox.Text = "";
+                BankAddressTxtBox.Text = "";
+                BankNameTxtBox.Text = "";
+                RoutingNumberTxtBox.Text = "";
+                AccNumberTxtBox.Text = "";
             }
         }
     }

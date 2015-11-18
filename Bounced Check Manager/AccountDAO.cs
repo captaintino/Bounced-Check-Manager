@@ -235,6 +235,15 @@ namespace Bounced_Check_Manager
                 }
             }
 
+            public static string getAccountString(Account acc)
+            {
+                string result = "";
+                result += acc.AccountFirstName;
+                result += " " + acc.AccountLastName;
+                result += " - " + acc.AccountAddress;
+                result += " (" + acc.AccountPhoneNum + ")";
+                return result;
+            }
 
             public static bool UnitTest()
             {
