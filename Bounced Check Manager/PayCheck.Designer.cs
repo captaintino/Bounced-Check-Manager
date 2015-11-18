@@ -51,10 +51,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.PayBtn = new System.Windows.Forms.Button();
             this.checksGridView = new System.Windows.Forms.DataGridView();
-            this.checkBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
-            this.checkTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.CheckTableAdapter();
-            this.checkBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.AccName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CheckNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +59,11 @@
             this.DateIssued = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AmountOwed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
+            this.checkTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.CheckTableAdapter();
+            this.checkBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.ModifyBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -297,11 +298,11 @@
             // 
             // PayBtn
             // 
-            this.PayBtn.Location = new System.Drawing.Point(282, 354);
+            this.PayBtn.Location = new System.Drawing.Point(380, 354);
             this.PayBtn.Name = "PayBtn";
-            this.PayBtn.Size = new System.Drawing.Size(75, 23);
+            this.PayBtn.Size = new System.Drawing.Size(80, 23);
             this.PayBtn.TabIndex = 3;
-            this.PayBtn.Text = "Pay";
+            this.PayBtn.Text = "Pay Check";
             this.PayBtn.UseVisualStyleBackColor = true;
             this.PayBtn.Click += new System.EventHandler(this.PayBtn_Click);
             // 
@@ -327,25 +328,6 @@
             this.checksGridView.RowTemplate.ReadOnly = true;
             this.checksGridView.Size = new System.Drawing.Size(615, 150);
             this.checksGridView.TabIndex = 4;
-            // 
-            // checkBindingSource
-            // 
-            this.checkBindingSource.DataMember = "Check";
-            this.checkBindingSource.DataSource = this.teamPenguinDataSet;
-            // 
-            // teamPenguinDataSet
-            // 
-            this.teamPenguinDataSet.DataSetName = "TeamPenguinDataSet";
-            this.teamPenguinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // checkTableAdapter
-            // 
-            this.checkTableAdapter.ClearBeforeFill = true;
-            // 
-            // checkBindingSource1
-            // 
-            this.checkBindingSource1.DataMember = "Check";
-            this.checkBindingSource1.DataSource = this.teamPenguinDataSet;
             // 
             // AccName
             // 
@@ -409,11 +391,42 @@
             this.AmountOwed.ReadOnly = true;
             this.AmountOwed.Width = 50;
             // 
+            // checkBindingSource
+            // 
+            this.checkBindingSource.DataMember = "Check";
+            this.checkBindingSource.DataSource = this.teamPenguinDataSet;
+            // 
+            // teamPenguinDataSet
+            // 
+            this.teamPenguinDataSet.DataSetName = "TeamPenguinDataSet";
+            this.teamPenguinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // checkTableAdapter
+            // 
+            this.checkTableAdapter.ClearBeforeFill = true;
+            // 
+            // checkBindingSource1
+            // 
+            this.checkBindingSource1.DataMember = "Check";
+            this.checkBindingSource1.DataSource = this.teamPenguinDataSet;
+            // 
+            // ModifyBtn
+            // 
+            this.ModifyBtn.Enabled = false;
+            this.ModifyBtn.Location = new System.Drawing.Point(126, 354);
+            this.ModifyBtn.Name = "ModifyBtn";
+            this.ModifyBtn.Size = new System.Drawing.Size(93, 23);
+            this.ModifyBtn.TabIndex = 5;
+            this.ModifyBtn.Text = "Modify Check";
+            this.ModifyBtn.UseVisualStyleBackColor = true;
+            this.ModifyBtn.Click += new System.EventHandler(this.ModifyBtn_Click);
+            // 
             // PayCheck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 495);
+            this.Controls.Add(this.ModifyBtn);
             this.Controls.Add(this.checksGridView);
             this.Controls.Add(this.PayBtn);
             this.Controls.Add(this.splitContainer2);
@@ -476,6 +489,7 @@
             private System.Windows.Forms.DataGridViewTextBoxColumn DateIssued;
             private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
             private System.Windows.Forms.DataGridViewTextBoxColumn AmountOwed;
+            private System.Windows.Forms.Button ModifyBtn;
         }
     }
 }

@@ -133,10 +133,19 @@
     <Compile Include="updateAccount.Designer.cs">
       <DependentUpon>updateAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="updateCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateCheck.Designer.cs">
+      <DependentUpon>updateCheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="UserDAO.cs" />
     <EmbeddedResource Include="addAccount.resx">
       <DependentUpon>addAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updateCheck.resx">
+      <DependentUpon>updateCheck.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="DataClasses1.dbml.layout">

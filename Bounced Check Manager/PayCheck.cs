@@ -20,6 +20,11 @@ namespace Bounced_Check_Manager
             {
                 InitializeComponent();
 
+                if (Globals.isSupervisor)
+                {
+                    ModifyBtn.Enabled = true;
+                }
+
                 // To load all checks when the window comes up:
                 // Might consider making this an option
                 /*
@@ -74,10 +79,42 @@ namespace Bounced_Check_Manager
                     List<Check> newChecks = Bounced_Check_Manager_Data_Layer.CheckDAO.getChecksFromAcc(accounts[i].AccountID);
                     checks.AddRange(newChecks);
                 }
-                foreach (Check check in checks)
+                List<int> deletedChecks = new List<int>();
+                for (int i = 0; i < checks.Count; i++)
                 {
-                    string[] row = { check.Account.AccountFirstName + " " + check.Account.AccountLastName, check.Account.AccountPhoneNum.ToString(), check.CheckNum.ToString(), check.Bank.BankName, check.Bank.BankAddress, check.CheckDate.ToString(), check.CheckAmount.ToString("C"), check.CheckAmountOwed.ToString("C") };
-                    checksGridView.Rows.Add(row);
+                    Check check = checks[i];
+                    if (check.CheckDeleted && !Globals.isSupervisor)
+                    {
+                        deletedChecks.Add(i);
+                    }
+                    else
+                    {
+                        string[] row = { check.Account.AccountFirstName + " " + check.Account.AccountLastName, check.Account.AccountPhoneNum.ToString(), check.CheckNum.ToString(), check.Bank.BankName, check.Bank.BankAddress, check.CheckDate.ToString(), check.CheckAmount.ToString("C"), check.CheckAmountOwed.ToString("C") };
+                        checksGridView.Rows.Add(row);
+                    }
+                }
+                for (int i = 0; i < deletedChecks.Count; i++)
+                {
+                    checks.RemoveAt(deletedChecks[i]);
+                }
+            }
+
+            private void ModifyBtn_Click(object sender, EventArgs e)
+            {
+                if (checksGridView.SelectedRows.Count != 1)
+                {
+                    MessageBox.Show("Please Select one and only one check.");
+                    return;
+                }
+                Check modCheck = checks[checksGridView.CurrentCell.RowIndex];
+                if (modCheck != null)
+                {
+                    new updateCheck(modCheck).Show();
+                }
+                else
+                {
+                    MessageBox.Show("There was an error finding the check. Please reselect and try again.");
+                    return;
                 }
             }
         }
