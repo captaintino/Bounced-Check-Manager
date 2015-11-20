@@ -32,7 +32,7 @@
             {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ResetBtn = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.ModifyBankBtn = new System.Windows.Forms.Button();
             this.StoreBtn = new System.Windows.Forms.Button();
             this.ModifyUsersBtn = new System.Windows.Forms.Button();
             this.AddUserBtn = new System.Windows.Forms.Button();
@@ -44,7 +44,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.ResetBtn, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.ModifyBankBtn, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.StoreBtn, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.ModifyUsersBtn, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.AddUserBtn, 0, 0);
@@ -70,17 +70,19 @@
             this.ResetBtn.TabIndex = 4;
             this.ResetBtn.Text = "RESET! NUKE DATABASE";
             this.ResetBtn.UseVisualStyleBackColor = true;
+            this.ResetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
             // 
-            // button4
+            // ModifyBankBtn
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button4.Location = new System.Drawing.Point(67, 170);
-            this.button4.MinimumSize = new System.Drawing.Size(150, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.ModifyBankBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ModifyBankBtn.Location = new System.Drawing.Point(67, 170);
+            this.ModifyBankBtn.MinimumSize = new System.Drawing.Size(150, 0);
+            this.ModifyBankBtn.Name = "ModifyBankBtn";
+            this.ModifyBankBtn.Size = new System.Drawing.Size(150, 23);
+            this.ModifyBankBtn.TabIndex = 3;
+            this.ModifyBankBtn.Text = "Modify Banks";
+            this.ModifyBankBtn.UseVisualStyleBackColor = true;
+            this.ModifyBankBtn.Click += new System.EventHandler(this.ModifyBankBtn_Click);
             // 
             // StoreBtn
             // 
@@ -135,7 +137,7 @@
 
             private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
             private System.Windows.Forms.Button ResetBtn;
-            private System.Windows.Forms.Button button4;
+            private System.Windows.Forms.Button ModifyBankBtn;
             private System.Windows.Forms.Button StoreBtn;
             private System.Windows.Forms.Button ModifyUsersBtn;
             private System.Windows.Forms.Button AddUserBtn;
