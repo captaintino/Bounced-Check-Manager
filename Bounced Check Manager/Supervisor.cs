@@ -28,6 +28,11 @@ namespace Bounced_Check_Manager
             {
                 new CreateUser().Show();
             }
+
+            private void StoreBtn_Click(object sender, EventArgs e)
+            {
+                new ManageStore().Show();
+            }
         }
     }
 }

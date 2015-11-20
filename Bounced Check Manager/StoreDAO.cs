@@ -46,6 +46,33 @@ namespace Bounced_Check_Manager
                 }
             }
 
+            // Update Store <store>
+            public static bool update(Store store)
+            {
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+                {
+                    var query = from a in database.Stores
+                                where (a.StoreID == store.StoreID)
+                                select a;
+                    foreach (var a in query)
+                    {
+                        a.StoreNum = store.StoreNum;
+                        a.StoreName = store.StoreName;
+                        a.StoreAddress = store.StoreAddress;
+                        a.StoreServiceCharge = store.StoreServiceCharge;
+                    }
+                    try
+                    {
+                        database.SubmitChanges();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        return false;
+                    }
+                }
+            }
+
             // Find first active store having store number of <storeNum>
             public static Store find(int storeNum)
             {

@@ -70,6 +70,12 @@
     <Compile Include="CreateCheck.Designer.cs">
       <DependentUpon>CreateCheck.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateStore.Designer.cs">
+      <DependentUpon>CreateStore.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,18 @@
     </Compile>
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageStore.Designer.cs">
+      <DependentUpon>ManageStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifyStore.Designer.cs">
+      <DependentUpon>ModifyStore.cs</DependentUpon>
     </Compile>
     <Compile Include="ModifyUsers.cs">
       <SubType>Form</SubType>
@@ -143,6 +161,15 @@
     <Compile Include="UserDAO.cs" />
     <EmbeddedResource Include="addAccount.resx">
       <DependentUpon>addAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateStore.resx">
+      <DependentUpon>CreateStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageStore.resx">
+      <DependentUpon>ManageStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyStore.resx">
+      <DependentUpon>ModifyStore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="updateCheck.resx">
       <DependentUpon>updateCheck.cs</DependentUpon>

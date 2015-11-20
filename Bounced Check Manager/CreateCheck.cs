@@ -108,7 +108,7 @@ namespace Bounced_Check_Manager
                     Check check = new Check();
                     check.AccountID = Bounced_Check_Manager_Data_Layer.AccountDAO.find(Convert.ToInt32(RoutingNumberTxtBox.Text), Convert.ToInt32(AccNumberTxtBox.Text)).AccountID;
                     check.BankID = Bounced_Check_Manager_Data_Layer.BankDAO.find(Convert.ToInt32(RoutingNumberTxtBox.Text)).BankID;
-                    check.StoreID = Convert.ToInt32(StoreNumberComboBox.SelectedValue);
+                    check.StoreID = Bounced_Check_Manager_Data_Layer.StoreDAO.find(Convert.ToInt32(StoreNumberComboBox.SelectedValue)).StoreID;
 
                     check.CheckDate = CheckDatePicker.Value;
                     check.CheckNum = Convert.ToInt32(CheckNumberTxtBox.Text);

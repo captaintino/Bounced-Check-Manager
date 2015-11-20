@@ -29,6 +29,7 @@ namespace Bounced_Check_Manager
                 }
             }
 
+            // Update Check <check>
             public static bool update(Check check)
             {
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
