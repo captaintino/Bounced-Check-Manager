@@ -31,38 +31,38 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.CreateStoreBtn = new System.Windows.Forms.Button();
+            this.RefreshBtn = new System.Windows.Forms.Button();
             this.ModifyStoreBtn = new System.Windows.Forms.Button();
+            this.CreateStoreBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
-            this.storeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.storeTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.StoreTableAdapter();
             this.storeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storeNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storeNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storeAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.storeServiceChargeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RefreshBtn = new System.Windows.Forms.Button();
+            this.storeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
+            this.storeTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.StoreTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.06455F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.93545F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(730, 267);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(690, 270);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -79,30 +79,41 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(147, 261);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(124, 264);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // CreateStoreBtn
+            // RefreshBtn
             // 
-            this.CreateStoreBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateStoreBtn.Location = new System.Drawing.Point(36, 117);
-            this.CreateStoreBtn.Name = "CreateStoreBtn";
-            this.CreateStoreBtn.Size = new System.Drawing.Size(75, 23);
-            this.CreateStoreBtn.TabIndex = 0;
-            this.CreateStoreBtn.Text = "Create Store";
-            this.CreateStoreBtn.UseVisualStyleBackColor = true;
-            this.CreateStoreBtn.Click += new System.EventHandler(this.CreateStoreBtn_Click);
+            this.RefreshBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.RefreshBtn.Location = new System.Drawing.Point(24, 32);
+            this.RefreshBtn.Name = "RefreshBtn";
+            this.RefreshBtn.Size = new System.Drawing.Size(75, 23);
+            this.RefreshBtn.TabIndex = 3;
+            this.RefreshBtn.Text = "Refresh";
+            this.RefreshBtn.UseVisualStyleBackColor = true;
+            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
             // 
             // ModifyStoreBtn
             // 
             this.ModifyStoreBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ModifyStoreBtn.Location = new System.Drawing.Point(36, 205);
+            this.ModifyStoreBtn.Location = new System.Drawing.Point(24, 208);
             this.ModifyStoreBtn.Name = "ModifyStoreBtn";
             this.ModifyStoreBtn.Size = new System.Drawing.Size(75, 23);
             this.ModifyStoreBtn.TabIndex = 1;
             this.ModifyStoreBtn.Text = "Modify Store";
             this.ModifyStoreBtn.UseVisualStyleBackColor = true;
             this.ModifyStoreBtn.Click += new System.EventHandler(this.ModifyStoreBtn_Click);
+            // 
+            // CreateStoreBtn
+            // 
+            this.CreateStoreBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CreateStoreBtn.Location = new System.Drawing.Point(24, 120);
+            this.CreateStoreBtn.Name = "CreateStoreBtn";
+            this.CreateStoreBtn.Size = new System.Drawing.Size(75, 23);
+            this.CreateStoreBtn.TabIndex = 0;
+            this.CreateStoreBtn.Text = "Create Store";
+            this.CreateStoreBtn.UseVisualStyleBackColor = true;
+            this.CreateStoreBtn.Click += new System.EventHandler(this.CreateStoreBtn_Click);
             // 
             // dataGridView1
             // 
@@ -118,25 +129,11 @@
             this.storeServiceChargeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.storeBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(156, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(133, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(571, 261);
+            this.dataGridView1.Size = new System.Drawing.Size(554, 264);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // teamPenguinDataSet
-            // 
-            this.teamPenguinDataSet.DataSetName = "TeamPenguinDataSet";
-            this.teamPenguinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // storeBindingSource
-            // 
-            this.storeBindingSource.DataMember = "Store";
-            this.storeBindingSource.DataSource = this.teamPenguinDataSet;
-            // 
-            // storeTableAdapter
-            // 
-            this.storeTableAdapter.ClearBeforeFill = true;
             // 
             // storeIDDataGridViewTextBoxColumn
             // 
@@ -173,22 +170,25 @@
             this.storeServiceChargeDataGridViewTextBoxColumn.Name = "storeServiceChargeDataGridViewTextBoxColumn";
             this.storeServiceChargeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // RefreshBtn
+            // storeBindingSource
             // 
-            this.RefreshBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.RefreshBtn.Location = new System.Drawing.Point(36, 31);
-            this.RefreshBtn.Name = "RefreshBtn";
-            this.RefreshBtn.Size = new System.Drawing.Size(75, 23);
-            this.RefreshBtn.TabIndex = 3;
-            this.RefreshBtn.Text = "Refresh";
-            this.RefreshBtn.UseVisualStyleBackColor = true;
-            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
+            this.storeBindingSource.DataMember = "Store";
+            this.storeBindingSource.DataSource = this.teamPenguinDataSet;
+            // 
+            // teamPenguinDataSet
+            // 
+            this.teamPenguinDataSet.DataSetName = "TeamPenguinDataSet";
+            this.teamPenguinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // storeTableAdapter
+            // 
+            this.storeTableAdapter.ClearBeforeFill = true;
             // 
             // ManageStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 267);
+            this.ClientSize = new System.Drawing.Size(690, 270);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ManageStore";
             this.Text = "ManageStore";
@@ -196,8 +196,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

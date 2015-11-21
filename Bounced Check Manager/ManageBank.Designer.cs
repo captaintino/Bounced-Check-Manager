@@ -55,16 +55,16 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.06455F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.93545F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(777, 338);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(602, 339);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -81,13 +81,13 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(157, 332);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(124, 333);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // RefreshBtn
             // 
             this.RefreshBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.RefreshBtn.Location = new System.Drawing.Point(41, 43);
+            this.RefreshBtn.Location = new System.Drawing.Point(24, 44);
             this.RefreshBtn.Name = "RefreshBtn";
             this.RefreshBtn.Size = new System.Drawing.Size(75, 23);
             this.RefreshBtn.TabIndex = 3;
@@ -98,7 +98,7 @@
             // ModifyBankBtn
             // 
             this.ModifyBankBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ModifyBankBtn.Location = new System.Drawing.Point(41, 264);
+            this.ModifyBankBtn.Location = new System.Drawing.Point(24, 266);
             this.ModifyBankBtn.Name = "ModifyBankBtn";
             this.ModifyBankBtn.Size = new System.Drawing.Size(75, 23);
             this.ModifyBankBtn.TabIndex = 1;
@@ -109,12 +109,13 @@
             // CreateBankBtn
             // 
             this.CreateBankBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateBankBtn.Location = new System.Drawing.Point(41, 153);
+            this.CreateBankBtn.Location = new System.Drawing.Point(24, 155);
             this.CreateBankBtn.Name = "CreateBankBtn";
             this.CreateBankBtn.Size = new System.Drawing.Size(75, 23);
             this.CreateBankBtn.TabIndex = 0;
             this.CreateBankBtn.Text = "Create Bank";
             this.CreateBankBtn.UseVisualStyleBackColor = true;
+            this.CreateBankBtn.Click += new System.EventHandler(this.CreateBankBtn_Click);
             // 
             // dataGridView1
             // 
@@ -129,10 +130,10 @@
             this.bankAddressDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.bankBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(166, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(133, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(608, 332);
+            this.dataGridView1.Size = new System.Drawing.Size(466, 333);
             this.dataGridView1.TabIndex = 1;
             // 
             // storeBindingSource
@@ -190,7 +191,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 338);
+            this.ClientSize = new System.Drawing.Size(602, 339);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ManageBank";
             this.Text = "ManageBank";

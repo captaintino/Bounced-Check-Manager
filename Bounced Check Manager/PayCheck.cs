@@ -48,7 +48,7 @@ namespace Bounced_Check_Manager
                     return;
                 }
                 Check chk = checks[checksGridView.CurrentCell.RowIndex];
-                string dialogMsg = "Pay full amount? ($" + chk.CheckAmount.ToString() + ")";
+                string dialogMsg = "Pay full amount? ($" + chk.CheckAmountOwed.ToString() + ")";
                 if (Prompt.ShowCheckDialog(dialogMsg, "Pay"))
                 {
                     chk.CheckPaidDate = DateTime.Now;
@@ -76,7 +76,7 @@ namespace Bounced_Check_Manager
                 List<Account> accounts = Bounced_Check_Manager_Data_Layer.AccountDAO.findAny(AccNumberTxtBox.Text, FNameTxtBox.Text, LNameTextBox.Text, PhoneNumberTxtBox.Text, AddressTxtBox.Text, RoutingNumberTxtBox.Text);
                 for (int i = 0; i < accounts.Count; i++)
                 {
-                    List<Check> newChecks = Bounced_Check_Manager_Data_Layer.CheckDAO.getChecksFromAcc(accounts[i].AccountID);
+                    List<Check> newChecks = Bounced_Check_Manager_Data_Layer.CheckDAO.getUnpaidChecksFromAcc(accounts[i].AccountID);
                     checks.AddRange(newChecks);
                 }
                 List<int> deletedChecks = new List<int>();

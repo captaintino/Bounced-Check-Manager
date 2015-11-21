@@ -106,6 +106,26 @@ namespace Bounced_Check_Manager
                 }
                 return result;
             }
+            // Returns all checks in the database associated with <accId> that do not have a paid date
+            public static List<Check> getUnpaidChecksFromAcc(int accID)
+            {
+                List<Check> result = new List<Check>();
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+                {
+                    var query = from a in database.Checks
+                                where (a.AccountID == accID && a.CheckPaidDate == null)
+                                select a;
+
+                    foreach (var a in query)
+                    {
+                        // Look at the Bank member so LINQ doesn't trim it from the Check object...
+                        var s = a.Bank;
+                        var t = a.Account;
+                        result.Add(a);
+                    }
+                }
+                return result;
+            }
 
             public static bool UnitTest()
             {

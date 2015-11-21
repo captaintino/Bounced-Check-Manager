@@ -66,5 +66,10 @@ namespace Bounced_Check_Manager
                 new ModifyBank(banks[row.Index]).Show();
             }
         }
+
+        private void CreateBankBtn_Click(object sender, EventArgs e)
+        {
+            new CreateBank().Show();
+        }
     }
 }
