@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
 
 namespace Bounced_Check_Manager
 {
@@ -14,6 +15,8 @@ namespace Bounced_Check_Manager
     {
         public partial class mainMenu : Form
         {
+            List<Tuple<Letter, String>> lettersTupleList = new List<Tuple<Letter, String>>();
+            List<Tuple<Letter, String>>.Enumerator letterEnumerator = new List<Tuple<Letter, String>>.Enumerator();
             List<Account> accounts = new List<Account>();
             public mainMenu()
             {
@@ -108,7 +111,33 @@ namespace Bounced_Check_Manager
 
             private void GenerateLettersBtn_Click(object sender, EventArgs e)
             {
+                PrintDocument document = new PrintDocument();
+                document.PrintPage += document_PrintPage;
+                lettersTupleList = Bounced_Check_Manager_Data_Layer.LetterDAO.generateLetters();
+                
+                // Choose printer 
+                PrintDialog printDialog1 = new PrintDialog();
+                printDialog1.Document = document;
+                DialogResult result = printDialog1.ShowDialog();
+                if (result != DialogResult.OK)
+                {
+                    return;
+                }
+                // Print the monster!
+
                 MessageBox.Show("Your letters are printing...");
+            }
+
+            void document_PrintPage(object sender, PrintPageEventArgs e)
+            {
+                Font sFont = new Font("Arial", 12);
+                Brush sBrush = Brushes.Black;
+
+                //print current page
+                e.Graphics.DrawString(letterEnumerator.Current.Item2, sFont, sBrush, 10, 10);
+
+                // advance enumerator to determine if we have more pages.
+                e.HasMorePages = letterEnumerator.MoveNext();
             }
 
             private void mainMenu_Load(object sender, EventArgs e)
