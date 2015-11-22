@@ -34,6 +34,11 @@ namespace Bounced_Check_Manager
                 MessageBox.Show("New passwords do not match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 return;
             }
+            if (!Bounced_Check_Manager_Data_Layer.UserDAO.validatePassword(NewPasswordTxtBox.Text))
+            {
+                MessageBox.Show("New password too simple.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                return;
+            }
             User user = Bounced_Check_Manager_Data_Layer.UserDAO.find(Globals.username);
             bool success = Bounced_Check_Manager_Data_Layer.UserDAO.changePasswordUser(user, OldPasswordTxtBox.Text, ConfirmNewPasswordTxtBox.Text);
             if (success)

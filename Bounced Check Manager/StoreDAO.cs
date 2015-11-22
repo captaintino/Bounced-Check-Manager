@@ -20,9 +20,16 @@ namespace Bounced_Check_Manager
                     var query = from a in database.Stores
                                 select a;
 
-                    foreach (var a in query)
+                    try
                     {
-                        list.Add(a);
+                        foreach (var a in query)
+                        {
+                            list.Add(a);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return new List<Store>();
                     }
                 }
                 return list;
@@ -81,9 +88,16 @@ namespace Bounced_Check_Manager
                     var query = from a in database.Stores
                                 where (a.StoreNum == storeNum)
                                 select a;
-                    foreach (var a in query)
+                    try
                     {
-                        return a;
+                        foreach (var a in query)
+                        {
+                            return a;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return null;
                     }
                     return null;
                 }

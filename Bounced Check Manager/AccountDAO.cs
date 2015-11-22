@@ -22,10 +22,16 @@ namespace Bounced_Check_Manager
                 {
                     var query = from a in database.Accounts
                                 select a;
-
-                    foreach (var a in query)
+                    try
                     {
-                        list.Add(a);
+                        foreach (var a in query)
+                        {
+                            list.Add(a);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return new List<Account>();
                     }
                 }
                 return list;
@@ -118,11 +124,18 @@ namespace Bounced_Check_Manager
                     var query = from a in database.Accounts
                                 where (a.AccountRoutingNum == routingNum && a.AccountNum == accountNum)
                                 select a;
-                    foreach (var a in query)
+                    try
                     {
-                        // Look at the Bank member so LINQ doesn't trim it from the Account object...
-                        var s = a.Bank;
-                        return a;
+                        foreach (var a in query)
+                        {
+                            // Look at the Bank member so LINQ doesn't trim it from the Account object...
+                            var s = a.Bank;
+                            return a;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return null;
                     }
                     return null;
                 }
@@ -224,11 +237,18 @@ namespace Bounced_Check_Manager
 
                     List<Account> accounts = new List<Account>();
 
-                    foreach (var a in query)
+                    try
                     {
-                        // Look at the Bank member so LINQ doesn't trim it from the Account object...
-                        var s = a.Bank;
-                        accounts.Add(a);
+                        foreach (var a in query)
+                        {
+                            // Look at the Bank member so LINQ doesn't trim it from the Account object...
+                            var s = a.Bank;
+                            accounts.Add(a);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return new List<Account>();
                     }
 
                     return accounts;

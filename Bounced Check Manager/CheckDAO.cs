@@ -96,12 +96,19 @@ namespace Bounced_Check_Manager
                                 where (a.AccountID == accID)
                                 select a;
 
-                    foreach (var a in query)
+                    try
                     {
-                        // Look at the Bank member so LINQ doesn't trim it from the Check object...
-                        var s = a.Bank;
-                        var t = a.Account;
-                        result.Add(a);
+                        foreach (var a in query)
+                        {
+                            // Look at the Bank member so LINQ doesn't trim it from the Check object...
+                            var s = a.Bank;
+                            var t = a.Account;
+                            result.Add(a);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return new List<Check>();
                     }
                 }
                 return result;
@@ -116,12 +123,19 @@ namespace Bounced_Check_Manager
                                 where (a.AccountID == accID && a.CheckPaidDate == null)
                                 select a;
 
-                    foreach (var a in query)
+                    try
                     {
-                        // Look at the Bank member so LINQ doesn't trim it from the Check object...
-                        var s = a.Bank;
-                        var t = a.Account;
-                        result.Add(a);
+                        foreach (var a in query)
+                        {
+                            // Look at the Bank member so LINQ doesn't trim it from the Check object...
+                            var s = a.Bank;
+                            var t = a.Account;
+                            result.Add(a);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return new List<Check>();
                     }
                 }
                 return result;

@@ -19,10 +19,16 @@ namespace Bounced_Check_Manager
                 {
                     var query = from a in database.Banks
                                 select a;
-
-                    foreach (var a in query)
+                    try
                     {
-                        list.Add(a);
+                        foreach (var a in query)
+                        {
+                            list.Add(a);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return new List<Bank>();
                     }
                 }
                 return list;
@@ -107,9 +113,16 @@ namespace Bounced_Check_Manager
                     var query = from a in database.Banks
                                 where (a.BankRoutingNum == routingNum)
                                 select a;
-                    foreach (var a in query)
+                    try
                     {
-                        return a;
+                        foreach (var a in query)
+                        {
+                            return a;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return null;
                     }
                     return null;
                 }
