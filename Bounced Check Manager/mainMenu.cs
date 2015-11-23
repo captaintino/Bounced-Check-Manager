@@ -113,6 +113,7 @@ namespace Bounced_Check_Manager
             {
                 PrintDocument document = new PrintDocument();
                 document.PrintPage += document_PrintPage;
+                document.BeginPrint += document_BeginPrint;
                 lettersTupleList = Bounced_Check_Manager_Data_Layer.LetterDAO.generateLetters();
                 
                 // Choose printer 
@@ -124,8 +125,16 @@ namespace Bounced_Check_Manager
                     return;
                 }
                 // Print the monster!
-
+                document.Print();
                 MessageBox.Show("Your letters are printing...");
+            }
+
+            void document_BeginPrint(object sender, PrintEventArgs e)
+            {
+                // Set enumerator
+                letterEnumerator = lettersTupleList.GetEnumerator();
+                //position to first string to print (i.e. first page)
+                letterEnumerator.MoveNext();
             }
 
             void document_PrintPage(object sender, PrintPageEventArgs e)

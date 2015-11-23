@@ -86,6 +86,32 @@ namespace Bounced_Check_Manager
                 }
             }
 
+            // Find first check having id of of <checkID>
+            public static Check find(int CheckID)
+            {
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+                {
+                    var query = from a in database.Checks
+                                where (a.CheckID == CheckID)
+                                select a;
+                    try
+                    {
+                        foreach (var a in query)
+                        {
+                            var x = a.Account;
+                            var y = a.Bank;
+                            var z = a.Store;
+                            return a;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return null;
+                    }
+                    return null;
+                }
+            }
+
             // Returns all checks in the database associated with <accId>
             public static List<Check> getChecksFromAcc(int accID)
             {

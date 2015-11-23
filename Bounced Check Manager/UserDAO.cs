@@ -34,12 +34,10 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
                     sqlConnection1.Open();
 
                     reader = cmd.ExecuteReader();
-                    int test = 0;
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
-                            test++;
                             //int sid = reader.GetInt16(0);
                             int sid = 0;
                             int status = reader.GetInt16(1);
