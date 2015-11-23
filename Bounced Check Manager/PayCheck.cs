@@ -79,13 +79,12 @@ namespace Bounced_Check_Manager
                     List<Check> newChecks = Bounced_Check_Manager_Data_Layer.CheckDAO.getUnpaidChecksFromAcc(accounts[i].AccountID);
                     checks.AddRange(newChecks);
                 }
-                List<int> deletedChecks = new List<int>();
                 for (int i = 0; i < checks.Count; i++)
                 {
                     Check check = checks[i];
                     if (check.CheckDeleted && !Globals.isSupervisor)
                     {
-                        deletedChecks.Add(i);
+                        checks.RemoveAt(i);
                     }
                     else
                     {
@@ -97,10 +96,6 @@ namespace Bounced_Check_Manager
                             checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.Gray;
                         }
                     }
-                }
-                for (int i = 0; i < deletedChecks.Count; i++)
-                {
-                    checks.RemoveAt(deletedChecks[i]);
                 }
             }
 

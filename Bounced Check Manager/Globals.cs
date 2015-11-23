@@ -12,6 +12,6 @@ namespace Bounced_Check_Manager
         public static String connectionString = "";
         // Username of current user
         public static String username = "";
-        public static bool isSupervisor = false;
+        public static bool isSupervisor = true;
     }
 }

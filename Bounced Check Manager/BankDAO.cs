@@ -128,6 +128,14 @@ namespace Bounced_Check_Manager
                 }
             }
 
+            public static string getBankString(Bank bank)
+            {
+                string result = "";
+                result += bank.BankName;
+                result += " | " + bank.BankAddress;
+                return result;
+            }
+
             public static bool UnitTest()
             {
                 return true;
