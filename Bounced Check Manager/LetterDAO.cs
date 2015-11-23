@@ -18,7 +18,7 @@ To: {checkAddress}
 Dear : {accountName}
 
 
-This is to inform you that your check dated {checkDate}, payable to{storeName}, in the amount of ${checkAmnt}, has been returned to us due to insufficient funds.
+This is to inform you that your check dated {checkDate}, payable to{storeName}, in the amount of {checkAmnt}, has been returned to us due to insufficient funds.
 
 We realize that such mishaps do occur and therefore are bringing this matter to your attention so that you will take the opportunity to correct this error and issue us a new check.
 
@@ -44,9 +44,18 @@ Date:{sendDate}
 {checkAddress}
 
 Dear {accountName}:
-The check you wrote for ${checkAmnt}, dated {checkDate}, which was made payable to {storeName}, was returned by {bankName} because the account was either closed OR the account had insufficient funds.
-Unless full payment of the check is received by cash within 30 days after the date this demand letter was mailed, together with ${fee} in bank fees, and ${checkAmnt}, the cost of mailing this demand letter by certified mail, I will file a small claims court claim against you.
-The claim will also request damages for the amount of the check, ${checkAmnt}, plus ${fee} damages assessed, for a total claim of ${totalAmnt} against you.
+The check you wrote for {checkAmnt}, dated {checkDate}, which was made payable to {storeName}, 
+was returned by {bankName} because the account was either closed OR the account had 
+insufficient funds.
+
+Unless full payment of the check is received by cash within 30 days after the date
+this demand letter was mailed, together with {fee} in bank fees, and {checkAmnt}, 
+the cost of mailing this demand letter by certified mail, 
+I will file a small claims court claim against you.
+
+The claim will also request damages for the amount of the check, {checkAmnt}, 
+plus {fee} damages assessed, for a total claim of {totalAmnt} against you.
+
 You may wish to contact a lawyer to discuss your legal rights and responsibilities.
 Please send your payment to:
 
@@ -225,9 +234,20 @@ X_____________________________
                 String bankName = check.Bank.BankName;
                 double fee = Convert.ToDouble(check.Store.StoreServiceCharge);
                 double totalAmnt = checkAmnt + fee;
-                String storeManager = "HardCoded ---";
+                String storeManager = "HardCoded ---"; // TODO: Get an actual store manager value
                 String storeAddress = check.Store.StoreAddress;
-                return letter.Replace("{sendDate}", sendDate.ToShortDateString()).Replace("{accountName}", accountName);
+                return letter
+                    .Replace("{sendDate}", sendDate.ToShortDateString())
+                    .Replace("{accountName}", accountName)
+                    .Replace("{checkDate}", checkDate.ToShortDateString())
+                    .Replace("{checkAddress}", checkAddress)
+                    .Replace("{storeName}", storeName)
+                    .Replace("{checkAmnt}", checkAmnt.ToString("C"))
+                    .Replace("{bankName}", bankName)
+                    .Replace("{fee}", fee.ToString("C"))
+                    .Replace("{totalAmnt}", totalAmnt.ToString("C"))
+                    .Replace("{storeManager}", storeManager)
+                    .Replace("{storeAddress}", storeAddress);
             }
 
         }

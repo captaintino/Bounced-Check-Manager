@@ -115,7 +115,13 @@ namespace Bounced_Check_Manager
                 document.PrintPage += document_PrintPage;
                 document.BeginPrint += document_BeginPrint;
                 lettersTupleList = Bounced_Check_Manager_Data_Layer.LetterDAO.generateLetters();
-                
+
+                if (lettersTupleList.Count == 0)
+                {
+                    MessageBox.Show("No letters to print.");
+                    return;
+                }
+
                 // Choose printer 
                 PrintDialog printDialog1 = new PrintDialog();
                 printDialog1.Document = document;
@@ -126,6 +132,10 @@ namespace Bounced_Check_Manager
                 }
                 // Print the monster!
                 document.Print();
+                foreach (var tuple in lettersTupleList)
+                {
+                    Bounced_Check_Manager_Data_Layer.LetterDAO.create(tuple.Item1);
+                }
                 MessageBox.Show("Your letters are printing...");
             }
 
@@ -143,7 +153,7 @@ namespace Bounced_Check_Manager
                 Brush sBrush = Brushes.Black;
 
                 //print current page
-                e.Graphics.DrawString(letterEnumerator.Current.Item2, sFont, sBrush, 10, 10);
+                e.Graphics.DrawString(letterEnumerator.Current.Item2, sFont, sBrush, 25, 20);
 
                 // advance enumerator to determine if we have more pages.
                 e.HasMorePages = letterEnumerator.MoveNext();
