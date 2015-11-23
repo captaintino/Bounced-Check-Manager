@@ -64,6 +64,7 @@
             this.checkTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.CheckTableAdapter();
             this.checkBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ModifyBtn = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -298,7 +299,7 @@
             // 
             // PayBtn
             // 
-            this.PayBtn.Location = new System.Drawing.Point(380, 354);
+            this.PayBtn.Location = new System.Drawing.Point(259, 354);
             this.PayBtn.Name = "PayBtn";
             this.PayBtn.Size = new System.Drawing.Size(80, 23);
             this.PayBtn.TabIndex = 3;
@@ -413,7 +414,7 @@
             // ModifyBtn
             // 
             this.ModifyBtn.Enabled = false;
-            this.ModifyBtn.Location = new System.Drawing.Point(126, 354);
+            this.ModifyBtn.Location = new System.Drawing.Point(67, 354);
             this.ModifyBtn.Name = "ModifyBtn";
             this.ModifyBtn.Size = new System.Drawing.Size(93, 23);
             this.ModifyBtn.TabIndex = 5;
@@ -421,11 +422,22 @@
             this.ModifyBtn.UseVisualStyleBackColor = true;
             this.ModifyBtn.Click += new System.EventHandler(this.ModifyBtn_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(444, 354);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(93, 23);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "Delete Check";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // PayCheck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 495);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.ModifyBtn);
             this.Controls.Add(this.checksGridView);
             this.Controls.Add(this.PayBtn);
@@ -490,6 +502,7 @@
             private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
             private System.Windows.Forms.DataGridViewTextBoxColumn AmountOwed;
             private System.Windows.Forms.Button ModifyBtn;
+            private System.Windows.Forms.Button btnDelete;
         }
     }
 }

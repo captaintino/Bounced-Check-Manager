@@ -58,6 +58,29 @@ namespace Bounced_Check_Manager
                 }
             }
 
+            public static bool markAsVoid(Check check)
+            {
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+                {
+                    var query = from a in database.Checks
+                                where (a.CheckID == check.CheckID)
+                                select a;
+                    foreach (var a in query)
+                    {
+                        a.CheckDeleted = true;
+                    }
+                    try
+                    {
+                        database.SubmitChanges();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        return false;
+                    }
+                }
+            }
+
             // Delete Check <check> from database
             public static bool delete(Check check)
             {

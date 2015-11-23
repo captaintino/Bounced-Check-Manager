@@ -91,6 +91,11 @@ namespace Bounced_Check_Manager
                     {
                         string[] row = { check.Account.AccountFirstName + " " + check.Account.AccountLastName, check.Account.AccountPhoneNum.ToString(), check.CheckNum.ToString(), check.Bank.BankName, check.Bank.BankAddress, check.CheckDate.ToString(), check.CheckAmount.ToString("C"), check.CheckAmountOwed.ToString("C") };
                         checksGridView.Rows.Add(row);
+                        if (check.CheckDeleted)
+                        {
+                            checksGridView.Rows[i].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Italic);
+                            checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.Gray;
+                        }
                     }
                 }
                 for (int i = 0; i < deletedChecks.Count; i++)
@@ -110,6 +115,27 @@ namespace Bounced_Check_Manager
                 if (modCheck != null)
                 {
                     new updateCheck(modCheck).Show();
+                }
+                else
+                {
+                    MessageBox.Show("There was an error finding the check. Please reselect and try again.");
+                    return;
+                }
+            }
+
+            private void btnDelete_Click(object sender, EventArgs e)
+            {
+                if (checksGridView.SelectedRows.Count != 1)
+                {
+                    MessageBox.Show("Please Select one and only one check.");
+                    return;
+                }
+                Check delCheck = checks[checksGridView.CurrentCell.RowIndex];
+                if (delCheck != null)
+                {
+                    Bounced_Check_Manager_Data_Layer.CheckDAO.markAsVoid(delCheck);
+                    checksGridView.Rows[checksGridView.CurrentCell.RowIndex].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Italic);
+                    checksGridView.Rows[checksGridView.CurrentCell.RowIndex].DefaultCellStyle.BackColor = Color.Gray;
                 }
                 else
                 {
