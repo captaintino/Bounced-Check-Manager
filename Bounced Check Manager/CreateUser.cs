@@ -29,6 +29,11 @@ namespace Bounced_Check_Manager
             {
                 if (UsernameTxtBox.Text != "" && PasswordTxtBox.Text != "")
                 {
+                    if (!Bounced_Check_Manager_Data_Layer.UserDAO.validatePassword(PasswordTxtBox.Text))
+                    {
+                        MessageBox.Show("Password too simple.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                        return;
+                    }
                     bool success = Bounced_Check_Manager_Data_Layer.UserDAO.create(UsernameTxtBox.Text, PasswordTxtBox.Text);
                     if (success)
                     {

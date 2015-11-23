@@ -11,12 +11,61 @@ namespace Bounced_Check_Manager
     {
         class BankDAO
         {
+            // Get list of all of the Banks in the database
+            public static List<Bank> LoadAll()
+            {
+                List<Bank> list = new List<Bank>();
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+                {
+                    var query = from a in database.Banks
+                                select a;
+                    try
+                    {
+                        foreach (var a in query)
+                        {
+                            list.Add(a);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return new List<Bank>();
+                    }
+                }
+                return list;
+            }
+
             // Create <bank> in database
             public static bool create(Bank bank)
             {
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
                     database.Banks.InsertOnSubmit(bank);
+                    try
+                    {
+                        database.SubmitChanges();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            // Update Bank <bank>
+            public static bool update(Bank bank)
+            {
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+                {
+                    var query = from a in database.Banks
+                                where (a.BankID == bank.BankID)
+                                select a;
+                    foreach (var a in query)
+                    {
+                        a.BankRoutingNum = bank.BankRoutingNum;
+                        a.BankName = bank.BankName;
+                        a.BankAddress = bank.BankAddress;
+                    }
                     try
                     {
                         database.SubmitChanges();
@@ -64,9 +113,16 @@ namespace Bounced_Check_Manager
                     var query = from a in database.Banks
                                 where (a.BankRoutingNum == routingNum)
                                 select a;
-                    foreach (var a in query)
+                    try
                     {
-                        return a;
+                        foreach (var a in query)
+                        {
+                            return a;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return null;
                     }
                     return null;
                 }

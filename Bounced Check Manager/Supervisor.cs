@@ -28,6 +28,21 @@ namespace Bounced_Check_Manager
             {
                 new CreateUser().Show();
             }
+
+            private void StoreBtn_Click(object sender, EventArgs e)
+            {
+                new ManageStore().Show();
+            }
+
+            private void ResetBtn_Click(object sender, EventArgs e)
+            {
+                MessageBox.Show("Not cool Mr. Hughes... Not cool");
+            }
+
+            private void ModifyBankBtn_Click(object sender, EventArgs e)
+            {
+                new ManageBank().Show();
+            }
         }
     }
 }

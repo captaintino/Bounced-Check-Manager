@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace Bounced_Check_Manager
 {
     namespace Bounced_Check_Manager_Data_Layer
     {
-        class StoreDAO
+        class LetterDAO
         {
-            // Get list of all of the Stores in the database
-            public static List<Store> LoadAll()
+            // Get list of all of the Letters in the database
+            public static List<Letter> LoadAll()
             {
-                List<Store> list = new List<Store>();
+                List<Letter> list = new List<Letter>();
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
-                    var query = from a in database.Stores
+                    var query = from a in database.Letters
                                 select a;
-
                     try
                     {
                         foreach (var a in query)
@@ -29,18 +27,18 @@ namespace Bounced_Check_Manager
                     }
                     catch (Exception e)
                     {
-                        return new List<Store>();
+                        return new List<Letter>();
                     }
                 }
                 return list;
             }
 
-            // Create Store <store>
-            public static bool create(Store store)
+            // Create Letter <letter>
+            public static bool create(Letter letter)
             {
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
-                    database.Stores.InsertOnSubmit(store);
+                    database.Letters.InsertOnSubmit(letter);
                     try
                     {
                         database.SubmitChanges();
@@ -53,20 +51,20 @@ namespace Bounced_Check_Manager
                 }
             }
 
-            // Update Store <store>
-            public static bool update(Store store)
+            // Update Letter <store>
+            public static bool update(Letter letter)
             {
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
-                    var query = from a in database.Stores
-                                where (a.StoreID == store.StoreID)
+                    var query = from a in database.Letters
+                                where (a.LetterID == letter.LetterID)
                                 select a;
                     foreach (var a in query)
                     {
-                        a.StoreNum = store.StoreNum;
-                        a.StoreName = store.StoreName;
-                        a.StoreAddress = store.StoreAddress;
-                        a.StoreServiceCharge = store.StoreServiceCharge;
+                        a.CheckID = letter.CheckID;
+                        a.LetterDateReceived = letter.LetterDateReceived;
+                        a.LetterDateSent = letter.LetterDateSent;
+                        a.LetterNum = letter.LetterNum;
                     }
                     try
                     {
@@ -80,13 +78,13 @@ namespace Bounced_Check_Manager
                 }
             }
 
-            // Find first active store having store number of <storeNum>
-            public static Store find(int storeNum)
+            // Find first letter having id of of <letterID>
+            public static Letter find(int letterID)
             {
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
-                    var query = from a in database.Stores
-                                where (a.StoreNum == storeNum)
+                    var query = from a in database.Letters
+                                where (a.LetterID == letterID)
                                 select a;
                     try
                     {
@@ -103,19 +101,19 @@ namespace Bounced_Check_Manager
                 }
             }
 
-            // Delete Store <store> from database
-            public static bool delete(Store store)
+            // Delete Letter <letter> from database
+            public static bool delete(Letter letter)
             {
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
                 {
-                    var query = from a in database.Stores
-                                where (a.StoreID == store.StoreID)
+                    var query = from a in database.Letters
+                                where (a.LetterID == letter.LetterID)
                                 select a;
                     // It seems to me that a single account renders the foreach unnecessary. However, I can't
                     // find another way to get the variable 'a' from 'query'.
                     foreach (var a in query)
                     {
-                        database.Stores.DeleteOnSubmit(a);
+                        database.Letters.DeleteOnSubmit(a);
                         try
                         {
                             database.SubmitChanges();
@@ -130,11 +128,17 @@ namespace Bounced_Check_Manager
                 }
             }
 
-            public static bool UnitTest()
+            public static List<Tuple<Letter, String>> generateLetters()
             {
-                Debug.Assert(LoadAll().Count > 0);
-                return true;
+                List<Tuple<Letter, String>> list = new List<Tuple<Letter, String>>();
+                // Get the checks that need letters
+
+                // Generate letters
+
+                throw new NotImplementedException();
+                return list;
             }
+
         }
     }
 }

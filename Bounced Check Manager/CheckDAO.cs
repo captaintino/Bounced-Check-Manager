@@ -29,6 +29,7 @@ namespace Bounced_Check_Manager
                 }
             }
 
+            // Update Check <check>
             public static bool update(Check check)
             {
                 using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
@@ -118,12 +119,46 @@ namespace Bounced_Check_Manager
                                 where (a.AccountID == accID)
                                 select a;
 
-                    foreach (var a in query)
+                    try
                     {
-                        // Look at the Bank member so LINQ doesn't trim it from the Check object...
-                        var s = a.Bank;
-                        var t = a.Account;
-                        result.Add(a);
+                        foreach (var a in query)
+                        {
+                            // Look at the Bank member so LINQ doesn't trim it from the Check object...
+                            var s = a.Bank;
+                            var t = a.Account;
+                            result.Add(a);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return new List<Check>();
+                    }
+                }
+                return result;
+            }
+            // Returns all checks in the database associated with <accId> that do not have a paid date
+            public static List<Check> getUnpaidChecksFromAcc(int accID)
+            {
+                List<Check> result = new List<Check>();
+                using (DataClasses1DataContext database = new DataClasses1DataContext(Globals.connectionString))
+                {
+                    var query = from a in database.Checks
+                                where (a.AccountID == accID && a.CheckPaidDate == null)
+                                select a;
+
+                    try
+                    {
+                        foreach (var a in query)
+                        {
+                            // Look at the Bank member so LINQ doesn't trim it from the Check object...
+                            var s = a.Bank;
+                            var t = a.Account;
+                            result.Add(a);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        return new List<Check>();
                     }
                 }
                 return result;

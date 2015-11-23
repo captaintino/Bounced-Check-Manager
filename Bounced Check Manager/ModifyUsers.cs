@@ -68,9 +68,9 @@ namespace Bounced_Check_Manager
                 int index = UsersDataGridView.SelectedRows[0].Index;
                 User user = users[index];
                 String password = Prompt.ShowDialog("Change Password to?", "");
-                if (password.Length < 2)
+                if (!Bounced_Check_Manager_Data_Layer.UserDAO.validatePassword(password))
                 {
-                    MessageBox.Show("Invalid Password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("New password too simple.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                     return;
                 }
                 bool success = Bounced_Check_Manager_Data_Layer.UserDAO.changePasswordAdmin(user, password);
