@@ -153,7 +153,7 @@ namespace Bounced_Check_Manager
                 Brush sBrush = Brushes.Black;
 
                 //print current page
-                e.Graphics.DrawString(letterEnumerator.Current.Item2, sFont, sBrush, 25, 20);
+                e.Graphics.DrawString(letterEnumerator.Current.Item2, sFont, sBrush, e.MarginBounds, StringFormat.GenericTypographic);
 
                 // advance enumerator to determine if we have more pages.
                 e.HasMorePages = letterEnumerator.MoveNext();

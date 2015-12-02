@@ -11,14 +11,16 @@ namespace Bounced_Check_Manager
     {
         class LetterDAO
         {
-            static List<String> lettersText = new List<string> { @"Date: {sendDate}
+            static List<String> lettersText = new List<string> { 
+// LETTER ONE:
+@"Date: {sendDate}
 
 To: {checkAddress}
 
 Dear : {accountName}
 
 
-This is to inform you that your check dated {checkDate}, payable to{storeName}, in the amount of {checkAmnt}, has been returned to us due to insufficient funds.
+This is to inform you that your check dated {checkDate}, payable to {storeName}, in the amount of {checkAmnt}, has been returned to us due to insufficient funds.
 
 We realize that such mishaps do occur and therefore are bringing this matter to your attention so that you will take the opportunity to correct this error and issue us a new check.
 
@@ -33,9 +35,30 @@ Very truly yours,
 
 {storeManager}
 ", 
+ // LETTER TWO:
+@"Date: {sendDate}
 
-"TWO", 
+To: {checkAddress}
 
+Dear : {accountName}
+
+
+This is a second letter to inform you that your check dated {checkDate}, payable to {storeName}, in the amount of ${checkAmnt}, has been returned to us due to insufficient funds.
+
+Unless full payment of the check is received by cash together with ${fee} in bank fees, I will file a small claims court claim against you.
+The claim will also request damages for the amount of the check, ${checkAmnt}, plus ${fee} damages assessed, for a total claim of ${totalAmnt} against you.
+We realize that such mishaps do occur and therefore are bringing this matter to your attention through one more grace letter so that you will take the opportunity to correct this error and issue us a new check.
+
+It is our policy to retain the old check until a new check is issued and cleared as we have unfortunately realized that there are some people who do not honor their debts. If a new check is not issued and the old check does not clear we will pursue legal action to the full extend of the law.
+
+We are confident that you will resolve this matter and look forward to doing business with you again in the future.
+
+Thank you for your attention to this matter.
+
+{storeManager}
+
+", 
+ // LETTER THREE:
 @"Send certified mail.
 Date:{sendDate}
 
@@ -44,17 +67,11 @@ Date:{sendDate}
 {checkAddress}
 
 Dear {accountName}:
-The check you wrote for {checkAmnt}, dated {checkDate}, which was made payable to {storeName}, 
-was returned by {bankName} because the account was either closed OR the account had 
-insufficient funds.
+The check you wrote for {checkAmnt}, dated {checkDate}, which was made payable to {storeName}, was returned by {bankName} because the account was either closed OR the account had insufficient funds.
 
-Unless full payment of the check is received by cash within 30 days after the date
-this demand letter was mailed, together with {fee} in bank fees, and {checkAmnt}, 
-the cost of mailing this demand letter by certified mail, 
-I will file a small claims court claim against you.
+Unless full payment of the check is received by cash within 30 days after the date this demand letter was mailed, together with {fee} in bank fees, and {checkAmnt}, the cost of mailing this demand letter by certified mail, I will file a small claims court claim against you.
 
-The claim will also request damages for the amount of the check, {checkAmnt}, 
-plus {fee} damages assessed, for a total claim of {totalAmnt} against you.
+The claim will also request damages for the amount of the check, {checkAmnt}, plus {fee} damages assessed, for a total claim of {totalAmnt} against you.
 
 You may wish to contact a lawyer to discuss your legal rights and responsibilities.
 Please send your payment to:
