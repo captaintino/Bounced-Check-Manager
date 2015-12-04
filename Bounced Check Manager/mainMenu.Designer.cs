@@ -41,16 +41,6 @@
             this.createBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.accountBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updatePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.supervisorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.accountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.accountBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.accountTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.AccountTableAdapter();
             this.accountIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountFirstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountLastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,13 +49,22 @@
             this.accountNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bankIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountRoutingNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
+            this.accountBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updatePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supervisorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.accountTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.AccountTableAdapter();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource2)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -210,70 +209,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(525, 485);
             this.dataGridView1.TabIndex = 1;
             // 
-            // accountBindingSource2
-            // 
-            this.accountBindingSource2.DataMember = "Account";
-            this.accountBindingSource2.DataSource = this.teamPenguinDataSet;
-            // 
-            // teamPenguinDataSet
-            // 
-            this.teamPenguinDataSet.DataSetName = "TeamPenguinDataSet";
-            this.teamPenguinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(781, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updatePasswordToolStripMenuItem,
-            this.supervisorToolStripMenuItem,
-            this.updateToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // updatePasswordToolStripMenuItem
-            // 
-            this.updatePasswordToolStripMenuItem.Name = "updatePasswordToolStripMenuItem";
-            this.updatePasswordToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.updatePasswordToolStripMenuItem.Text = "Update Password";
-            this.updatePasswordToolStripMenuItem.Click += new System.EventHandler(this.updatePasswordToolStripMenuItem_Click);
-            // 
-            // supervisorToolStripMenuItem
-            // 
-            this.supervisorToolStripMenuItem.Name = "supervisorToolStripMenuItem";
-            this.supervisorToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.supervisorToolStripMenuItem.Text = "Supervisor";
-            this.supervisorToolStripMenuItem.Click += new System.EventHandler(this.supervisorToolStripMenuItem_Click);
-            // 
-            // updateToolStripMenuItem
-            // 
-            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.updateToolStripMenuItem.Text = "Update";
-            // 
-            // accountBindingSource1
-            // 
-            this.accountBindingSource1.DataMember = "Account";
-            this.accountBindingSource1.DataSource = this.teamPenguinDataSet;
-            // 
-            // accountBindingSource
-            // 
-            this.accountBindingSource.DataMember = "Account";
-            this.accountBindingSource.DataSource = this.teamPenguinDataSet;
-            // 
-            // accountTableAdapter
-            // 
-            this.accountTableAdapter.ClearBeforeFill = true;
-            // 
             // accountIDDataGridViewTextBoxColumn
             // 
             this.accountIDDataGridViewTextBoxColumn.DataPropertyName = "AccountID";
@@ -338,6 +273,63 @@
             this.accountRoutingNumDataGridViewTextBoxColumn.ReadOnly = true;
             this.accountRoutingNumDataGridViewTextBoxColumn.Width = 85;
             // 
+            // accountBindingSource1
+            // 
+            this.accountBindingSource1.DataMember = "Account";
+            this.accountBindingSource1.DataSource = this.teamPenguinDataSet;
+            // 
+            // teamPenguinDataSet
+            // 
+            this.teamPenguinDataSet.DataSetName = "TeamPenguinDataSet";
+            this.teamPenguinDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // accountBindingSource2
+            // 
+            this.accountBindingSource2.DataMember = "Account";
+            this.accountBindingSource2.DataSource = this.teamPenguinDataSet;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(781, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updatePasswordToolStripMenuItem,
+            this.supervisorToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // updatePasswordToolStripMenuItem
+            // 
+            this.updatePasswordToolStripMenuItem.Name = "updatePasswordToolStripMenuItem";
+            this.updatePasswordToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.updatePasswordToolStripMenuItem.Text = "Update Password";
+            this.updatePasswordToolStripMenuItem.Click += new System.EventHandler(this.updatePasswordToolStripMenuItem_Click);
+            // 
+            // supervisorToolStripMenuItem
+            // 
+            this.supervisorToolStripMenuItem.Name = "supervisorToolStripMenuItem";
+            this.supervisorToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.supervisorToolStripMenuItem.Text = "Supervisor";
+            this.supervisorToolStripMenuItem.Click += new System.EventHandler(this.supervisorToolStripMenuItem_Click);
+            // 
+            // accountBindingSource
+            // 
+            this.accountBindingSource.DataMember = "Account";
+            this.accountBindingSource.DataSource = this.teamPenguinDataSet;
+            // 
+            // accountTableAdapter
+            // 
+            this.accountTableAdapter.ClearBeforeFill = true;
+            // 
             // mainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,11 +344,11 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamPenguinDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource2)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accountBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -383,7 +375,6 @@
             private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
             private System.Windows.Forms.ToolStripMenuItem updatePasswordToolStripMenuItem;
             private System.Windows.Forms.ToolStripMenuItem supervisorToolStripMenuItem;
-            private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
             private System.Windows.Forms.BindingSource accountBindingSource2;
             private System.Windows.Forms.DataGridViewTextBoxColumn accountIDDataGridViewTextBoxColumn;
             private System.Windows.Forms.DataGridViewTextBoxColumn accountFirstNameDataGridViewTextBoxColumn;

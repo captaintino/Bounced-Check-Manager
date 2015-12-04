@@ -21,9 +21,11 @@ namespace Bounced_Check_Manager
             public mainMenu()
             {
                 InitializeComponent();
+                if (!Globals.isSupervisor)
+                {
+                    supervisorToolStripMenuItem.Enabled = false;
+                }
                 accounts = Bounced_Check_Manager_Data_Layer.AccountDAO.LoadAll();
-                // Might be a better way to do this. Basically the table should start out refreshed, without
-                // the user clicking on anything.
             }
 
             private void refreshBtn_Click(object sender, EventArgs e)
