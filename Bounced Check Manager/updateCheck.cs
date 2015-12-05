@@ -25,6 +25,8 @@ namespace Bounced_Check_Manager
                 AmtOwedTextBox.Text = check.CheckAmountOwed.ToString();
                 CheckWriteDate.Text = check.CheckDate.ToString();
                 CheckDatePaid.Text = check.CheckPaidDate.ToString();
+                paidChkBox.Checked = check.CheckPaidDate != null;
+                checkDeletedChkBox.Checked = check.CheckDeleted;
             }
 
             private void submit_Click(object sender, EventArgs e)
@@ -53,8 +55,15 @@ namespace Bounced_Check_Manager
                     check.CheckAmount = checkAmt;
                     check.CheckAmountOwed = amtOwed;
                     check.CheckDate = CheckWriteDate.Value;
-                    check.CheckPaidDate = CheckDatePaid.Value;
-                    check.CheckDeleted = false;
+                    if (paidChkBox.Checked)
+                    {
+                        check.CheckPaidDate = CheckDatePaid.Value;
+                    }
+                    else
+                    {
+                        check.CheckPaidDate = null;
+                    }
+                    check.CheckDeleted = checkDeletedChkBox.Checked;
                     Bounced_Check_Manager_Data_Layer.CheckDAO.update(check);
                     this.Close();
                 }

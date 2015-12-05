@@ -38,7 +38,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.CreateCheckBtn = new System.Windows.Forms.Button();
             this.PayCheckBtn = new System.Windows.Forms.Button();
-            this.createBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.accountIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,31 +87,30 @@
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.GenerateLettersBtn, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.updateBtn, 0, 3);
-            this.tableLayoutPanel2.Controls.Add(this.button5, 0, 6);
-            this.tableLayoutPanel2.Controls.Add(this.CreateCheckBtn, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.PayCheckBtn, 0, 5);
-            this.tableLayoutPanel2.Controls.Add(this.createBtn, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.updateBtn, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.button5, 0, 5);
+            this.tableLayoutPanel2.Controls.Add(this.CreateCheckBtn, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.PayCheckBtn, 0, 4);
             this.tableLayoutPanel2.Controls.Add(this.refreshBtn, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 7;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel2.RowCount = 6;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(244, 485);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // GenerateLettersBtn
             // 
             this.GenerateLettersBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GenerateLettersBtn.Location = new System.Drawing.Point(22, 23);
+            this.GenerateLettersBtn.Location = new System.Drawing.Point(22, 28);
             this.GenerateLettersBtn.Name = "GenerateLettersBtn";
             this.GenerateLettersBtn.Size = new System.Drawing.Size(200, 23);
             this.GenerateLettersBtn.TabIndex = 7;
@@ -123,7 +121,7 @@
             // updateBtn
             // 
             this.updateBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.updateBtn.Location = new System.Drawing.Point(22, 230);
+            this.updateBtn.Location = new System.Drawing.Point(22, 188);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(200, 23);
             this.updateBtn.TabIndex = 3;
@@ -134,7 +132,7 @@
             // button5
             // 
             this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.Location = new System.Drawing.Point(22, 438);
+            this.button5.Location = new System.Drawing.Point(22, 431);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(200, 23);
             this.button5.TabIndex = 4;
@@ -145,7 +143,7 @@
             // CreateCheckBtn
             // 
             this.CreateCheckBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreateCheckBtn.Location = new System.Drawing.Point(22, 299);
+            this.CreateCheckBtn.Location = new System.Drawing.Point(22, 268);
             this.CreateCheckBtn.Name = "CreateCheckBtn";
             this.CreateCheckBtn.Size = new System.Drawing.Size(200, 23);
             this.CreateCheckBtn.TabIndex = 5;
@@ -156,7 +154,7 @@
             // PayCheckBtn
             // 
             this.PayCheckBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PayCheckBtn.Location = new System.Drawing.Point(22, 368);
+            this.PayCheckBtn.Location = new System.Drawing.Point(22, 348);
             this.PayCheckBtn.Name = "PayCheckBtn";
             this.PayCheckBtn.Size = new System.Drawing.Size(200, 23);
             this.PayCheckBtn.TabIndex = 6;
@@ -164,21 +162,10 @@
             this.PayCheckBtn.UseVisualStyleBackColor = true;
             this.PayCheckBtn.Click += new System.EventHandler(this.PayCheckBtn_Click);
             // 
-            // createBtn
-            // 
-            this.createBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.createBtn.Location = new System.Drawing.Point(22, 161);
-            this.createBtn.Name = "createBtn";
-            this.createBtn.Size = new System.Drawing.Size(200, 23);
-            this.createBtn.TabIndex = 1;
-            this.createBtn.Text = "Create";
-            this.createBtn.UseVisualStyleBackColor = true;
-            this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
-            // 
             // refreshBtn
             // 
             this.refreshBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.refreshBtn.Location = new System.Drawing.Point(22, 92);
+            this.refreshBtn.Location = new System.Drawing.Point(22, 108);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(200, 23);
             this.refreshBtn.TabIndex = 0;
@@ -361,7 +348,6 @@
             private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
             private System.Windows.Forms.Button button5;
             private System.Windows.Forms.Button updateBtn;
-            private System.Windows.Forms.Button createBtn;
             private System.Windows.Forms.Button refreshBtn;
             private System.Windows.Forms.DataGridView dataGridView1;
             private System.Windows.Forms.Button PayCheckBtn;
