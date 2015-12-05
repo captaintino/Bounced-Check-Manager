@@ -76,7 +76,15 @@ namespace Bounced_Check_Manager
                 List<Account> accounts = Bounced_Check_Manager_Data_Layer.AccountDAO.findAny(AccNumberTxtBox.Text, FNameTxtBox.Text, LNameTextBox.Text, PhoneNumberTxtBox.Text, AddressTxtBox.Text, RoutingNumberTxtBox.Text);
                 for (int i = 0; i < accounts.Count; i++)
                 {
-                    List<Check> newChecks = Bounced_Check_Manager_Data_Layer.CheckDAO.getUnpaidChecksFromAcc(accounts[i].AccountID);
+                    List<Check> newChecks;
+                    if (Globals.isSupervisor)
+                    {
+                        newChecks = Bounced_Check_Manager_Data_Layer.CheckDAO.getChecksFromAcc(accounts[i].AccountID);
+                    }
+                    else
+                    {
+                        newChecks = Bounced_Check_Manager_Data_Layer.CheckDAO.getUnpaidChecksFromAcc(accounts[i].AccountID);
+                    }
                     checks.AddRange(newChecks);
                 }
                 for (int i = 0; i < checks.Count; i++)
@@ -92,8 +100,23 @@ namespace Bounced_Check_Manager
                         checksGridView.Rows.Add(row);
                         if (check.CheckDeleted)
                         {
-                            checksGridView.Rows[i].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Italic);
-                            checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.Gray;
+                            if (check.CheckPaidDate != null)
+                            {
+                                checksGridView.Rows[i].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Italic);
+                                checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.DarkBlue;
+                            }
+                            else
+                            {
+                                checksGridView.Rows[i].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Italic);
+                                checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.Gray;
+                            }
+                        }
+                        else
+                        {
+                            if (check.CheckPaidDate != null)
+                            {
+                                checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.Blue;
+                            }
                         }
                     }
                 }
