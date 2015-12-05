@@ -31,6 +31,8 @@
             private void InitializeComponent()
             {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.AccNameLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.CheckWriteDate = new System.Windows.Forms.DateTimePicker();
             this.CheckDatePaid = new System.Windows.Forms.DateTimePicker();
@@ -44,8 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.submit = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.AccNameLabel = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +70,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.submit, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.cancel, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.checkBox1, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -84,6 +86,25 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(419, 337);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // AccNameLabel
+            // 
+            this.AccNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AccNameLabel.AutoSize = true;
+            this.AccNameLabel.Location = new System.Drawing.Point(212, 13);
+            this.AccNameLabel.Name = "AccNameLabel";
+            this.AccNameLabel.Size = new System.Drawing.Size(0, 13);
+            this.AccNameLabel.TabIndex = 26;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(128, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 13);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Account Name";
             // 
             // label6
             // 
@@ -211,24 +232,15 @@
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
-            // label7
+            // checkBox1
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(128, 13);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 13);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "Account Name";
-            // 
-            // AccNameLabel
-            // 
-            this.AccNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.AccNameLabel.AutoSize = true;
-            this.AccNameLabel.Location = new System.Drawing.Point(212, 13);
-            this.AccNameLabel.Name = "AccNameLabel";
-            this.AccNameLabel.Size = new System.Drawing.Size(0, 13);
-            this.AccNameLabel.TabIndex = 26;
+            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(212, 248);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 27;
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // updateCheck
             // 
@@ -262,6 +274,7 @@
             private System.Windows.Forms.Label label6;
             private System.Windows.Forms.Label AccNameLabel;
             private System.Windows.Forms.Label label7;
+            private System.Windows.Forms.CheckBox checkBox1;
         }
     }
 }
