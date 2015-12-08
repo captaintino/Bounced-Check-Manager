@@ -59,7 +59,7 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
             }
 
             // Create User <user> on database
-            public static bool create(String username, String password)
+            public static bool create(String username, String password, bool supervisor)
             {
                 try
                 {
@@ -84,6 +84,14 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
                     //cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
                     //cmd.Parameters["{UNAME}"].Value = username;
                     cmd.ExecuteNonQuery();
+                    if (supervisor)
+                    {
+                        cmd.CommandText = @"EXEC master..sp_addsrvrolemember @loginame = N'{UNAME}', @rolename = N'bulkadmin';".Replace("{UNAME}", username);
+                        //cmd.Parameters.Add("{UNAME}", SqlDbType.VarChar);
+                        //cmd.Parameters["{UNAME}"].Value = username;
+                        cmd.ExecuteNonQuery();
+                    }
+
                     sqlConnection1.Close();
                     return result == -1;
                 }
@@ -205,14 +213,33 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
             // Attempt to login to server with <username> and <password> and update the relevant global variables <username> and <connectionString>
             public static bool login(string username, string password)
             {
+                // Check if valid login
                 String connectionString = "Data Source=CPSLABSERVER\\TEAMPENGUIN;Initial Catalog=TeamPenguin;Persist Security Info=True;User ID=" + username + ";Password=" + password;
                 DataClasses1DataContext database = new DataClasses1DataContext(connectionString);
                 if (!database.DatabaseExists())
                 {
                     return false;
                 }
+                // set globals
                 Globals.connectionString = connectionString;
                 Globals.username = username;
+                // check if supervisor
+                try
+                {
+                    SqlConnection sqlConnection1 = new SqlConnection(Globals.connectionString);
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.CommandText = @"SELECT bulkadmin from sys.syslogins where name = '{UNAME}';".Replace("{UNAME}", username);
+                    cmd.Connection = sqlConnection1;
+                    sqlConnection1.Open();
+                    // set globals
+                    Globals.isSupervisor = (1 == (int)cmd.ExecuteScalar());
+                    sqlConnection1.Close();
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+
                 return true;
             }
 
@@ -247,7 +274,7 @@ where sql.is_disabled = 0 and sl.password IS NOT NULL and sl.hasaccess = 1 and s
 
             public static bool UnitTest()
             {
-                Debug.Assert(create("UNITTESttttt1", "PasswordPassingTest123!"));
+                Debug.Assert(create("UNITTESttttt1", "PasswordPassingTest123!", true));
                 List<User> u = listAll();
                 Debug.Assert(u.Count > 0);
                 User user = u[u.Count - 1];

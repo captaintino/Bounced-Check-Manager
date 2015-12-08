@@ -34,7 +34,7 @@ namespace Bounced_Check_Manager
                         MessageBox.Show("Password too simple.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                         return;
                     }
-                    bool success = Bounced_Check_Manager_Data_Layer.UserDAO.create(UsernameTxtBox.Text, PasswordTxtBox.Text);
+                    bool success = Bounced_Check_Manager_Data_Layer.UserDAO.create(UsernameTxtBox.Text, PasswordTxtBox.Text, RoleComboBox.SelectedIndex == 1);
                     if (success)
                     {
                         MessageBox.Show("User Created");

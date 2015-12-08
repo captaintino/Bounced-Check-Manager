@@ -31,9 +31,9 @@
             private void InitializeComponent()
             {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.AccNameLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.CheckWriteDate = new System.Windows.Forms.DateTimePicker();
-            this.CheckDatePaid = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.AmtOwedTextBox = new System.Windows.Forms.TextBox();
             this.CheckAmtTextBox = new System.Windows.Forms.TextBox();
@@ -44,9 +44,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.submit = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.AccNameLabel = new System.Windows.Forms.Label();
+            this.checkDeletedChkBox = new System.Windows.Forms.CheckBox();
+            this.CheckWriteDate = new System.Windows.Forms.DateTimePicker();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.CheckDatePaid = new System.Windows.Forms.DateTimePicker();
+            this.paidChkBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -58,7 +65,6 @@
             this.tableLayoutPanel1.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.CheckWriteDate, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.CheckDatePaid, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.AmtOwedTextBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.CheckAmtTextBox, 1, 2);
@@ -69,6 +75,8 @@
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.submit, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.cancel, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.checkDeletedChkBox, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 1, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -85,6 +93,25 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(419, 337);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
+            // AccNameLabel
+            // 
+            this.AccNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AccNameLabel.AutoSize = true;
+            this.AccNameLabel.Location = new System.Drawing.Point(212, 13);
+            this.AccNameLabel.Name = "AccNameLabel";
+            this.AccNameLabel.Size = new System.Drawing.Size(0, 13);
+            this.AccNameLabel.TabIndex = 26;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(128, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 13);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Account Name";
+            // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -94,26 +121,6 @@
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 24;
             this.label6.Text = "Deleted";
-            // 
-            // CheckWriteDate
-            // 
-            this.CheckWriteDate.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CheckWriteDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.CheckWriteDate.Location = new System.Drawing.Point(212, 170);
-            this.CheckWriteDate.Name = "CheckWriteDate";
-            this.CheckWriteDate.Size = new System.Drawing.Size(114, 20);
-            this.CheckWriteDate.TabIndex = 23;
-            this.CheckWriteDate.Value = new System.DateTime(2015, 10, 14, 0, 0, 0, 0);
-            // 
-            // CheckDatePaid
-            // 
-            this.CheckDatePaid.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CheckDatePaid.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.CheckDatePaid.Location = new System.Drawing.Point(212, 210);
-            this.CheckDatePaid.Name = "CheckDatePaid";
-            this.CheckDatePaid.Size = new System.Drawing.Size(114, 20);
-            this.CheckDatePaid.TabIndex = 22;
-            this.CheckDatePaid.Value = new System.DateTime(2015, 10, 14, 0, 0, 0, 0);
             // 
             // label2
             // 
@@ -211,24 +218,62 @@
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
-            // label7
+            // checkDeletedChkBox
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(128, 13);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 13);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "Account Name";
+            this.checkDeletedChkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkDeletedChkBox.AutoSize = true;
+            this.checkDeletedChkBox.Location = new System.Drawing.Point(212, 248);
+            this.checkDeletedChkBox.Name = "checkDeletedChkBox";
+            this.checkDeletedChkBox.Size = new System.Drawing.Size(15, 14);
+            this.checkDeletedChkBox.TabIndex = 27;
+            this.checkDeletedChkBox.UseVisualStyleBackColor = true;
             // 
-            // AccNameLabel
+            // CheckWriteDate
             // 
-            this.AccNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.AccNameLabel.AutoSize = true;
-            this.AccNameLabel.Location = new System.Drawing.Point(212, 13);
-            this.AccNameLabel.Name = "AccNameLabel";
-            this.AccNameLabel.Size = new System.Drawing.Size(0, 13);
-            this.AccNameLabel.TabIndex = 26;
+            this.CheckWriteDate.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CheckWriteDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.CheckWriteDate.Location = new System.Drawing.Point(212, 170);
+            this.CheckWriteDate.Name = "CheckWriteDate";
+            this.CheckWriteDate.Size = new System.Drawing.Size(114, 20);
+            this.CheckWriteDate.TabIndex = 23;
+            this.CheckWriteDate.Value = new System.DateTime(2015, 10, 14, 0, 0, 0, 0);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(212, 203);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.CheckDatePaid);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.paidChkBox);
+            this.splitContainer1.Size = new System.Drawing.Size(204, 34);
+            this.splitContainer1.SplitterDistance = 135;
+            this.splitContainer1.TabIndex = 28;
+            // 
+            // CheckDatePaid
+            // 
+            this.CheckDatePaid.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CheckDatePaid.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.CheckDatePaid.Location = new System.Drawing.Point(5, 7);
+            this.CheckDatePaid.Name = "CheckDatePaid";
+            this.CheckDatePaid.Size = new System.Drawing.Size(114, 20);
+            this.CheckDatePaid.TabIndex = 23;
+            this.CheckDatePaid.Value = new System.DateTime(2015, 10, 14, 0, 0, 0, 0);
+            // 
+            // paidChkBox
+            // 
+            this.paidChkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.paidChkBox.AutoSize = true;
+            this.paidChkBox.Location = new System.Drawing.Point(31, 10);
+            this.paidChkBox.Name = "paidChkBox";
+            this.paidChkBox.Size = new System.Drawing.Size(15, 14);
+            this.paidChkBox.TabIndex = 28;
+            this.paidChkBox.UseVisualStyleBackColor = true;
             // 
             // updateCheck
             // 
@@ -240,6 +285,11 @@
             this.Text = "updateCheck";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
             }
@@ -257,11 +307,14 @@
             private System.Windows.Forms.Label label4;
             private System.Windows.Forms.Label label5;
             private System.Windows.Forms.Label label2;
-            private System.Windows.Forms.DateTimePicker CheckWriteDate;
-            private System.Windows.Forms.DateTimePicker CheckDatePaid;
             private System.Windows.Forms.Label label6;
             private System.Windows.Forms.Label AccNameLabel;
             private System.Windows.Forms.Label label7;
+            private System.Windows.Forms.CheckBox checkDeletedChkBox;
+            private System.Windows.Forms.DateTimePicker CheckWriteDate;
+            private System.Windows.Forms.SplitContainer splitContainer1;
+            private System.Windows.Forms.DateTimePicker CheckDatePaid;
+            private System.Windows.Forms.CheckBox paidChkBox;
         }
     }
 }
