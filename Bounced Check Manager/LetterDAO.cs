@@ -43,10 +43,10 @@ To: {checkAddress}
 Dear : {accountName}
 
 
-This is a second letter to inform you that your check dated {checkDate}, payable to {storeName}, in the amount of ${checkAmnt}, has been returned to us due to insufficient funds.
+This is a second letter to inform you that your check dated {checkDate}, payable to {storeName}, in the amount of {checkAmnt}, has been returned to us due to insufficient funds.
 
-Unless full payment of the check is received by cash together with ${fee} in bank fees, I will file a small claims court claim against you.
-The claim will also request damages for the amount of the check, ${checkAmnt}, plus ${fee} damages assessed, for a total claim of ${totalAmnt} against you.
+Unless full payment of the check is received by cash together with {fee} in bank fees, I will file a small claims court claim against you.
+The claim will also request damages for the amount of the check, {checkAmnt}, plus {fee} damages assessed, for a total claim of {totalAmnt} against you.
 We realize that such mishaps do occur and therefore are bringing this matter to your attention through one more grace letter so that you will take the opportunity to correct this error and issue us a new check.
 
 It is our policy to retain the old check until a new check is issued and cleared as we have unfortunately realized that there are some people who do not honor their debts. If a new check is not issued and the old check does not clear we will pursue legal action to the full extend of the law.
