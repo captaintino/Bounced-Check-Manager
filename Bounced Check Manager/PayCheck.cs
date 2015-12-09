@@ -87,36 +87,41 @@ namespace Bounced_Check_Manager
                     }
                     checks.AddRange(newChecks);
                 }
+                List<int> dontDisplayChecks = new List<int>();
+                for (int i = 0; i < checks.Count; i++)
+                {
+                    if (checks[i].CheckDeleted && !Globals.isSupervisor)
+                    {
+                        dontDisplayChecks.Add(i);
+                    }
+                }
+                for (int i = 0; i < dontDisplayChecks.Count; i++)
+                {
+                    checks.RemoveAt(dontDisplayChecks[i]);
+                }
                 for (int i = 0; i < checks.Count; i++)
                 {
                     Check check = checks[i];
-                    if (check.CheckDeleted && !Globals.isSupervisor)
+                    string[] row = { check.Account.AccountFirstName + " " + check.Account.AccountLastName, check.Account.AccountPhoneNum.ToString(), check.CheckNum.ToString(), check.Bank.BankName, check.Bank.BankAddress, check.CheckDate.ToString(), check.CheckAmount.ToString("C"), check.CheckAmountOwed.ToString("C") };
+                    checksGridView.Rows.Add(row);
+                    if (check.CheckDeleted)
                     {
-                        checks.RemoveAt(i);
-                    }
-                    else
-                    {
-                        string[] row = { check.Account.AccountFirstName + " " + check.Account.AccountLastName, check.Account.AccountPhoneNum.ToString(), check.CheckNum.ToString(), check.Bank.BankName, check.Bank.BankAddress, check.CheckDate.ToString(), check.CheckAmount.ToString("C"), check.CheckAmountOwed.ToString("C") };
-                        checksGridView.Rows.Add(row);
-                        if (check.CheckDeleted)
+                        if (check.CheckPaidDate != null)
                         {
-                            if (check.CheckPaidDate != null)
-                            {
-                                checksGridView.Rows[i].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Italic);
-                                checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.DarkBlue;
-                            }
-                            else
-                            {
-                                checksGridView.Rows[i].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Italic);
-                                checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.Gray;
-                            }
+                            checksGridView.Rows[i].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Italic);
+                            checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.DarkBlue;
                         }
                         else
                         {
-                            if (check.CheckPaidDate != null)
-                            {
-                                checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.Blue;
-                            }
+                            checksGridView.Rows[i].DefaultCellStyle.Font = new Font(DataGridView.DefaultFont, FontStyle.Italic);
+                            checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.Gray;
+                        }
+                    }
+                    else
+                    {
+                        if (check.CheckPaidDate != null)
+                        {
+                            checksGridView.Rows[i].DefaultCellStyle.BackColor = Color.Blue;
                         }
                     }
                 }
