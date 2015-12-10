@@ -32,17 +32,15 @@
             {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.UsersDataGridView = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.DeleteBtn = new System.Windows.Forms.Button();
-            this.ChangePasswordBtn = new System.Windows.Forms.Button();
             this.uid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.DeleteBtn = new System.Windows.Forms.Button();
+            this.ChangePasswordBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -89,66 +87,6 @@
             this.UsersDataGridView.Size = new System.Drawing.Size(670, 288);
             this.UsersDataGridView.TabIndex = 1;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.button4, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.DeleteBtn, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ChangePasswordBtn, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(670, 204);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // button4
-            // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button4.Location = new System.Drawing.Point(465, 141);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.Location = new System.Drawing.Point(130, 141);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // DeleteBtn
-            // 
-            this.DeleteBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.DeleteBtn.Location = new System.Drawing.Point(465, 39);
-            this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(75, 23);
-            this.DeleteBtn.TabIndex = 1;
-            this.DeleteBtn.Text = "Delete";
-            this.DeleteBtn.UseVisualStyleBackColor = true;
-            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
-            // 
-            // ChangePasswordBtn
-            // 
-            this.ChangePasswordBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ChangePasswordBtn.Location = new System.Drawing.Point(107, 39);
-            this.ChangePasswordBtn.Name = "ChangePasswordBtn";
-            this.ChangePasswordBtn.Size = new System.Drawing.Size(120, 23);
-            this.ChangePasswordBtn.TabIndex = 0;
-            this.ChangePasswordBtn.Text = "Change Password";
-            this.ChangePasswordBtn.UseVisualStyleBackColor = true;
-            this.ChangePasswordBtn.Click += new System.EventHandler(this.ChangePasswordBtn_Click);
-            // 
             // uid
             // 
             this.uid.HeaderText = "uid";
@@ -187,6 +125,44 @@
             this.accdate.Name = "accdate";
             this.accdate.ReadOnly = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.DeleteBtn, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ChangePasswordBtn, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(670, 204);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DeleteBtn.Location = new System.Drawing.Point(465, 39);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.DeleteBtn.TabIndex = 1;
+            this.DeleteBtn.Text = "Delete";
+            this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            // 
+            // ChangePasswordBtn
+            // 
+            this.ChangePasswordBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ChangePasswordBtn.Location = new System.Drawing.Point(107, 39);
+            this.ChangePasswordBtn.Name = "ChangePasswordBtn";
+            this.ChangePasswordBtn.Size = new System.Drawing.Size(120, 23);
+            this.ChangePasswordBtn.TabIndex = 0;
+            this.ChangePasswordBtn.Text = "Change Password";
+            this.ChangePasswordBtn.UseVisualStyleBackColor = true;
+            this.ChangePasswordBtn.Click += new System.EventHandler(this.ChangePasswordBtn_Click);
+            // 
             // ModifyUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,8 +186,6 @@
             private System.Windows.Forms.SplitContainer splitContainer1;
             private System.Windows.Forms.DataGridView UsersDataGridView;
             private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-            private System.Windows.Forms.Button button4;
-            private System.Windows.Forms.Button button3;
             private System.Windows.Forms.Button DeleteBtn;
             private System.Windows.Forms.Button ChangePasswordBtn;
             private System.Windows.Forms.DataGridViewTextBoxColumn uid;

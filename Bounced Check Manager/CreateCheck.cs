@@ -59,6 +59,24 @@ namespace Bounced_Check_Manager
                     AutofillBtn.Text = "Unlock";
                     ClearBtn.Enabled = false;
                 }
+                else
+                {
+                    if (RoutingNumberTxtBox.Text != "")
+                    {
+                        int routNum = Convert.ToInt32(RoutingNumberTxtBox.Text);
+                        Bank bank = Bounced_Check_Manager_Data_Layer.BankDAO.find(routNum);
+                        if (bank != null)
+                        {
+                            BankAddressTxtBox.Text = bank.BankAddress;
+                            BankNameTxtBox.Text = bank.BankName;
+                            RoutingNumberTxtBox.Enabled = false;
+                            BankAddressTxtBox.Enabled = false;
+                            BankNameTxtBox.Enabled = false;
+                            AutofillBtn.Text = "Unlock";
+                            ClearBtn.Enabled = false;
+                        }
+                    }
+                }
                 return;
             }
 

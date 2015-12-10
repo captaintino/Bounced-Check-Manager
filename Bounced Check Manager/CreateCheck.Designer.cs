@@ -45,11 +45,12 @@
             this.label13 = new System.Windows.Forms.Label();
             this.AddressTxtBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.AutofillBtn = new System.Windows.Forms.Button();
-            this.AccNumberTxtBox = new System.Windows.Forms.TextBox();
-            this.RoutingNumberTxtBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.RoutingNumberTxtBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.AccNumberTxtBox = new System.Windows.Forms.TextBox();
+            this.ClearBtn = new System.Windows.Forms.Button();
+            this.AutofillBtn = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
@@ -61,19 +62,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.CheckAmountTxtBox = new System.Windows.Forms.TextBox();
             this.CashierNumberTxtBox = new System.Windows.Forms.TextBox();
             this.CheckNumberTxtBox = new System.Windows.Forms.TextBox();
             this.BankAddressTxtBox = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.BankNameTxtBox = new System.Windows.Forms.TextBox();
             this.CheckDatePicker = new System.Windows.Forms.DateTimePicker();
             this.StoreNumberComboBox = new System.Windows.Forms.ComboBox();
             this.storeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.teamPenguinDataSet = new Bounced_Check_Manager.TeamPenguinDataSet();
             this.storeTableAdapter = new Bounced_Check_Manager.TeamPenguinDataSetTableAdapters.StoreTableAdapter();
-            this.ClearBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -268,7 +266,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.34527F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.34271F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.71611F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel3.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.RoutingNumberTxtBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label12, 2, 0);
@@ -283,33 +281,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(471, 40);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
-            // AutofillBtn
-            // 
-            this.AutofillBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.AutofillBtn.Location = new System.Drawing.Point(313, 8);
-            this.AutofillBtn.Name = "AutofillBtn";
-            this.AutofillBtn.Size = new System.Drawing.Size(75, 23);
-            this.AutofillBtn.TabIndex = 23;
-            this.AutofillBtn.Text = "Autofill";
-            this.AutofillBtn.UseVisualStyleBackColor = true;
-            this.AutofillBtn.Click += new System.EventHandler(this.AutofillBtn_Click);
-            // 
-            // AccNumberTxtBox
-            // 
-            this.AccNumberTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.AccNumberTxtBox.Location = new System.Drawing.Point(210, 10);
-            this.AccNumberTxtBox.Name = "AccNumberTxtBox";
-            this.AccNumberTxtBox.Size = new System.Drawing.Size(88, 20);
-            this.AccNumberTxtBox.TabIndex = 22;
-            // 
-            // RoutingNumberTxtBox
-            // 
-            this.RoutingNumberTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.RoutingNumberTxtBox.Location = new System.Drawing.Point(58, 10);
-            this.RoutingNumberTxtBox.Name = "RoutingNumberTxtBox";
-            this.RoutingNumberTxtBox.Size = new System.Drawing.Size(86, 20);
-            this.RoutingNumberTxtBox.TabIndex = 21;
-            // 
             // label11
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -320,15 +291,53 @@
             this.label11.TabIndex = 10;
             this.label11.Text = "Routing Number";
             // 
+            // RoutingNumberTxtBox
+            // 
+            this.RoutingNumberTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.RoutingNumberTxtBox.Location = new System.Drawing.Point(58, 10);
+            this.RoutingNumberTxtBox.Name = "RoutingNumberTxtBox";
+            this.RoutingNumberTxtBox.Size = new System.Drawing.Size(85, 20);
+            this.RoutingNumberTxtBox.TabIndex = 21;
+            // 
             // label12
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(154, 7);
+            this.label12.Location = new System.Drawing.Point(152, 7);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 26);
             this.label12.TabIndex = 11;
             this.label12.Text = "Account Number";
+            // 
+            // AccNumberTxtBox
+            // 
+            this.AccNumberTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AccNumberTxtBox.Location = new System.Drawing.Point(208, 10);
+            this.AccNumberTxtBox.Name = "AccNumberTxtBox";
+            this.AccNumberTxtBox.Size = new System.Drawing.Size(88, 20);
+            this.AccNumberTxtBox.TabIndex = 22;
+            // 
+            // ClearBtn
+            // 
+            this.ClearBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ClearBtn.Location = new System.Drawing.Point(392, 8);
+            this.ClearBtn.Name = "ClearBtn";
+            this.ClearBtn.Size = new System.Drawing.Size(74, 23);
+            this.ClearBtn.TabIndex = 24;
+            this.ClearBtn.Text = "Clear";
+            this.ClearBtn.UseVisualStyleBackColor = true;
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
+            // 
+            // AutofillBtn
+            // 
+            this.AutofillBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.AutofillBtn.Location = new System.Drawing.Point(310, 8);
+            this.AutofillBtn.Name = "AutofillBtn";
+            this.AutofillBtn.Size = new System.Drawing.Size(74, 23);
+            this.AutofillBtn.TabIndex = 23;
+            this.AutofillBtn.Text = "Autofill";
+            this.AutofillBtn.UseVisualStyleBackColor = true;
+            this.AutofillBtn.Click += new System.EventHandler(this.AutofillBtn_Click);
             // 
             // label14
             // 
@@ -358,12 +367,10 @@
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.CheckAmountTxtBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.CashierNumberTxtBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.CheckNumberTxtBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.BankAddressTxtBox, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBox8, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.BankNameTxtBox, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.CheckDatePicker, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.StoreNumberComboBox, 3, 0);
@@ -471,16 +478,6 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Bank Name";
             // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(313, 182);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "label8";
-            // 
             // CheckAmountTxtBox
             // 
             this.CheckAmountTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -513,14 +510,6 @@
             this.BankAddressTxtBox.Name = "BankAddressTxtBox";
             this.BankAddressTxtBox.Size = new System.Drawing.Size(100, 20);
             this.BankAddressTxtBox.TabIndex = 16;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox8.Location = new System.Drawing.Point(354, 179);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 17;
             // 
             // BankNameTxtBox
             // 
@@ -565,17 +554,6 @@
             // storeTableAdapter
             // 
             this.storeTableAdapter.ClearBeforeFill = true;
-            // 
-            // ClearBtn
-            // 
-            this.ClearBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ClearBtn.Location = new System.Drawing.Point(394, 8);
-            this.ClearBtn.Name = "ClearBtn";
-            this.ClearBtn.Size = new System.Drawing.Size(74, 23);
-            this.ClearBtn.TabIndex = 24;
-            this.ClearBtn.Text = "Clear";
-            this.ClearBtn.UseVisualStyleBackColor = true;
-            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
             // 
             // CreateCheck
             // 
@@ -631,7 +609,6 @@
             private System.Windows.Forms.Label label6;
             private System.Windows.Forms.Label label2;
             private System.Windows.Forms.Label label4;
-            private System.Windows.Forms.Label label8;
             private System.Windows.Forms.TextBox LNameTxtBox;
             private System.Windows.Forms.TextBox FNameTxtBox;
             private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -646,7 +623,6 @@
             private System.Windows.Forms.TextBox CashierNumberTxtBox;
             private System.Windows.Forms.TextBox CheckNumberTxtBox;
             private System.Windows.Forms.TextBox BankAddressTxtBox;
-            private System.Windows.Forms.TextBox textBox8;
             private System.Windows.Forms.TextBox BankNameTxtBox;
             private System.Windows.Forms.Button AutofillBtn;
             private System.Windows.Forms.Label label14;

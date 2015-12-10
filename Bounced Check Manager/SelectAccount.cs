@@ -31,6 +31,15 @@ namespace Bounced_Check_Manager
             List<Account> accounts = new List<Account>();
             public Account returnAccount;
 
+            protected override void OnShown(EventArgs e)
+            {
+                base.OnShown(e);
+                if (SelectAccountCmb.Items.Count <= 0)
+                {
+                    this.Close();
+                }
+            }
+
             public SelectAccount(string accNum, string accFirstName, string accLastName, string accPhoneNum, string accAddress, string accRoutNum)
             {
                 InitializeComponent();
@@ -39,7 +48,10 @@ namespace Bounced_Check_Manager
                 {
                     SelectAccountCmb.Items.Add(Bounced_Check_Manager_Data_Layer.AccountDAO.getAccountString(accounts[i]));
                 }
-                SelectAccountCmb.SelectedIndex = 0;
+                if (SelectAccountCmb.Items.Count > 0)
+                {
+                    SelectAccountCmb.SelectedIndex = 0;
+                }
             }
 
             private void SelectBtn_Click(object sender, EventArgs e)
