@@ -97,7 +97,7 @@ namespace Bounced_Check_Manager
                 }
                 for (int i = 0; i < dontDisplayChecks.Count; i++)
                 {
-                    checks.RemoveAt(dontDisplayChecks[i]);
+                    checks.RemoveAt(dontDisplayChecks[i] - i);
                 }
                 for (int i = 0; i < checks.Count; i++)
                 {
